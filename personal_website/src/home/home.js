@@ -3,10 +3,14 @@ import VantaBackground from './VantaBackground';
 
 function Home({ isDarkMode }) {
   const [scrollOpacity, setScrollOpacity] = useState(1);
+  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Start fading out after 50px of scroll, completely gone by 200px
+      // Update current scroll position
+      setScrollY(window.scrollY);
+      
+      // Update scroll indicator opacity
       const opacity = Math.max(0, 1 - (window.scrollY - 50) / 150);
       setScrollOpacity(opacity);
     };
@@ -16,50 +20,104 @@ function Home({ isDarkMode }) {
   }, []);
 
   return (
-    <div className="home-container">
-      {/* Banner Section */}
-      <section className="banner-section">
+    <div style={{ 
+      width: '100%',
+      margin: 0,
+      padding: 0,
+      position: 'relative',
+      minHeight: '200vh' // Make page scrollable
+    }}>
+      {/* Fixed VantaBackground that stays in place */}
+      <div style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        zIndex: 0
+      }}>
         <VantaBackground isDarkMode={isDarkMode} />
-        <div className="banner-content" style={{
-          height: '100vh',
+      </div>
+
+      {/* Blur overlay that becomes visible on scroll */}
+      <div style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        backgroundColor: isDarkMode ? 'rgba(26, 32, 33, 0.85)' : 'rgba(240, 240, 240, 0.85)',
+        backdropFilter: 'blur(10px)',
+        WebkitBackdropFilter: 'blur(10px)',
+        zIndex: 1,
+        opacity: Math.min(1, scrollY / 300), // Gradually appear as user scrolls
+        transition: 'opacity 0.3s ease',
+        pointerEvents: 'none' // Allow clicking through this layer
+      }} />
+
+      {/* Banner Content */}
+      <div style={{
+        position: 'relative',
+        height: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 2,
+        paddingBottom: '15vh'
+      }}>
+        <div style={{
           display: 'flex',
+          flexDirection: 'row',
           alignItems: 'center',
           justifyContent: 'center',
-          position: 'relative',
-          zIndex: 1,
-          paddingBottom: '15vh'
+          gap: '0.5rem',
+          padding: '20px',
+          width: '100%',
+          maxWidth: '900px'
         }}>
-          <div style={{
-            textAlign: 'center',
-            padding: '20px'
+          {/* Profile container */}
+          <div className="profile-container" style={{ 
+            marginBottom: 0,
+            flexShrink: 0
           }}>
-            <div className="profile-container" style={{ marginBottom: '2rem' }}>
-              <div className="orbit orbit-1">
-                <div className="orbit-dot"></div>
-              </div>
-              <div className="orbit orbit-2">
-                <div className="orbit-dot"></div>
-              </div>
-              <div className="profile-glow"></div>
-              <div className="profile-image-container">
-                <img 
-                  src="/images/profile.jpg"
-                  alt="Profile"
-                />
-              </div>
+            <div className="orbit orbit-1">
+              <div className="orbit-dot"></div>
             </div>
+            <div className="orbit orbit-2">
+              <div className="orbit-dot"></div>
+            </div>
+            <div className="profile-glow"></div>
+            <div className="profile-image-container">
+              <img 
+                src="/images/profile.jpg"
+                alt="Profile"
+              />
+            </div>
+          </div>
+          
+          {/* Text content */}
+          <div style={{
+            textAlign: 'left',
+            maxWidth: '450px'
+          }}>
             <h1 style={{
               fontSize: '2.5em',
               color: isDarkMode ? '#f5f6fa' : '#333333',
               marginBottom: '1rem',
-              fontWeight: '600'
+              fontWeight: '700',
+              fontFamily: "'Montserrat', 'Inter', 'Segoe UI', sans-serif",
+              letterSpacing: '-0.5px',
+              lineHeight: '1.2'
             }}>
-              Hi, I'm Swaroop Sridhar
+              Swaroop Sridhar
             </h1>
             <p style={{
               fontSize: '1.2em',
               color: '#4ade80',
-              fontWeight: '500'
+              fontWeight: '500',
+              marginBottom: '1rem',
+              fontFamily: "'Montserrat', 'Inter', 'Segoe UI', sans-serif",
+              letterSpacing: '0.5px'
             }}>
               Building digital experiences that matter
             </p>
@@ -97,53 +155,57 @@ function Home({ isDarkMode }) {
             }}/>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* Content Section with Parallax */}
-      <section className="content-section" style={{
-        background: 'transparent',
+      {/* Content section with description and buttons */}
+      <div style={{ 
+        height: '100vh', 
         position: 'relative',
         zIndex: 2,
-        padding: '4rem 0'
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%'
       }}>
         <div style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-          padding: '0 20px',
-          background: isDarkMode 
-            ? 'rgba(45, 52, 54, 0.1)'
-            : 'rgba(255, 255, 255, 0.1)',
-          borderRadius: '20px',
-          backdropFilter: 'blur(12px)',
-          WebkitBackdropFilter: 'blur(12px)',
-          padding: '2rem'
+          width: '100%',
+          maxWidth: '1400px',
+          padding: '0 40px',
+          color: isDarkMode ? '#f5f6fa' : '#333',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '30px'
         }}>
           <h2 style={{
-            fontSize: '1.8em',
-            marginBottom: '25px',
-            color: '#4ade80'
+            fontSize: '2em',
+            marginBottom: '10px',
+            color: '#4ade80',
+            fontFamily: "'Montserrat', 'Inter', 'Segoe UI', sans-serif",
+            width: '100%'
           }}>
             Software Developer
           </h2>
-          
           <p style={{
             fontSize: '1.1em',
             lineHeight: '1.8',
-            color: isDarkMode ? '#f5f6fa' : '#555',
-            marginBottom: '30px',
-            letterSpacing: '0.3px'
+            letterSpacing: '0.3px',
+            marginBottom: '10px',
+            width: '100%',
+            maxWidth: '1100px'
           }}>
             A passionate software developer with expertise in full-stack development,
             focusing on creating efficient and scalable web applications. Experienced
             in modern technologies and best practices in software development.
           </p>
-
+          
+          {/* Buttons */}
           <div style={{
             display: 'flex',
             gap: '25px',
-            marginTop: '30px'
+            marginTop: '20px'
           }}>
             <button 
+              onClick={() => window.location.href = '/portfolio'}
               style={{
                 backgroundColor: '#4ade80',
                 color: '#ffffff',
@@ -166,6 +228,7 @@ function Home({ isDarkMode }) {
               View Portfolio
             </button>
             <button 
+              onClick={() => window.location.href = '/contact'}
               style={{
                 backgroundColor: 'transparent',
                 color: isDarkMode ? '#f5f6fa' : '#333333',
@@ -191,7 +254,7 @@ function Home({ isDarkMode }) {
             </button>
           </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 }

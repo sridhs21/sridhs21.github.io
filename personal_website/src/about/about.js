@@ -1,9 +1,9 @@
 import React from 'react';
 
-function Contact() {
+function About() {
   return (
     <div className="page-container">
-      <h1 className="page-title">Contact</h1>
+      <h1 className="page-title">About</h1>
       <div className="page-content">
         <p>Get in touch with me for collaborations and opportunities.</p>
       </div>
@@ -11,4 +11,4 @@ function Contact() {
   );
 }
 
-export default Contact;
+export default About;
