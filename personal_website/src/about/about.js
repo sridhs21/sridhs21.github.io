@@ -1,12 +1,14 @@
 import React from 'react';
 
-function About() {
+function Contact() {
   return (
-    <div>
-      <h1>About Us</h1>
-      <p>This is the about page of your website.</p>
+    <div className="page-container">
+      <h1 className="page-title">Contact</h1>
+      <div className="page-content">
+        <p>Get in touch with me for collaborations and opportunities.</p>
+      </div>
     </div>
   );
 }
 
-export default About;
+export default Contact;

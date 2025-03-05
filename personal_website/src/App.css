@@ -1,38 +1,434 @@
-.App {
-  text-align: center;
+/* App.css */
+:root {
+  --highlight-green: #4ade80;
+  --highlight-green-hover: #86efac;
+  --dark-bg: #2d3436;
+  --dark-text: #f5f6fa;
+  --transition-speed: 0.2s;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.5;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+.app {
+  min-height: 100vh;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.main-content {
+  padding: 80px 20px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Profile Image and Container Styles */
+.profile-container {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  margin: 0 auto;
+}
+
+.profile-image-container {
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease;
+  width: 250px;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 2px solid rgba(74, 222, 128, 0.5);
+  box-shadow: 0 0 20px rgba(74, 222, 128, 0.2);
+}
+
+.profile-image-container:hover {
+  transform: scale(1.05);
+}
+
+.profile-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;  /* Adjust this value to control image positioning */
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.profile-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, rgba(74, 222, 128, 0.2) 0%, rgba(74, 222, 128, 0) 70%);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Orbiting dots animation */
+.orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(74, 222, 128, 0.2);
+  border-radius: 50%;
+  animation: rotate linear infinite;
+}
+
+.orbit-1 {
+  width: 280px;
+  height: 280px;
+  animation-duration: 20s;
+}
+
+.orbit-2 {
+  width: 300px;
+  height: 300px;
+  animation-duration: 25s;
+}
+
+.orbit-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #4ade80;
+  border-radius: 50%;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes rotate {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0) translateX(-50%);
+  }
+  40% {
+    transform: translateY(-30px) translateX(-50%);
+  }
+  60% {
+    transform: translateY(-15px) translateX(-50%);
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@keyframes scrollBounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0) translateX(-50%);
+  }
+  40% {
+    transform: translateY(5px) translateX(-50%);
+  }
+  60% {
+    transform: translateY(2px) translateX(-50%);
+  }
+}
+
+/* Interactive Elements */
+.button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #ffffff;
+  color: #333333;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  border: 1px solid #e5e5e5;
+}
+
+.button:hover {
+  border-color: var(--highlight-green);
+  color: var(--highlight-green);
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(74, 222, 128, 0.1);
+}
+
+.nav-link {
+  position: relative;
+  text-decoration: none;
+  color: #333333;
+  transition: all var(--transition-speed) ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--highlight-green);
+  transition: width var(--transition-speed) ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link:hover {
+  color: var(--highlight-green);
+}
+
+/* Form Elements */
+.input {
+  padding: 8px 16px;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  transition: all var(--transition-speed) ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--highlight-green);
+  box-shadow: 0 0 0 2px rgba(74, 222, 128, 0.1);
+}
+
+/* Card Elements */
+.card {
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #e5e5e5;
+  transition: all var(--transition-speed) ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: var(--highlight-green);
+}
+
+/* Dark Mode Styles */
+.dark-mode .nav-link {
+  color: var(--dark-text);
+}
+
+.dark-mode .button {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+  border-color: #4a4a4a;
+}
+
+.dark-mode .input {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+  border-color: #4a4a4a;
+}
+
+.dark-mode .card {
+  background-color: var(--dark-bg);
+  border-color: #4a4a4a;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  color: inherit;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  color: inherit;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 8px;
+  transition: all var(--transition-speed) ease;
 }
 
-.App-link {
-  color: #61dafb;
+.theme-toggle:hover {
+  transform: translateY(-2px);
 }
 
-@keyframes App-logo-spin {
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 70px 15px 15px;
+  }
+  
+  .page-title {
+    font-size: 1.5em;
+  }
+
+  .profile-container {
+    width: 200px;
+    height: 200px;
+  }
+
+  .profile-image-container {
+    width: 200px;
+    height: 200px;
+  }
+
+  .orbit-1 {
+    width: 230px;
+    height: 230px;
+  }
+
+  .orbit-2 {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+/* Home Container Styles */
+.home-container {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.banner-section {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.content-section {
+  position: relative;
+  min-height: 100vh;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Page Transitions */
+.page-container {
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  animation: scaleIn 0.3s ease-out;
+  transition: all var(--transition-speed) ease;
+}
+
+.dark-mode .page-container {
+  background-color: var(--dark-bg);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.page-title {
+  color: inherit;
+  margin-bottom: 20px;
+  font-size: 2em;
+  font-weight: bold;
+  animation: slideIn 0.3s ease-out;
+}
+
+.page-content {
+  margin-bottom: 20px;
+  line-height: 1.6;
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* Additional Animations */
+@keyframes scaleIn {
   from {
-    transform: rotate(0deg);
+    transform: scale(0.95);
+    opacity: 0;
   }
   to {
-    transform: rotate(360deg);
+    transform: scale(1);
+    opacity: 1;
   }
 }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(74, 222, 128, 0.3);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(74, 222, 128, 0.5);
+}
+
+/* Focus Styles */
+:focus {
+  outline: 2px solid var(--highlight-green);
+  outline-offset: 2px;
+}
+
+/* Selection Styles */
+::selection {
+  background-color: rgba(74, 222, 128, 0.2);
+  color: inherit;
+}
+
+.card {
+  @apply p-4 rounded-lg border border-gray-200 dark:border-gray-700 hover:shadow-lg;
+}
+
+.dark-mode .card {
+  @apply bg-gray-800 border-gray-700;
+}
+
+.dark-mode .text-gray-600 {
+  @apply text-gray-300;
+}
+
+/* Optional: Add a loading skeleton animation */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .5; }
+}
+
+/* Add to your App.css */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(74, 222, 128, 0.2);
+  border-radius: 50%;
+  border-top-color: #4ade80;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
