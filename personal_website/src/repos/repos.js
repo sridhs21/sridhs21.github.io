@@ -40,7 +40,7 @@ function Repos({ isDarkMode }) {
       Ruby: '#701516',
       Go: '#00ADD8',
     };
-    return colors[language] || '#4ade80';
+    return colors[language] || '#6d1f7e';
   };
 
   // Animation for cards appearing on load
@@ -53,7 +53,7 @@ function Repos({ isDarkMode }) {
       left: 0,
       right: 0,
       bottom: 0,
-      backgroundColor: isDarkMode ? '#1a1a1a' : '#ffffff',
+      backgroundColor: isDarkMode ? '#0f0f0f' : '#1a1a1a',
       transition: 'background-color 0.3s ease',
       overflowY: 'auto',
       marginTop: '64px'
@@ -71,7 +71,7 @@ function Repos({ isDarkMode }) {
           display: 'flex',
           alignItems: 'center',
           gap: '0.5rem',
-          color: isDarkMode ? '#ffffff' : '#000000',
+          color: isDarkMode ? '#ffffff' : '#e5e5e5',
           animation: 'slideInDown 0.5s ease-out'
         }}>
           <Github size={28} className="animate-bounce" />
@@ -157,7 +157,7 @@ function Repos({ isDarkMode }) {
                 onMouseLeave={() => setHoveredRepo(null)}
               >
                 <div style={{
-                  background: isDarkMode ? 'rgba(45, 52, 54, 0.5)' : 'rgba(255, 255, 255, 0.5)',
+                  background: isDarkMode ? 'rgba(15, 15, 15, 0.5)' : 'rgba(26, 26, 26, 0.5)',
                   backdropFilter: 'blur(12px)',
                   WebkitBackdropFilter: 'blur(12px)',
                   borderRadius: '12px',
@@ -190,7 +190,7 @@ function Repos({ isDarkMode }) {
                       <FileCode 
                         size={20} 
                         style={{ 
-                          color: '#4ade80',
+                          color: '#6d1f7e',
                           transform: hoveredRepo === repo.id ? 'rotate(360deg)' : 'rotate(0)',
                           transition: 'transform 0.5s ease'
                         }} 
@@ -198,7 +198,7 @@ function Repos({ isDarkMode }) {
                       <h3 style={{
                         fontSize: '1.1rem',
                         fontWeight: '600',
-                        color: isDarkMode ? '#ffffff' : '#000000',
+                        color: isDarkMode ? '#ffffff' : '#e5e5e5',
                         margin: 0,
                         transition: 'color 0.3s ease'
                       }}>
@@ -208,7 +208,7 @@ function Repos({ isDarkMode }) {
                     <ExternalLink 
                       size={16} 
                       style={{ 
-                        color: '#4ade80',
+                        color: '#6d1f7e',
                         transform: hoveredRepo === repo.id ? 'translateX(3px)' : 'translateX(0)',
                         transition: 'transform 0.3s ease'
                       }} 
@@ -218,7 +218,7 @@ function Repos({ isDarkMode }) {
                   {repo.description && (
                     <p style={{
                       fontSize: '0.95rem',
-                      color: isDarkMode ? '#cbd5e1' : '#64748b',
+                      color: isDarkMode ? '#cbd5e1' : '#a0aec0',
                       marginBottom: '1rem',
                       flex: 1,
                       transition: 'color 0.3s ease'
@@ -250,7 +250,7 @@ function Repos({ isDarkMode }) {
                         />
                         <span style={{
                           fontSize: '0.9rem',
-                          color: isDarkMode ? '#cbd5e1' : '#64748b'
+                          color: isDarkMode ? '#cbd5e1' : '#a0aec0'
                         }}>
                           {repo.language}
                         </span>
@@ -267,13 +267,14 @@ function Repos({ isDarkMode }) {
                         alignItems: 'center',
                         gap: '0.25rem',
                         fontSize: '0.9rem',
-                        color: isDarkMode ? '#cbd5e1' : '#64748b'
+                        color: isDarkMode ? '#cbd5e1' : '#a0aec0'
                       }}>
                         <Star 
                           size={16} 
                           style={{
                             transition: 'transform 0.3s ease',
-                            transform: hoveredRepo === repo.id ? 'scale(1.2)' : 'scale(1)'
+                            transform: hoveredRepo === repo.id ? 'scale(1.2)' : 'scale(1)',
+                            color: '#6d1f7e'
                           }}
                         />
                         {repo.stargazers_count}
@@ -283,13 +284,14 @@ function Repos({ isDarkMode }) {
                         alignItems: 'center',
                         gap: '0.25rem',
                         fontSize: '0.9rem',
-                        color: isDarkMode ? '#cbd5e1' : '#64748b'
+                        color: isDarkMode ? '#cbd5e1' : '#a0aec0'
                       }}>
                         <GitFork 
                           size={16}
                           style={{
                             transition: 'transform 0.3s ease',
-                            transform: hoveredRepo === repo.id ? 'scale(1.2)' : 'scale(1)'
+                            transform: hoveredRepo === repo.id ? 'scale(1.2)' : 'scale(1)',
+                            color: '#6d1f7e'
                           }}
                         />
                         {repo.forks_count}

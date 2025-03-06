@@ -13,8 +13,8 @@ const Navbar = ({ isDarkMode, toggleTheme }) => {
 
   return (
     <nav style={{
-      backgroundColor: isDarkMode ? 'rgba(45, 52, 54, 0.9)' : 'rgba(243, 244, 246, 0.9)',
-      borderBottom: `1px solid ${isDarkMode ? '#4a4a4a' : '#e5e5e5'}`,
+      backgroundColor: isDarkMode ? 'rgba(15, 15, 15, 0.9)' : 'rgba(26, 26, 26, 0.9)',
+      borderBottom: `1px solid ${isDarkMode ? '#333' : '#333'}`,
       position: 'fixed',
       width: '100%',
       top: 0,
@@ -22,7 +22,7 @@ const Navbar = ({ isDarkMode, toggleTheme }) => {
       zIndex: 1000,
       backdropFilter: 'blur(8px)',
       WebkitBackdropFilter: 'blur(8px)',
-      boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+      boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
       transition: 'all 0.3s ease'
     }}>
       <div style={{
@@ -58,7 +58,7 @@ const Navbar = ({ isDarkMode, toggleTheme }) => {
               style={{
                 fontSize: '14px',
                 padding: '8px 0',
-                color: isDarkMode ? '#f5f6fa' : '#333333',
+                color: isDarkMode ? '#f5f6fa' : '#e5e5e5',
                 transition: 'all 0.2s ease'
               }}
               onClick={() => handleNavigation(item.path)}
@@ -76,7 +76,7 @@ const Navbar = ({ isDarkMode, toggleTheme }) => {
           style={{
             position: 'absolute',
             right: '20px',
-            color: isDarkMode ? '#f5f6fa' : '#333333',
+            color: isDarkMode ? '#f5f6fa' : '#e5e5e5',
             background: 'none',
             border: 'none',
             cursor: 'pointer',
@@ -108,7 +108,7 @@ const Navbar = ({ isDarkMode, toggleTheme }) => {
           <div style={{
             width: '24px',
             height: '2px',
-            backgroundColor: isDarkMode ? '#f5f6fa' : '#333333',
+            backgroundColor: isDarkMode ? '#f5f6fa' : '#e5e5e5',
             position: 'relative',
             transition: 'all 0.3s ease'
           }}>
@@ -116,7 +116,7 @@ const Navbar = ({ isDarkMode, toggleTheme }) => {
               position: 'absolute',
               width: '24px',
               height: '2px',
-              backgroundColor: isDarkMode ? '#f5f6fa' : '#333333',
+              backgroundColor: isDarkMode ? '#f5f6fa' : '#e5e5e5',
               top: isOpen ? '0' : '-8px',
               transform: isOpen ? 'rotate(45deg)' : 'none',
               transition: 'all 0.3s ease'
@@ -125,7 +125,7 @@ const Navbar = ({ isDarkMode, toggleTheme }) => {
               position: 'absolute',
               width: '24px',
               height: '2px',
-              backgroundColor: isDarkMode ? '#f5f6fa' : '#333333',
+              backgroundColor: isDarkMode ? '#f5f6fa' : '#e5e5e5',
               top: isOpen ? '0' : '8px',
               transform: isOpen ? 'rotate(-45deg)' : 'none',
               transition: 'all 0.3s ease'
@@ -140,14 +140,14 @@ const Navbar = ({ isDarkMode, toggleTheme }) => {
             top: '64px',
             left: 0,
             right: 0,
-            background: isDarkMode ? 'rgba(45, 52, 54, 0.9)' : 'rgba(243, 244, 246, 0.9)',
+            background: isDarkMode ? 'rgba(15, 15, 15, 0.9)' : 'rgba(26, 26, 26, 0.9)',
             padding: '20px',
             display: isOpen ? 'flex' : 'none',
             flexDirection: 'column',
             gap: '16px',
             backdropFilter: 'blur(8px)',
             WebkitBackdropFilter: 'blur(8px)',
-            boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+            boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
             transition: 'all 0.3s ease',
             animation: isOpen ? 'fadeIn 0.3s ease-out' : 'none',
             '@media (min-width: 769px)': {
@@ -169,11 +169,11 @@ const Navbar = ({ isDarkMode, toggleTheme }) => {
               style={{
                 padding: '12px',
                 fontSize: '16px',
-                color: isDarkMode ? '#f5f6fa' : '#333333',
+                color: isDarkMode ? '#f5f6fa' : '#e5e5e5',
                 textDecoration: 'none',
                 transition: 'all 0.2s ease',
                 ':hover': {
-                  color: '#4ade80'
+                  color: '#6d1f7e'
                 }
               }}
               onClick={() => handleNavigation(item.path)}

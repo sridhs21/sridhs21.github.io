@@ -92,7 +92,7 @@ function Home({ isDarkMode }) {
         left: 0,
         width: '100%',
         height: '100%',
-        backgroundColor: isDarkMode ? 'rgba(26, 32, 33, 0.85)' : 'rgba(240, 240, 240, 0.85)',
+        backgroundColor: isDarkMode ? 'rgba(15, 15, 15, 0.85)' : 'rgba(26, 26, 26, 0.85)',
         backdropFilter: 'blur(10px)',
         WebkitBackdropFilter: 'blur(10px)',
         zIndex: 1,
@@ -147,7 +147,7 @@ function Home({ isDarkMode }) {
           }}>
             <h1 style={{
               fontSize: '3rem',
-              color: isDarkMode ? '#f5f6fa' : '#333333',
+              color: isDarkMode ? '#f5f6fa' : '#e5e5e5',
               marginBottom: '1rem',
               fontWeight: '700',
               fontFamily: "'Montserrat', 'Inter', 'Segoe UI', sans-serif",
@@ -158,7 +158,7 @@ function Home({ isDarkMode }) {
             </h1>
             <h2 style={{
               fontSize: '1.5rem',
-              color: '#4ade80',
+              color: '#6d1f7e',
               fontWeight: '600',
               marginBottom: '1.5rem',
               fontFamily: "'Montserrat', 'Inter', 'Segoe UI', sans-serif",
@@ -168,7 +168,7 @@ function Home({ isDarkMode }) {
             </h2>
             <p style={{
               fontSize: '1.1rem',
-              color: isDarkMode ? '#f5f6fa' : '#333333',
+              color: isDarkMode ? '#f5f6fa' : '#e5e5e5',
               marginBottom: '2rem',
               lineHeight: '1.6'
             }}>
@@ -181,7 +181,7 @@ function Home({ isDarkMode }) {
               <a 
                 href="/contact"
                 style={{
-                  backgroundColor: '#4ade80',
+                  backgroundColor: '#6d1f7e',
                   color: 'white',
                   borderRadius: '4px',
                   padding: '0.75rem 1.5rem',
@@ -197,11 +197,11 @@ function Home({ isDarkMode }) {
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-3px)';
-                  e.currentTarget.style.backgroundColor = '#86efac';
+                  e.currentTarget.style.backgroundColor = '#8f3ba0';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.backgroundColor = '#4ade80';
+                  e.currentTarget.style.backgroundColor = '#6d1f7e';
                 }}
               >
                 Get in Touch
@@ -210,25 +210,25 @@ function Home({ isDarkMode }) {
                 href="/about"
                 style={{
                   backgroundColor: 'transparent',
-                  color: isDarkMode ? '#f5f6fa' : '#333333',
+                  color: isDarkMode ? '#f5f6fa' : '#e5e5e5',
                   borderRadius: '4px',
                   padding: '0.75rem 1.5rem',
                   fontSize: '0.95rem',
                   fontWeight: '500',
-                  border: '1px solid #4ade80',
+                  border: '1px solid #6d1f7e',
                   cursor: 'pointer',
                   textDecoration: 'none',
                   transition: 'all 0.3s ease'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-3px)';
-                  e.currentTarget.style.backgroundColor = '#4ade80';
+                  e.currentTarget.style.backgroundColor = '#6d1f7e';
                   e.currentTarget.style.color = 'white';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
                   e.currentTarget.style.backgroundColor = 'transparent';
-                  e.currentTarget.style.color = isDarkMode ? '#f5f6fa' : '#333333';
+                  e.currentTarget.style.color = isDarkMode ? '#f5f6fa' : '#e5e5e5';
                 }}
               >
                 Learn More
@@ -253,14 +253,14 @@ function Home({ isDarkMode }) {
           <div style={{
             width: '30px',
             height: '50px',
-            border: `2px solid ${isDarkMode ? '#f5f6fa' : '#333333'}`,
+            border: `2px solid ${isDarkMode ? '#f5f6fa' : '#e5e5e5'}`,
             borderRadius: '15px',
             position: 'relative'
           }}>
             <div style={{
               width: '4px',
               height: '8px',
-              backgroundColor: isDarkMode ? '#f5f6fa' : '#333333',
+              backgroundColor: isDarkMode ? '#f5f6fa' : '#e5e5e5',
               borderRadius: '2px',
               position: 'absolute',
               left: '50%',
@@ -294,7 +294,7 @@ function Home({ isDarkMode }) {
           }}>
             <h2 style={{
               fontSize: '2.5rem',
-              color: '#4ade80',
+              color: '#6d1f7e',
               marginBottom: '1.5rem',
               fontFamily: "'Montserrat', 'Inter', 'Segoe UI', sans-serif",
               fontWeight: '700'
@@ -304,7 +304,7 @@ function Home({ isDarkMode }) {
             <div style={{
               width: '60px',
               height: '4px',
-              backgroundColor: '#4ade80',
+              backgroundColor: '#6d1f7e',
               marginBottom: '2rem',
               borderRadius: '2px'
             }}></div>
@@ -312,7 +312,7 @@ function Home({ isDarkMode }) {
               fontSize: '1.1rem',
               lineHeight: '1.8',
               maxWidth: '700px',
-              color: isDarkMode ? '#f5f6fa' : '#333333',
+              color: isDarkMode ? '#f5f6fa' : '#e5e5e5',
               marginBottom: '2rem'
             }}>
               Core competencies and technologies I use to build exceptional digital experiences
@@ -330,7 +330,7 @@ function Home({ isDarkMode }) {
               <div 
                 key={skill.id}
                 style={{
-                  backgroundColor: isDarkMode ? 'rgba(45, 52, 54, 0.6)' : 'rgba(255, 255, 255, 0.6)',
+                  backgroundColor: isDarkMode ? 'rgba(15, 15, 15, 0.6)' : 'rgba(26, 26, 26, 0.6)',
                   backdropFilter: 'blur(16px)',
                   WebkitBackdropFilter: 'blur(16px)',
                   padding: '2rem',
@@ -360,13 +360,13 @@ function Home({ isDarkMode }) {
                   display: 'flex',
                   alignItems: 'center',
                   marginBottom: '1.5rem',
-                  color: '#4ade80'
+                  color: '#6d1f7e'
                 }}>
                   {skill.icon}
                 </div>
                 <h3 style={{
                   fontSize: '1.25rem',
-                  color: isDarkMode ? '#f5f6fa' : '#333333',
+                  color: isDarkMode ? '#f5f6fa' : '#e5e5e5',
                   marginBottom: '1rem',
                   fontWeight: '600'
                 }}>
@@ -374,7 +374,7 @@ function Home({ isDarkMode }) {
                 </h3>
                 <p style={{
                   fontSize: '0.95rem',
-                  color: isDarkMode ? '#cbd5e1' : '#64748b',
+                  color: isDarkMode ? '#cbd5e1' : '#a0aec0',
                   marginBottom: '1.5rem',
                   lineHeight: '1.6'
                 }}>
@@ -389,21 +389,21 @@ function Home({ isDarkMode }) {
                   {skill.technologies.map((tech, index) => (
                     <span key={index} style={{
                       display: 'inline-block',
-                      backgroundColor: isDarkMode ? 'rgba(74, 222, 128, 0.1)' : 'rgba(74, 222, 128, 0.1)',
-                      color: '#4ade80',
+                      backgroundColor: isDarkMode ? 'rgba(109, 31, 126, 0.1)' : 'rgba(109, 31, 126, 0.1)',
+                      color: '#6d1f7e',
                       padding: '0.25rem 0.75rem',
                       fontSize: '0.8rem',
                       borderRadius: '50px',
-                      border: '1px solid #4ade80',
+                      border: '1px solid #6d1f7e',
                       transition: 'all 0.2s ease'
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor = '#4ade80';
+                      e.currentTarget.style.backgroundColor = '#6d1f7e';
                       e.currentTarget.style.color = 'white';
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = isDarkMode ? 'rgba(74, 222, 128, 0.1)' : 'rgba(74, 222, 128, 0.1)';
-                      e.currentTarget.style.color = '#4ade80';
+                      e.currentTarget.style.backgroundColor = isDarkMode ? 'rgba(109, 31, 126, 0.1)' : 'rgba(109, 31, 126, 0.1)';
+                      e.currentTarget.style.color = '#6d1f7e';
                     }}>
                       {tech}
                     </span>
@@ -415,7 +415,7 @@ function Home({ isDarkMode }) {
 
           {/* Tech Proficiency */}
           <div style={{
-            backgroundColor: isDarkMode ? 'rgba(45, 52, 54, 0.6)' : 'rgba(255, 255, 255, 0.6)',
+            backgroundColor: isDarkMode ? 'rgba(15, 15, 15, 0.6)' : 'rgba(26, 26, 26, 0.6)',
             backdropFilter: 'blur(16px)',
             WebkitBackdropFilter: 'blur(16px)',
             borderRadius: '16px',
@@ -425,7 +425,7 @@ function Home({ isDarkMode }) {
           }}>
             <h3 style={{
               fontSize: '1.5rem',
-              color: '#4ade80',
+              color: '#6d1f7e',
               marginBottom: '2rem',
               fontWeight: '600',
               textAlign: 'center'
@@ -462,13 +462,13 @@ function Home({ isDarkMode }) {
                     <span style={{
                       fontSize: '0.9rem',
                       fontWeight: '500',
-                      color: isDarkMode ? '#f5f6fa' : '#333333'
+                      color: isDarkMode ? '#f5f6fa' : '#e5e5e5'
                     }}>
                       {tech.name}
                     </span>
                     <span style={{
                       fontSize: '0.85rem',
-                      color: '#4ade80',
+                      color: '#6d1f7e',
                       fontWeight: '600'
                     }}>
                       {tech.level}%
@@ -477,14 +477,14 @@ function Home({ isDarkMode }) {
                   <div style={{
                     width: '100%',
                     height: '8px',
-                    backgroundColor: isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)',
+                    backgroundColor: isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(255, 255, 255, 0.1)',
                     borderRadius: '4px',
                     overflow: 'hidden'
                   }}>
                     <div style={{
                       width: `${tech.level}%`,
                       height: '100%',
-                      backgroundColor: '#4ade80',
+                      backgroundColor: '#6d1f7e',
                       borderRadius: '4px',
                       transition: 'width 1.5s ease-in-out'
                     }}></div>
@@ -510,7 +510,7 @@ function Home({ isDarkMode }) {
           }}>
             <h2 style={{
               fontSize: '2.5rem',
-              color: '#4ade80',
+              color: '#6d1f7e',
               marginBottom: '1.5rem',
               fontFamily: "'Montserrat', 'Inter', 'Segoe UI', sans-serif",
               fontWeight: '700'
@@ -520,7 +520,7 @@ function Home({ isDarkMode }) {
             <div style={{
               width: '60px',
               height: '4px',
-              backgroundColor: '#4ade80',
+              backgroundColor: '#6d1f7e',
               marginBottom: '2rem',
               borderRadius: '2px'
             }}></div>
@@ -536,7 +536,7 @@ function Home({ isDarkMode }) {
               <div 
                 key={index}
                 style={{
-                  backgroundColor: isDarkMode ? 'rgba(45, 52, 54, 0.6)' : 'rgba(255, 255, 255, 0.6)',
+                  backgroundColor: isDarkMode ? 'rgba(15, 15, 15, 0.6)' : 'rgba(26, 26, 26, 0.6)',
                   backdropFilter: 'blur(16px)',
                   WebkitBackdropFilter: 'blur(16px)',
                   borderRadius: '12px',
@@ -586,7 +586,7 @@ function Home({ isDarkMode }) {
                 }}>
                   <h3 style={{
                     fontSize: '1.25rem',
-                    color: isDarkMode ? '#f5f6fa' : '#333333',
+                    color: isDarkMode ? '#f5f6fa' : '#e5e5e5',
                     marginBottom: '0.75rem',
                     fontWeight: '600'
                   }}>
@@ -594,7 +594,7 @@ function Home({ isDarkMode }) {
                   </h3>
                   <p style={{
                     fontSize: '0.95rem',
-                    color: isDarkMode ? '#cbd5e1' : '#64748b',
+                    color: isDarkMode ? '#cbd5e1' : '#a0aec0',
                     marginBottom: '1.5rem',
                     lineHeight: '1.6'
                   }}>
@@ -608,12 +608,12 @@ function Home({ isDarkMode }) {
                     {project.tags.map((tag, tagIndex) => (
                       <span key={tagIndex} style={{
                         display: 'inline-block',
-                        backgroundColor: isDarkMode ? 'rgba(74, 222, 128, 0.1)' : 'rgba(74, 222, 128, 0.1)',
-                        color: '#4ade80',
+                        backgroundColor: isDarkMode ? 'rgba(109, 31, 126, 0.1)' : 'rgba(109, 31, 126, 0.1)',
+                        color: '#6d1f7e',
                         padding: '0.25rem 0.75rem',
                         fontSize: '0.75rem',
                         borderRadius: '50px',
-                        border: '1px solid #4ade80'
+                        border: '1px solid #6d1f7e'
                       }}>
                         {tag}
                       </span>
@@ -636,8 +636,8 @@ function Home({ isDarkMode }) {
                 alignItems: 'center',
                 gap: '0.5rem',
                 backgroundColor: 'transparent',
-                border: '1px solid #4ade80',
-                color: '#4ade80',
+                border: '1px solid #6d1f7e',
+                color: '#6d1f7e',
                 borderRadius: '4px',
                 padding: '0.75rem 1.5rem',
                 fontSize: '0.9rem',
@@ -647,13 +647,13 @@ function Home({ isDarkMode }) {
                 transition: 'all 0.3s ease'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#4ade80';
+                e.currentTarget.style.backgroundColor = '#6d1f7e';
                 e.currentTarget.style.color = 'white';
                 e.currentTarget.style.transform = 'translateY(-2px)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor = 'transparent';
-                e.currentTarget.style.color = '#4ade80';
+                e.currentTarget.style.color = '#6d1f7e';
                 e.currentTarget.style.transform = 'translateY(0)';
               }}
             >
@@ -662,8 +662,6 @@ function Home({ isDarkMode }) {
             </a>
           </div>
         </section>
-
-
       </div>
       
       {/* Add animations for the scroll indicator */}

@@ -9,7 +9,7 @@ const LoadingScreen = ({ isDarkMode, isLoading }) => {
         left: 0,
         right: 0,
         bottom: 0,
-        backgroundColor: isDarkMode ? '#1a1a1a' : '#ffffff',
+        backgroundColor: isDarkMode ? '#0f0f0f' : '#1a1a1a',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -44,7 +44,7 @@ const LoadingScreen = ({ isDarkMode, isLoading }) => {
             height: 8px;
             margin: 0 4px;
             border-radius: 50%;
-            background-color: #4ade80;
+            background-color: #6d1f7e;
             animation: bounce 0.5s ease-in-out infinite;
           }
 
@@ -63,7 +63,7 @@ const LoadingScreen = ({ isDarkMode, isLoading }) => {
           width: '80px',
           height: '80px',
           borderRadius: '50%',
-          backgroundColor: '#4ade80',
+          backgroundColor: '#6d1f7e',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',

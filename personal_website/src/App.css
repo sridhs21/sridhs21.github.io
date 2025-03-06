@@ -1,9 +1,12 @@
 /* App.css */
 :root {
-  --highlight-green: #4ade80;
-  --highlight-green-hover: #86efac;
-  --dark-bg: #2d3436;
+  --highlight-purple: #6d1f7e;
+  --highlight-purple-light: #8f3ba0;
+  --highlight-purple-hover: #9f4bb0;
+  --dark-bg: #0f0f0f;
   --dark-text: #f5f6fa;
+  --light-bg: #1a1a1a;
+  --light-text: #e5e5e5;
   --transition-speed: 0.2s;
 }
 
@@ -19,6 +22,8 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   line-height: 1.5;
   transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: var(--light-bg);
+  color: var(--light-text);
 }
 
 body.dark-mode {
@@ -56,8 +61,8 @@ body.dark-mode {
   height: 250px;
   overflow: hidden;
   border-radius: 50%;
-  border: 2px solid rgba(74, 222, 128, 0.5);
-  box-shadow: 0 0 20px rgba(74, 222, 128, 0.2);
+  border: 2px solid rgba(109, 31, 126, 0.5);
+  box-shadow: 0 0 20px rgba(109, 31, 126, 0.2);
 }
 
 .profile-image-container:hover {
@@ -80,7 +85,7 @@ body.dark-mode {
   transform: translate(-50%, -50%);
   width: 260px;
   height: 260px;
-  background: radial-gradient(circle, rgba(74, 222, 128, 0.2) 0%, rgba(74, 222, 128, 0) 70%);
+  background: radial-gradient(circle, rgba(109, 31, 126, 0.2) 0%, rgba(109, 31, 126, 0) 70%);
   border-radius: 50%;
   z-index: 1;
 }
@@ -91,7 +96,7 @@ body.dark-mode {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: 1px solid rgba(74, 222, 128, 0.2);
+  border: 1px solid rgba(109, 31, 126, 0.2);
   border-radius: 50%;
   animation: rotate linear infinite;
 }
@@ -112,12 +117,12 @@ body.dark-mode {
   position: absolute;
   width: 8px;
   height: 8px;
-  background-color: #4ade80;
+  background-color: var(--highlight-purple);
   border-radius: 50%;
   top: -4px;
   left: 50%;
   transform: translateX(-50%);
-  box-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
+  box-shadow: 0 0 10px rgba(109, 31, 126, 0.5);
 }
 
 /* Animations */
@@ -165,24 +170,24 @@ body.dark-mode {
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
-  background-color: #ffffff;
-  color: #333333;
+  background-color: #1a1a1a;
+  color: #e5e5e5;
   cursor: pointer;
   transition: all var(--transition-speed) ease;
-  border: 1px solid #e5e5e5;
+  border: 1px solid #333;
 }
 
 .button:hover {
-  border-color: var(--highlight-green);
-  color: var(--highlight-green);
+  border-color: var(--highlight-purple);
+  color: var(--highlight-purple);
   transform: translateY(-2px);
-  box-shadow: 0 2px 8px rgba(74, 222, 128, 0.1);
+  box-shadow: 0 2px 8px rgba(109, 31, 126, 0.1);
 }
 
 .nav-link {
   position: relative;
   text-decoration: none;
-  color: #333333;
+  color: #e5e5e5;
   transition: all var(--transition-speed) ease;
 }
 
@@ -193,7 +198,7 @@ body.dark-mode {
   height: 2px;
   bottom: -2px;
   left: 0;
-  background-color: var(--highlight-green);
+  background-color: var(--highlight-purple);
   transition: width var(--transition-speed) ease;
 }
 
@@ -202,35 +207,38 @@ body.dark-mode {
 }
 
 .nav-link:hover {
-  color: var(--highlight-green);
+  color: var(--highlight-purple-light);
 }
 
 /* Form Elements */
 .input {
   padding: 8px 16px;
-  border: 1px solid #e5e5e5;
+  border: 1px solid #333;
   border-radius: 4px;
+  background-color: #1a1a1a;
+  color: #e5e5e5;
   transition: all var(--transition-speed) ease;
 }
 
 .input:focus {
   outline: none;
-  border-color: var(--highlight-green);
-  box-shadow: 0 0 0 2px rgba(74, 222, 128, 0.1);
+  border-color: var(--highlight-purple);
+  box-shadow: 0 0 0 2px rgba(109, 31, 126, 0.1);
 }
 
 /* Card Elements */
 .card {
   padding: 20px;
   border-radius: 8px;
-  border: 1px solid #e5e5e5;
+  border: 1px solid #333;
+  background-color: #1a1a1a;
   transition: all var(--transition-speed) ease;
 }
 
 .card:hover {
   transform: translateY(-4px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-color: var(--highlight-green);
+  border-color: var(--highlight-purple);
 }
 
 /* Dark Mode Styles */
@@ -241,27 +249,18 @@ body.dark-mode {
 .dark-mode .button {
   background-color: var(--dark-bg);
   color: var(--dark-text);
-  border-color: #4a4a4a;
+  border-color: #333;
 }
 
 .dark-mode .input {
   background-color: var(--dark-bg);
   color: var(--dark-text);
-  border-color: #4a4a4a;
+  border-color: #333;
 }
 
 .dark-mode .card {
   background-color: var(--dark-bg);
-  border-color: #4a4a4a;
-}
-
-/* Theme Toggle Button */
-.theme-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-  color: inherit;
+  border-color: #333;
 }
 
 /* Theme Toggle Button */
@@ -334,20 +333,22 @@ body.dark-mode {
 /* Page Transitions */
 .page-container {
   padding: 20px;
-  background-color: #ffffff;
+  background-color: rgba(26, 26, 26, 0.7);
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   animation: scaleIn 0.3s ease-out;
   transition: all var(--transition-speed) ease;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(109, 31, 126, 0.1);
 }
 
 .dark-mode .page-container {
-  background-color: var(--dark-bg);
+  background-color: rgba(15, 15, 15, 0.7);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .page-title {
-  color: inherit;
+  color: var(--highlight-purple-light);
   margin-bottom: 20px;
   font-size: 2em;
   font-weight: bold;
@@ -382,36 +383,24 @@ body.dark-mode {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(74, 222, 128, 0.3);
+  background: rgba(109, 31, 126, 0.3);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(74, 222, 128, 0.5);
+  background: rgba(109, 31, 126, 0.5);
 }
 
 /* Focus Styles */
 :focus {
-  outline: 2px solid var(--highlight-green);
+  outline: 2px solid var(--highlight-purple);
   outline-offset: 2px;
 }
 
 /* Selection Styles */
 ::selection {
-  background-color: rgba(74, 222, 128, 0.2);
+  background-color: rgba(109, 31, 126, 0.2);
   color: inherit;
-}
-
-.card {
-  @apply p-4 rounded-lg border border-gray-200 dark:border-gray-700 hover:shadow-lg;
-}
-
-.dark-mode .card {
-  @apply bg-gray-800 border-gray-700;
-}
-
-.dark-mode .text-gray-600 {
-  @apply text-gray-300;
 }
 
 /* Optional: Add a loading skeleton animation */
@@ -424,13 +413,12 @@ body.dark-mode {
 .spinner {
   width: 40px;
   height: 40px;
-  border: 3px solid rgba(74, 222, 128, 0.2);
+  border: 3px solid rgba(109, 31, 126, 0.2);
   border-radius: 50%;
-  border-top-color: #4ade80;
+  border-top-color: var(--highlight-purple);
   animation: spin 1s ease-in-out infinite;
 }
 
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
-

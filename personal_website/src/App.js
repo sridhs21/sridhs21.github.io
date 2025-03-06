@@ -12,7 +12,7 @@ import './App.css';
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
     const savedDarkMode = localStorage.getItem('darkMode');
-    return savedDarkMode ? JSON.parse(savedDarkMode) : true;
+    return savedDarkMode ? JSON.parse(savedDarkMode) : true; // Default to dark mode
   });
 
   const [isLoading, setIsLoading] = useState(true);
@@ -25,7 +25,7 @@ function App() {
 
   useEffect(() => {
     // Apply dark mode immediately
-    document.body.style.backgroundColor = isDarkMode ? '#1a1a1a' : '#ffffff';
+    document.body.style.backgroundColor = isDarkMode ? '#0f0f0f' : '#1a1a1a';
     document.body.className = isDarkMode ? 'dark-mode' : '';
     
     const checkResourcesLoaded = () => {
@@ -46,7 +46,7 @@ function App() {
 
   return (
     <div style={{ 
-      backgroundColor: isDarkMode ? '#1a1a1a' : '#ffffff',
+      backgroundColor: isDarkMode ? '#0f0f0f' : '#1a1a1a',
       minHeight: '100vh',
       transition: 'background-color 0.3s ease'
     }}>
