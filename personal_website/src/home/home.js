@@ -1,3 +1,4 @@
+// home.js - Updated with light mode changes
 import React, { useState, useEffect } from 'react';
 import VantaBackground from './VantaBackground';
 import { ArrowRight, Code, Server, Layout, Database } from 'lucide-react';
@@ -52,16 +53,22 @@ function Home({ isDarkMode }) {
 
   const featuredProjects = [
     {
-      title: "E-commerce Platform",
-      description: "A full-stack e-commerce solution with payment integration and inventory management.",
+      title: "RPI Campus Availability Application",
+      description: "A full-stack web application to track and predict real-time parking availability across campus.",
       image: "/api/placeholder/500/300",
-      tags: ["React", "Node.js", "MongoDB", "Stripe"]
+      tags: ["Python", "Flask", "JavaScript", "Leaflet.js"]
     },
     {
-      title: "Task Management App",
-      description: "A collaborative project management tool with real-time updates and analytics.",
+      title: "AI-Driven Drug Discovery",
+      description: "ML models to predict drug interactions with proteins and analyze molecular interactions.",
       image: "/api/placeholder/500/300",
-      tags: ["Vue.js", "Firebase", "Tailwind CSS"]
+      tags: ["Python", "Machine Learning", "Data Analysis", "Visualization"]
+    },
+    {
+      title: "ADT Graph Algorithms",
+      description: "Implementation of inheritance hierarchy with optimized shortest path algorithms for large data sets.",
+      image: "/api/placeholder/500/300",
+      tags: ["Java", "JavaFX", "Algorithms", "Data Structures"]
     }
   ];
 
@@ -92,7 +99,9 @@ function Home({ isDarkMode }) {
         left: 0,
         width: '100%',
         height: '100%',
-        backgroundColor: isDarkMode ? 'rgba(15, 15, 15, 0.85)' : 'rgba(26, 26, 26, 0.85)',
+        backgroundColor: isDarkMode 
+          ? 'rgba(15, 15, 15, 0.85)' 
+          : 'rgba(255, 255, 255, 0.85)', 
         backdropFilter: 'blur(10px)',
         WebkitBackdropFilter: 'blur(10px)',
         zIndex: 1,
@@ -134,7 +143,7 @@ function Home({ isDarkMode }) {
             <div className="profile-glow"></div>
             <div className="profile-image-container">
               <img 
-                src="/api/placeholder/400/400"
+                src="/images/profile.jpg"
                 alt="Profile"
               />
             </div>
@@ -147,7 +156,7 @@ function Home({ isDarkMode }) {
           }}>
             <h1 style={{
               fontSize: '3rem',
-              color: isDarkMode ? '#f5f6fa' : '#e5e5e5',
+              color: isDarkMode ? 'var(--dark-text-primary)' : 'var(--light-text-primary)',
               marginBottom: '1rem',
               fontWeight: '700',
               fontFamily: "'Montserrat', 'Inter', 'Segoe UI', sans-serif",
@@ -164,15 +173,15 @@ function Home({ isDarkMode }) {
               fontFamily: "'Montserrat', 'Inter', 'Segoe UI', sans-serif",
               letterSpacing: '0.5px'
             }}>
-              Full Stack Developer
+              Computer Science Student & Developer
             </h2>
             <p style={{
               fontSize: '1.1rem',
-              color: isDarkMode ? '#f5f6fa' : '#e5e5e5',
+              color: isDarkMode ? '#f5f6fa' : '#333333',
               marginBottom: '2rem',
               lineHeight: '1.6'
             }}>
-              I build engaging digital experiences that combine elegant frontend interfaces with robust backend solutions. Let's create something amazing together.
+              Aspiring Computer Scientist at RPI with a focus on Machine Learning, Generative AI, and Full Stack Development. Passionate about solving complex problems with elegant solutions.
             </p>
             <div style={{
               display: 'flex',
@@ -210,7 +219,7 @@ function Home({ isDarkMode }) {
                 href="/about"
                 style={{
                   backgroundColor: 'transparent',
-                  color: isDarkMode ? '#f5f6fa' : '#e5e5e5',
+                  color: isDarkMode ? '#f5f6fa' : '#333333',
                   borderRadius: '4px',
                   padding: '0.75rem 1.5rem',
                   fontSize: '0.95rem',
@@ -228,7 +237,7 @@ function Home({ isDarkMode }) {
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
                   e.currentTarget.style.backgroundColor = 'transparent';
-                  e.currentTarget.style.color = isDarkMode ? '#f5f6fa' : '#e5e5e5';
+                  e.currentTarget.style.color = isDarkMode ? '#f5f6fa' : '#333333';
                 }}
               >
                 Learn More
@@ -253,14 +262,14 @@ function Home({ isDarkMode }) {
           <div style={{
             width: '30px',
             height: '50px',
-            border: `2px solid ${isDarkMode ? '#f5f6fa' : '#e5e5e5'}`,
+            border: `2px solid ${isDarkMode ? '#f5f6fa' : '#333333'}`,
             borderRadius: '15px',
             position: 'relative'
           }}>
             <div style={{
               width: '4px',
               height: '8px',
-              backgroundColor: isDarkMode ? '#f5f6fa' : '#e5e5e5',
+              backgroundColor: isDarkMode ? '#f5f6fa' : '#333333',
               borderRadius: '2px',
               position: 'absolute',
               left: '50%',
@@ -312,7 +321,7 @@ function Home({ isDarkMode }) {
               fontSize: '1.1rem',
               lineHeight: '1.8',
               maxWidth: '700px',
-              color: isDarkMode ? '#f5f6fa' : '#e5e5e5',
+              color: isDarkMode ? '#f5f6fa' : '#333333',
               marginBottom: '2rem'
             }}>
               Core competencies and technologies I use to build exceptional digital experiences
@@ -330,7 +339,7 @@ function Home({ isDarkMode }) {
               <div 
                 key={skill.id}
                 style={{
-                  backgroundColor: isDarkMode ? 'rgba(15, 15, 15, 0.6)' : 'rgba(26, 26, 26, 0.6)',
+                  backgroundColor: isDarkMode ? 'rgba(15, 15, 15, 0.6)' : 'rgba(255, 255, 255, 0.6)',
                   backdropFilter: 'blur(16px)',
                   WebkitBackdropFilter: 'blur(16px)',
                   padding: '2rem',
@@ -366,7 +375,7 @@ function Home({ isDarkMode }) {
                 </div>
                 <h3 style={{
                   fontSize: '1.25rem',
-                  color: isDarkMode ? '#f5f6fa' : '#e5e5e5',
+                  color: isDarkMode ? '#f5f6fa' : '#333333',
                   marginBottom: '1rem',
                   fontWeight: '600'
                 }}>
@@ -374,7 +383,7 @@ function Home({ isDarkMode }) {
                 </h3>
                 <p style={{
                   fontSize: '0.95rem',
-                  color: isDarkMode ? '#cbd5e1' : '#a0aec0',
+                  color: isDarkMode ? '#cbd5e1' : '#667085',
                   marginBottom: '1.5rem',
                   lineHeight: '1.6'
                 }}>
@@ -415,13 +424,13 @@ function Home({ isDarkMode }) {
 
           {/* Tech Proficiency */}
           <div style={{
-            backgroundColor: isDarkMode ? 'rgba(15, 15, 15, 0.6)' : 'rgba(26, 26, 26, 0.6)',
+            backgroundColor: isDarkMode ? 'rgba(15, 15, 15, 0.6)' : 'rgba(255, 255, 255, 0.6)',
             backdropFilter: 'blur(16px)',
             WebkitBackdropFilter: 'blur(16px)',
-            borderRadius: '16px',
-            padding: '2.5rem',
+            padding: '2rem',
+            borderRadius: '12px',
             boxShadow: isDarkMode ? '0 8px 32px rgba(0, 0, 0, 0.2)' : '0 8px 32px rgba(0, 0, 0, 0.05)',
-            border: isDarkMode ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(0, 0, 0, 0.05)'
+            border: isDarkMode ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(0, 0, 0, 0.05)',
           }}>
             <h3 style={{
               fontSize: '1.5rem',
@@ -440,15 +449,15 @@ function Home({ isDarkMode }) {
               gap: '1.5rem'
             }}>
               {[
-                { name: 'React', level: 95 },
-                { name: 'JavaScript', level: 90 },
-                { name: 'TypeScript', level: 85 },
-                { name: 'Node.js', level: 88 },
-                { name: 'Express', level: 85 },
-                { name: 'MongoDB', level: 82 },
-                { name: 'PostgreSQL', level: 80 },
-                { name: 'AWS', level: 75 },
-                { name: 'Docker', level: 78 }
+                { name: 'Python', level: 95 },
+                { name: 'Java', level: 90 },
+                { name: 'JavaScript', level: 88 },
+                { name: 'C++', level: 85 },
+                { name: 'HTML/CSS', level: 90 },
+                { name: 'Flask', level: 85 },
+                { name: 'React', level: 80 },
+                { name: 'Machine Learning', level: 82 },
+                { name: 'Algorithms', level: 85 }
               ].map((tech, index) => (
                 <div key={index} style={{
                   width: '180px'
@@ -462,7 +471,7 @@ function Home({ isDarkMode }) {
                     <span style={{
                       fontSize: '0.9rem',
                       fontWeight: '500',
-                      color: isDarkMode ? '#f5f6fa' : '#e5e5e5'
+                      color: isDarkMode ? '#f5f6fa' : '#333333'
                     }}>
                       {tech.name}
                     </span>
@@ -477,7 +486,7 @@ function Home({ isDarkMode }) {
                   <div style={{
                     width: '100%',
                     height: '8px',
-                    backgroundColor: isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(255, 255, 255, 0.1)',
+                    backgroundColor: isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)',
                     borderRadius: '4px',
                     overflow: 'hidden'
                   }}>
@@ -536,7 +545,7 @@ function Home({ isDarkMode }) {
               <div 
                 key={index}
                 style={{
-                  backgroundColor: isDarkMode ? 'rgba(15, 15, 15, 0.6)' : 'rgba(26, 26, 26, 0.6)',
+                  backgroundColor: isDarkMode ? 'rgba(15, 15, 15, 0.6)' : 'rgba(255, 255, 255, 0.6)',
                   backdropFilter: 'blur(16px)',
                   WebkitBackdropFilter: 'blur(16px)',
                   borderRadius: '12px',
@@ -586,7 +595,7 @@ function Home({ isDarkMode }) {
                 }}>
                   <h3 style={{
                     fontSize: '1.25rem',
-                    color: isDarkMode ? '#f5f6fa' : '#e5e5e5',
+                    color: isDarkMode ? '#f5f6fa' : '#333333',
                     marginBottom: '0.75rem',
                     fontWeight: '600'
                   }}>
@@ -594,7 +603,7 @@ function Home({ isDarkMode }) {
                   </h3>
                   <p style={{
                     fontSize: '0.95rem',
-                    color: isDarkMode ? '#cbd5e1' : '#a0aec0',
+                    color: isDarkMode ? '#cbd5e1' : '#667085',
                     marginBottom: '1.5rem',
                     lineHeight: '1.6'
                   }}>
@@ -630,7 +639,7 @@ function Home({ isDarkMode }) {
             marginTop: '2rem'
           }}>
             <a 
-              href="/portfolio"
+              href="/about"
               style={{
                 display: 'flex',
                 alignItems: 'center',
@@ -657,7 +666,7 @@ function Home({ isDarkMode }) {
                 e.currentTarget.style.transform = 'translateY(0)';
               }}
             >
-              View All Projects
+              Learn More About Me
               <ArrowRight size={16} />
             </a>
           </div>

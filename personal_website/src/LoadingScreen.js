@@ -1,3 +1,4 @@
+//LoadingScreen.js - Updated
 import React from 'react';
 
 const LoadingScreen = ({ isDarkMode, isLoading }) => {
@@ -9,7 +10,8 @@ const LoadingScreen = ({ isDarkMode, isLoading }) => {
         left: 0,
         right: 0,
         bottom: 0,
-        backgroundColor: isDarkMode ? '#0f0f0f' : '#1a1a1a',
+        backgroundColor: isDarkMode ? 'var(--dark-bg)' : 'var(--light-bg)',
+        color: isDarkMode ? 'var(--dark-text-primary)' : 'var(--light-text-primary)',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',

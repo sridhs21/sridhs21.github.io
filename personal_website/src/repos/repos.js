@@ -1,3 +1,4 @@
+//repos.js
 import React, { useState, useEffect } from 'react';
 import { Github, Star, GitFork, FileCode, ExternalLink } from 'lucide-react';
 
@@ -53,7 +54,7 @@ function Repos({ isDarkMode }) {
       left: 0,
       right: 0,
       bottom: 0,
-      backgroundColor: isDarkMode ? '#0f0f0f' : '#1a1a1a',
+      backgroundColor: isDarkMode ? '#0f0f0f' : '#ffffff',
       transition: 'background-color 0.3s ease',
       overflowY: 'auto',
       marginTop: '64px'
@@ -157,7 +158,7 @@ function Repos({ isDarkMode }) {
                 onMouseLeave={() => setHoveredRepo(null)}
               >
                 <div style={{
-                  background: isDarkMode ? 'rgba(15, 15, 15, 0.5)' : 'rgba(26, 26, 26, 0.5)',
+                  background: isDarkMode ? 'rgba(15, 15, 15, 0.5)' : 'rgba(255, 255, 255, 0.9)',
                   backdropFilter: 'blur(12px)',
                   WebkitBackdropFilter: 'blur(12px)',
                   borderRadius: '12px',
@@ -170,11 +171,9 @@ function Repos({ isDarkMode }) {
                   boxShadow: isDarkMode 
                     ? '0 4px 6px rgba(0, 0, 0, 0.2)' 
                     : '0 4px 6px rgba(0, 0, 0, 0.05)',
-                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                   border: isDarkMode 
                     ? '1px solid rgba(255, 255, 255, 0.1)' 
-                    : '1px solid rgba(0, 0, 0, 0.1)',
-                  transform: hoveredRepo === repo.id ? 'translateY(-8px)' : 'translateY(0)',
+                    : '1px solid rgba(0, 0, 0, 0.05)',
                 }}>
                   <div style={{
                     display: 'flex',
@@ -198,7 +197,7 @@ function Repos({ isDarkMode }) {
                       <h3 style={{
                         fontSize: '1.1rem',
                         fontWeight: '600',
-                        color: isDarkMode ? '#ffffff' : '#e5e5e5',
+                        color: isDarkMode ? 'var(--dark-text-primary)' : 'var(--light-text-primary)',
                         margin: 0,
                         transition: 'color 0.3s ease'
                       }}>

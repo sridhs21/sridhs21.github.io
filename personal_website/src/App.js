@@ -1,3 +1,4 @@
+//App.js
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './Navbar';
@@ -24,8 +25,8 @@ function App() {
   };
 
   useEffect(() => {
-    // Apply dark mode immediately
-    document.body.style.backgroundColor = isDarkMode ? '#0f0f0f' : '#1a1a1a';
+    // Apply dark mode immediately to the entire document
+    document.body.style.backgroundColor = isDarkMode ? '#0f0f0f' : '#ffffff';
     document.body.className = isDarkMode ? 'dark-mode' : '';
     
     const checkResourcesLoaded = () => {
@@ -46,7 +47,7 @@ function App() {
 
   return (
     <div style={{ 
-      backgroundColor: isDarkMode ? '#0f0f0f' : '#1a1a1a',
+      backgroundColor: isDarkMode ? 'var(--dark-bg)' : 'var(--light-bg)',
       minHeight: '100vh',
       transition: 'background-color 0.3s ease'
     }}>
@@ -58,7 +59,7 @@ function App() {
             opacity: isLoading ? 0 : 1,
             transition: 'opacity 0.5s ease-out',
             visibility: isLoading ? 'hidden' : 'visible',
-            backgroundColor: 'inherit'
+            backgroundColor: isDarkMode ? '#0f0f0f' : '#ffffff'
           }}
         >
           <Navbar isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
