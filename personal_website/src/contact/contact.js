@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Mail, Phone, Linkedin, Github, Send, MapPin } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 function Contact({ isDarkMode }) {
   const [formData, setFormData] = useState({
@@ -8,6 +9,9 @@ function Contact({ isDarkMode }) {
     subject: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState({ success: false, message: '' });
+  const formRef = useRef();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,17 +23,38 @@ function Contact({ isDarkMode }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // In a real implementation, you would send this data to a server
-    console.log("Form submitted:", formData);
-    // For now, just show an alert
-    alert("Thank you for your message! I'll get back to you soon.");
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
-    });
+    setIsSubmitting(true);
+    setSubmitStatus({ success: false, message: '' });
+
+    const serviceId = 'service_xl68yuu';
+    const templateId = 'template_doyovp1';
+    const publicKey = 'iw2dcI-RAAi9DNiD6';
+
+    emailjs.sendForm(serviceId, templateId, formRef.current, publicKey)
+      .then((result) => {
+        console.log('Email sent successfully:', result.text);
+        setSubmitStatus({
+          success: true,
+          message: "Thank you for your message! I'll get back to you soon."
+        });
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        });
+      })
+      .catch((error) => {
+        console.error('Email sending failed:', error.text);
+        setSubmitStatus({
+          success: false,
+          message: "Sorry, there was a problem sending your message. Please try again later."
+        });
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
   };
 
   return (
@@ -114,13 +139,13 @@ function Contact({ isDarkMode }) {
                     Email
                   </h3>
                 </div>
-                <a href="mailto:contact@swaroopsridhar.com" style={{
+                <a href="mailto:swaroop.sridhar21@gmail.com" style={{
                   textDecoration: 'none',
                   color: isDarkMode ? 'var(--dark-text-secondary)' : 'var(--light-text-secondary)',
                   fontSize: '1rem',
                   transition: 'color 0.3s ease'
                 }} onMouseEnter={(e) => e.currentTarget.style.color = '#6d1f7e'} onMouseLeave={(e) => e.currentTarget.style.color = isDarkMode ? 'var(--dark-text-secondary)' : 'var(--light-text-secondary)'}>
-                  contact@swaroopsridhar.com
+                  swaroop.sridhar21@gmail.com
                 </a>
               </div>
 
@@ -142,13 +167,13 @@ function Contact({ isDarkMode }) {
                     Phone
                   </h3>
                 </div>
-                <a href="tel:+11234567890" style={{
+                <a href="tel:+17815357045" style={{
                   textDecoration: 'none',
                   color: isDarkMode ? 'var(--dark-text-secondary)' : 'var(--light-text-secondary)',
                   fontSize: '1rem',
                   transition: 'color 0.3s ease'
                 }} onMouseEnter={(e) => e.currentTarget.style.color = '#6d1f7e'} onMouseLeave={(e) => e.currentTarget.style.color = isDarkMode ? 'var(--dark-text-secondary)' : 'var(--light-text-secondary)'}>
-                  +1 (123) 456-7890
+                  +1 (781) 535-7045
                 </a>
               </div>
 
@@ -174,7 +199,7 @@ function Contact({ isDarkMode }) {
                   color: isDarkMode ? 'var(--dark-text-secondary)' : 'var(--light-text-secondary)',
                   fontSize: '1rem',
                 }}>
-                  Troy, New York, United States
+                  Nashua, New Hampshire, United States
                 </p>
               </div>
 
@@ -235,7 +260,7 @@ function Contact({ isDarkMode }) {
               Send Me a Message
             </h2>
 
-            <form onSubmit={handleSubmit} style={{
+            <form ref={formRef} onSubmit={handleSubmit} style={{
               backgroundColor: isDarkMode ? 'rgba(15, 15, 15, 0.6)' : 'rgba(255, 255, 255, 0.6)',
               backdropFilter: 'blur(16px)',
               WebkitBackdropFilter: 'blur(16px)',
@@ -244,6 +269,26 @@ function Contact({ isDarkMode }) {
               boxShadow: isDarkMode ? '0 8px 32px rgba(0, 0, 0, 0.2)' : '0 8px 32px rgba(0, 0, 0, 0.05)',
               border: isDarkMode ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(0, 0, 0, 0.05)',
             }}>
+              {/* Form Status Message */}
+              {submitStatus.message && (
+                <div style={{
+                  padding: '1rem',
+                  marginBottom: '1.5rem',
+                  borderRadius: '8px',
+                  backgroundColor: submitStatus.success 
+                    ? 'rgba(34, 197, 94, 0.1)' 
+                    : 'rgba(239, 68, 68, 0.1)',
+                  color: submitStatus.success 
+                    ? 'rgb(34, 197, 94)' 
+                    : 'rgb(239, 68, 68)',
+                  border: submitStatus.success 
+                    ? '1px solid rgba(34, 197, 94, 0.2)' 
+                    : '1px solid rgba(239, 68, 68, 0.2)',
+                }}>
+                  {submitStatus.message}
+                </div>
+              )}
+
               <div style={{
                 display: 'flex',
                 flexWrap: 'wrap',
@@ -377,34 +422,48 @@ function Contact({ isDarkMode }) {
 
               <button 
                 type="submit"
+                disabled={isSubmitting}
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '0.75rem',
-                  backgroundColor: '#6d1f7e',
+                  backgroundColor: isSubmitting ? '#a37caf' : '#6d1f7e',
                   color: 'white',
                   border: 'none',
                   borderRadius: '8px',
                   padding: '0.9rem 1.8rem',
                   fontSize: '1rem',
                   fontWeight: '500',
-                  cursor: 'pointer',
+                  cursor: isSubmitting ? 'not-allowed' : 'pointer',
                   transition: 'all 0.3s ease',
                   boxShadow: '0 4px 14px rgba(109, 31, 126, 0.25)'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = '#8f3ba0';
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.boxShadow = '0 6px 20px rgba(109, 31, 126, 0.3)';
+                  if (!isSubmitting) {
+                    e.currentTarget.style.backgroundColor = '#8f3ba0';
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                    e.currentTarget.style.boxShadow = '0 6px 20px rgba(109, 31, 126, 0.3)';
+                  }
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = '#6d1f7e';
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 4px 14px rgba(109, 31, 126, 0.25)';
+                  if (!isSubmitting) {
+                    e.currentTarget.style.backgroundColor = '#6d1f7e';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 4px 14px rgba(109, 31, 126, 0.25)';
+                  }
                 }}
               >
-                <Send size={18} />
-                Send Message
+                {isSubmitting ? (
+                  <>
+                    <span className="loading-spinner"></span>
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send size={18} />
+                    Send Message
+                  </>
+                )}
               </button>
             </form>
           </div>
@@ -422,6 +481,22 @@ function Contact({ isDarkMode }) {
           input:focus, textarea:focus {
             border-color: #6d1f7e !important;
             box-shadow: 0 0 0 2px rgba(109, 31, 126, 0.1) !important;
+          }
+          
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+          
+          .loading-spinner {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.8s linear infinite;
+            margin-right: 8px;
           }
         `}
       </style>

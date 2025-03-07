@@ -1,7 +1,7 @@
-// home.js - Updated with light mode changes
+// home.js - Updated with light mode changes and modified projects/skills
 import React, { useState, useEffect } from 'react';
 import VantaBackground from './VantaBackground';
-import { ArrowRight, Code, Server, Layout, Database } from 'lucide-react';
+import { ArrowRight, Code, Server, Layout, Database, Terminal, Cloud, Brain } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 function Home({ isDarkMode }) {
@@ -25,50 +25,58 @@ function Home({ isDarkMode }) {
       id: 'frontend', 
       icon: <Layout size={28} />, 
       title: 'Frontend Development', 
-      description: 'Creating responsive and intuitive user interfaces using modern technologies like React, Vue, and Angular.', 
-      technologies: ['React', 'JavaScript', 'TypeScript', 'HTML/CSS', 'SASS'] 
+      description: 'Creating responsive and intuitive user interfaces using modern web technologies.', 
+      technologies: ['React.js', 'JavaScript', 'TypeScript', 'HTML5/CSS3', 'Bootstrap', 'TailwindCSS', 'jQuery', 'Next.js'] 
     },
     { 
       id: 'backend', 
       icon: <Server size={28} />, 
       title: 'Backend Development', 
       description: 'Building robust server-side applications with a focus on performance, security, and scalability.', 
-      technologies: ['Node.js', 'Express', 'Python', 'Django', 'REST APIs'] 
+      technologies: ['Python', 'Flask', 'Node.js', 'REST APIs', 'Java', 'PHP', 'MongoDB', 'MySQL'] 
+    },
+    { 
+      id: 'ml', 
+      icon: <Brain size={28} />, 
+      title: 'Machine Learning', 
+      description: 'Developing AI models for data analysis, prediction, and optimization with a focus on practical applications.', 
+      technologies: ['PyTorch', 'TensorFlow', 'Scikit-learn', 'Pandas', 'NumPy', 'CatBoost', 'XGBoost', 'OpenCV'] 
+    },
+    { 
+      id: 'programming', 
+      icon: <Terminal size={28} />, 
+      title: 'Programming Languages', 
+      description: 'Proficient in multiple programming paradigms and languages for software development.', 
+      technologies: ['Python', 'Java', 'C/C++', 'JavaScript', 'Assembly', 'Haskell', 'Erlang', 'Prolog'] 
     },
     { 
       id: 'database', 
       icon: <Database size={28} />, 
-      title: 'Database Design', 
-      description: 'Designing efficient database schemas and writing optimized queries for both SQL and NoSQL databases.', 
-      technologies: ['MongoDB', 'PostgreSQL', 'MySQL', 'Redis', 'GraphQL'] 
+      title: 'Database & Data Science', 
+      description: 'Working with data storage, analysis, and visualization to extract meaningful insights.', 
+      technologies: ['SQL', 'MongoDB', 'Data Analysis', 'Pandas', 'Matplotlib', 'Seaborn', 'Data Visualization'] 
     },
     { 
-      id: 'coding', 
-      icon: <Code size={28} />, 
-      title: 'Software Architecture', 
-      description: 'Developing clean, maintainable code with a focus on design patterns and best practices.', 
-      technologies: ['System Design', 'Microservices', 'Cloud Architecture', 'CI/CD Pipelines'] 
+      id: 'cloud', 
+      icon: <Cloud size={28} />, 
+      title: 'Cloud & DevOps', 
+      description: 'Leveraging cloud platforms and development operations for efficient deployment and scaling.', 
+      technologies: ['Microsoft Azure', 'Git', 'GitHub', 'Version Control', 'CI/CD', 'Heroku', 'Agile/Scrum'] 
     }
   ];
 
   const featuredProjects = [
     {
       title: "RPI Campus Availability Application",
-      description: "A full-stack web application to track and predict real-time parking availability across campus.",
-      image: "/api/placeholder/500/300",
-      tags: ["Python", "Flask", "JavaScript", "Leaflet.js"]
+      description: "A full-stack web application utilizing REST API architecture to track and predict real-time parking availability across campus using Python Flask backend and JavaScript frontend. Created a predictive algorithm incorporating multiple factors (time, weather, events, seasonality) to estimate parking occupancy.",
+      image: "/images/parking_application.png",
+      tags: ["Python", "Flask", "JavaScript", "Leaflet.js", "Google Maps API", "REST API"]
     },
     {
       title: "AI-Driven Drug Discovery",
-      description: "ML models to predict drug interactions with proteins and analyze molecular interactions.",
-      image: "/api/placeholder/500/300",
-      tags: ["Python", "Machine Learning", "Data Analysis", "Visualization"]
-    },
-    {
-      title: "ADT Graph Algorithms",
-      description: "Implementation of inheritance hierarchy with optimized shortest path algorithms for large data sets.",
-      image: "/api/placeholder/500/300",
-      tags: ["Java", "JavaFX", "Algorithms", "Data Structures"]
+      description: "Developed AI models to predict drug interactions with proteins and analyze immune system responses by processing complex biological data. Built predictive models to improve gene editing outcomes by analyzing DNA sequences and their modifications. Created comprehensive data visualizations to present scientific findings.",
+      image: "/images/drug_discovery.jpg",
+      tags: ["Python", "Machine Learning", "CatBoost", "Random Forest", "XGBoost", "Data Analysis"]
     }
   ];
 
@@ -324,14 +332,14 @@ function Home({ isDarkMode }) {
               color: isDarkMode ? '#f5f6fa' : '#333333',
               marginBottom: '2rem'
             }}>
-              Core competencies and technologies I use to build exceptional digital experiences
+              Here are some of the skills I've acquired on my journey!
             </p>
           </div>
 
           {/* Expertise Areas */}
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
             gap: '2rem',
             marginBottom: '4rem'
           }}>
@@ -451,12 +459,15 @@ function Home({ isDarkMode }) {
               {[
                 { name: 'Python', level: 95 },
                 { name: 'Java', level: 90 },
-                { name: 'JavaScript', level: 88 },
-                { name: 'C++', level: 85 },
+                { name: 'JavaScript', level: 85 },
+                { name: 'C/C++', level: 85 },
                 { name: 'HTML/CSS', level: 90 },
-                { name: 'Flask', level: 85 },
+                { name: 'Machine Learning', level: 85 },
                 { name: 'React', level: 80 },
-                { name: 'Machine Learning', level: 82 },
+                { name: 'Flask', level: 85 },
+                { name: 'Data Analysis', level: 82 },
+                { name: 'REST APIs', level: 88 },
+                { name: 'Git/GitHub', level: 90 },
                 { name: 'Algorithms', level: 85 }
               ].map((tech, index) => (
                 <div key={index} style={{
@@ -537,7 +548,7 @@ function Home({ isDarkMode }) {
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(500px, 1fr))',
             gap: '2rem',
             marginBottom: '2rem'
           }}>
@@ -570,7 +581,7 @@ function Home({ isDarkMode }) {
               >
                 <div style={{
                   width: '100%',
-                  height: '200px',
+                  height: '250px',
                   overflow: 'hidden'
                 }}>
                   <img 

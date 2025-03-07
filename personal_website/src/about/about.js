@@ -59,11 +59,13 @@ function About({ isDarkMode }) {
             display: 'flex',
             flexWrap: 'wrap',
             gap: '3rem',
-            alignItems: 'center'
+            alignItems: 'flex-start'
           }}>
             {/* Image Section */}
             <div style={{
               flex: '1 1 350px',
+              position: 'sticky',
+              top: '7.3rem',
             }}>
               <div style={{
                 position: 'relative',
@@ -72,7 +74,7 @@ function About({ isDarkMode }) {
                 boxShadow: isDarkMode ? '0 12px 40px rgba(0, 0, 0, 0.3)' : '0 12px 40px rgba(0, 0, 0, 0.1)',
               }}>
                 <img 
-                  src="/api/placeholder/500/600" 
+                  src="/images/about.jpg" 
                   alt="Swaroop Sridhar"
                   style={{
                     width: '100%',
@@ -126,7 +128,7 @@ function About({ isDarkMode }) {
                 fontSize: '1.1rem',
                 marginBottom: '2rem',
                 lineHeight: '1.8',
-                color: isDarkMode ? '#cbd5e1' : '#a0aec0',
+                color: isDarkMode ? 'var(--dark-text-secondary)' : 'var(--light-text-secondary)',
               }}>
                 I've gained hands-on experience through various projects, including developing full-stack web applications, creating AI models for drug discovery, and implementing complex algorithms for data analysis. I'm excited to continue growing my skills and contributing to innovative solutions in the tech industry.
               </p>
@@ -196,8 +198,8 @@ function About({ isDarkMode }) {
                 marginTop: '2rem'
               }}>
                 <a 
-                  href="/files/resume.pdf" 
-                  target="_blank"
+                  href="/files/Swaroop_Sridhar_Resume.pdf" 
+                  download="Swaroop_Sridhar_Resume.pdf"
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
@@ -276,7 +278,7 @@ function About({ isDarkMode }) {
                 }}>
                   <h3 style={{
                     fontSize: '1.35rem',
-                    color: isDarkMode ? '#f5f6fa' : '#e5e5e5',
+                    color: isDarkMode ? '#f5f6fa' : '#333333',
                     fontWeight: '600',
                   }}>
                     {item.degree}

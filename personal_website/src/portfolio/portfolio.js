@@ -13,7 +13,7 @@ function Portfolio({ isDarkMode }) {
       title: "RPI Campus Availability App",
       description: "Real-time tracking and prediction of parking availability across campus using IoT sensors and machine learning algorithms.",
       longDescription: "This application helps students and faculty find available parking spots on campus in real-time. It uses IoT sensors to collect data and machine learning algorithms to predict future availability based on historical patterns. Users can check the app before arriving on campus to plan their parking strategy.",
-      image: "/api/placeholder/800/500",
+      image: "/images/parking_application.png",
       technologies: ["Python", "Flask", "JavaScript", "Leaflet.js", "TensorFlow"],
       category: "web",
       githubLink: "https://github.com/sridhs21/rpi-campus-availability",
@@ -25,7 +25,7 @@ function Portfolio({ isDarkMode }) {
       title: "AI-Driven Drug Discovery",
       description: "Machine learning models to predict drug interactions with proteins and analyze molecular interactions for pharmaceutical research.",
       longDescription: "This project focuses on using artificial intelligence to accelerate the drug discovery process. By analyzing vast datasets of molecular structures and their interactions with various proteins, the model predicts potential successful drug candidates for specific targets, potentially saving years of laboratory testing.",
-      image: "/api/placeholder/800/500",
+      image: "/images/drug_discovery.jpg",
       technologies: ["Python", "PyTorch", "Scikit-learn", "Pandas", "RDKit", "Molecular Visualization"],
       category: "machine-learning",
       githubLink: "https://github.com/sridhs21/ai-drug-discovery",
@@ -37,7 +37,7 @@ function Portfolio({ isDarkMode }) {
       title: "ADT Graph Algorithms Library",
       description: "Implementation of inheritance hierarchy with optimized shortest path algorithms for large data sets and complex network analysis.",
       longDescription: "This library provides efficient implementations of various graph algorithms, focusing particularly on shortest path problems. It includes optimized versions of Dijkstra's algorithm, A* search, and Bellman-Ford, along with several utility functions for handling large network datasets. The implementation uses advanced data structures to reduce computational complexity.",
-      image: "/api/placeholder/800/500",
+      image: "/images/adt_graph.jpg",
       technologies: ["Java", "JavaFX", "Data Structures", "Algorithms", "Graph Theory"],
       category: "algorithm",
       githubLink: "https://github.com/sridhs21/graph-algorithms",
@@ -49,35 +49,11 @@ function Portfolio({ isDarkMode }) {
       title: "Personal Portfolio Website",
       description: "Responsive personal website built with React to showcase projects and skills with dark/light mode support.",
       longDescription: "A modern, responsive personal portfolio website built with React. Features include dark and light mode, smooth animations, and a clean interface to showcase projects and skills. The site is built with a focus on performance and accessibility.",
-      image: "/api/placeholder/800/500",
+      image: "/images/personal_website.png",
       technologies: ["React", "JavaScript", "CSS", "HTML", "Responsive Design"],
       category: "web",
       githubLink: "https://github.com/sridhs21/portfolio",
       demoLink: "https://sridhs21.github.io",
-      featured: false
-    },
-    {
-      id: 5,
-      title: "Sentiment Analysis Tool",
-      description: "NLP model for analyzing sentiment in customer reviews and social media posts with visualization dashboard.",
-      longDescription: "This tool helps businesses understand customer sentiment by analyzing text data from reviews, social media posts, and other sources. Using natural language processing techniques, it classifies text as positive, negative, or neutral, and provides detailed analysis of emotional content and key topics.",
-      image: "/api/placeholder/800/500",
-      technologies: ["Python", "NLTK", "spaCy", "TensorFlow", "React", "D3.js"],
-      category: "machine-learning",
-      githubLink: "https://github.com/sridhs21/sentiment-analysis",
-      demoLink: "https://sentiment-demo.xyz",
-      featured: false
-    },
-    {
-      id: 6,
-      title: "Distributed Systems Simulator",
-      description: "Simulation environment for testing distributed algorithms and systems under various network conditions.",
-      longDescription: "This simulator allows researchers and students to test distributed algorithms under various network conditions, including packet loss, latency, and node failures. It provides visualization of message passing and system state, making it easier to understand complex distributed systems concepts.",
-      image: "/api/placeholder/800/500",
-      technologies: ["Go", "gRPC", "React", "D3.js", "Network Protocols"],
-      category: "algorithm",
-      githubLink: "https://github.com/sridhs21/distributed-sim",
-      demoLink: "",
       featured: false
     }
   ];
@@ -152,7 +128,7 @@ function Portfolio({ isDarkMode }) {
             color: isDarkMode ? 'var(--dark-text-secondary)' : 'var(--light-text-secondary)',
             lineHeight: '1.8'
           }}>
-            Explore my recent projects showcasing my skills in web development, machine learning, and algorithm design.
+            Check out some of my projects!
           </p>
         </div>
 
