@@ -196,7 +196,7 @@ function Home({ isDarkMode }) {
               gap: '1rem'
             }}>
               <a 
-                href="/contact"
+                href="/#/contact"
                 style={{
                   backgroundColor: '#6d1f7e',
                   color: 'white',
@@ -224,7 +224,7 @@ function Home({ isDarkMode }) {
                 Get in Touch
               </a>
               <a 
-                href="/about"
+                href="/#/about"
                 style={{
                   backgroundColor: 'transparent',
                   color: isDarkMode ? '#f5f6fa' : '#333333',
@@ -650,7 +650,7 @@ function Home({ isDarkMode }) {
             marginTop: '2rem'
           }}>
             <a 
-              href="/about"
+              href="/#/about"
               style={{
                 display: 'flex',
                 alignItems: 'center',
