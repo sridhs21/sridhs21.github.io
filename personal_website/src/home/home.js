@@ -177,7 +177,7 @@ function Home({ isDarkMode }) {
             </h2>
             <p style={{
               fontSize: '1.1rem',
-              color: isDarkMode ? '#f5f6fa' : '#333333',
+              color: isDarkMode ? 'var(--dark-text-primary)' : 'var(--light-text-primary)',
               marginBottom: '2rem',
               lineHeight: '1.6'
             }}>
@@ -383,7 +383,7 @@ function Home({ isDarkMode }) {
                 </h3>
                 <p style={{
                   fontSize: '0.95rem',
-                  color: isDarkMode ? '#cbd5e1' : '#667085',
+                  color: isDarkMode ? 'var(--dark-text-secondary)' : 'var(--light-text-secondary)',
                   marginBottom: '1.5rem',
                   lineHeight: '1.6'
                 }}>

@@ -1,6 +1,6 @@
 //App.js
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './Navbar';
 import Home from './home/home';
 import Portfolio from './portfolio/portfolio';
@@ -26,7 +26,7 @@ function App() {
 
   useEffect(() => {
     // Apply dark mode immediately to the entire document
-    document.body.style.backgroundColor = isDarkMode ? '#0f0f0f' : '#ffffff';
+    document.body.style.backgroundColor = isDarkMode ? 'var(--dark-bg)' : 'var(--light-bg)';
     document.body.className = isDarkMode ? 'dark-mode' : '';
     
     const checkResourcesLoaded = () => {

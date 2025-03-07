@@ -3,6 +3,7 @@
   --highlight-purple: #6d1f7e;
   --highlight-purple-light: #8f3ba0;
   --highlight-purple-hover: #9f4bb0;
+  --highlight-purple-dark: #551762; /* Darker version for text in light mode */
   
   /* Dark theme colors */
   --dark-bg: #0f0f0f;
@@ -12,9 +13,9 @@
   
   /* Light theme colors */
   --light-bg: #ffffff;
-  --light-bg-secondary: #f5f5f5;
-  --light-text-primary: #333333;
-  --light-text-secondary: #667085;
+  --light-bg-secondary: #f7f7f7;
+  --light-text-primary: #222222; /* Darker than before for better contrast */
+  --light-text-secondary: #551762; /* Using dark purple instead of gray */
   
   --transition-speed: 0.2s;
 }

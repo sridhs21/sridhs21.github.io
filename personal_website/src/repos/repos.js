@@ -217,11 +217,11 @@ function Repos({ isDarkMode }) {
                   {repo.description && (
                     <p style={{
                       fontSize: '0.95rem',
-                      color: isDarkMode ? '#cbd5e1' : '#a0aec0',
+                      color: isDarkMode ? 'var(--dark-text-secondary)' : 'var(--light-text-secondary)',
                       marginBottom: '1rem',
                       flex: 1,
                       transition: 'color 0.3s ease'
-                    }}>
+                    }}>                    
                       {repo.description}
                     </p>
                   )}
@@ -249,7 +249,7 @@ function Repos({ isDarkMode }) {
                         />
                         <span style={{
                           fontSize: '0.9rem',
-                          color: isDarkMode ? '#cbd5e1' : '#a0aec0'
+                          color: isDarkMode ? 'var(--dark-text-secondary)' : 'var(--light-text-secondary)'
                         }}>
                           {repo.language}
                         </span>

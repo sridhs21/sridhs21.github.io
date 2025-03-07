@@ -98,7 +98,7 @@ function About({ isDarkMode }) {
               <h2 style={{
                 fontSize: '2rem',
                 marginBottom: '1.5rem',
-                color: isDarkMode ? '#f5f6fa' : '#e5e5e5',
+                color: isDarkMode ? 'var(--dark-text-primary)' : 'var(--light-text-primary)',
                 fontWeight: '600'
               }}>
                 My Journey
@@ -295,7 +295,7 @@ function About({ isDarkMode }) {
                 
                 <h4 style={{
                   fontSize: '1.1rem',
-                  color: isDarkMode ? '#f8fafc' : '#e5e5e5',
+                  color: isDarkMode ? 'var(--dark-text-primary)' : 'var(--light-text-primary)',
                   fontWeight: '500',
                   marginBottom: '0.5rem',
                 }}>
