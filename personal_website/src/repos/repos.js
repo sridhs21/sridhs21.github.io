@@ -72,7 +72,7 @@ function Repos({ isDarkMode }) {
           display: 'flex',
           alignItems: 'center',
           gap: '0.5rem',
-          color: isDarkMode ? '#ffffff' : '#e5e5e5',
+          color: isDarkMode ? '#ffffff' : '#6d1f7e',
           animation: 'slideInDown 0.5s ease-out'
         }}>
           <Github size={28} className="animate-bounce" />
