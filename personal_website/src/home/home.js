@@ -1,13 +1,12 @@
 // home.js - Updated with light mode changes and modified projects/skills
 import React, { useState, useEffect } from 'react';
-import VantaBackground from './VantaBackground';
-import { ArrowRight, Code, Server, Layout, Database, Terminal, Cloud, Brain } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import VantaBackground from './background/VantaBackground';
+import { ArrowRight, Server, Layout, Database, Terminal, Cloud, Brain } from 'lucide-react';
+import './home.css';
 
 function Home({ isDarkMode }) {
   const [scrollOpacity, setScrollOpacity] = useState(1);
   const [scrollY, setScrollY] = useState(0);
-  const [activeSkill, setActiveSkill] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -81,67 +80,28 @@ function Home({ isDarkMode }) {
   ];
 
   return (
-    <div style={{ 
-      width: '100%',
-      margin: 0,
-      padding: 0,
-      position: 'relative',
-      minHeight: '300vh'
-    }}>
+    <div className="home-container">
       {/* Fixed Background */}
-      <div style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        zIndex: 0
-      }}>
+      <div className="fixed-background">
         <VantaBackground isDarkMode={isDarkMode} />
       </div>
 
       {/* Blur overlay for scroll */}
-      <div style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        backgroundColor: isDarkMode 
-          ? 'rgba(15, 15, 15, 0.85)' 
-          : 'rgba(255, 255, 255, 0.85)', 
-        backdropFilter: 'blur(10px)',
-        WebkitBackdropFilter: 'blur(10px)',
-        zIndex: 1,
-        opacity: Math.min(1, scrollY / 300),
-        transition: 'opacity 0.3s ease',
-        pointerEvents: 'none'
-      }} />
+      <div 
+        className="blur-overlay" 
+        style={{
+          backgroundColor: isDarkMode 
+            ? 'rgba(15, 15, 15, 0.85)' 
+            : 'rgba(255, 255, 255, 0.85)', 
+          opacity: Math.min(1, scrollY / 300)
+        }} 
+      />
 
       {/* Hero Section */}
-      <div style={{
-        position: 'relative',
-        height: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        zIndex: 2,
-        paddingBottom: '15vh'
-      }}>
-        <div style={{
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '2rem',
-          padding: '20px',
-          width: '100%',
-          maxWidth: '1000px'
-        }}>
+      <div className="hero-section">
+        <div className="hero-content">
           {/* Profile Image */}
-          <div className="profile-container" style={{ 
-            flexShrink: 0
-          }}>
+          <div className="profile-container">
             <div className="orbit orbit-1">
               <div className="orbit-dot"></div>
             </div>
@@ -158,60 +118,20 @@ function Home({ isDarkMode }) {
           </div>
           
           {/* Hero Text */}
-          <div style={{
-            textAlign: 'left',
-            maxWidth: '500px'
-          }}>
-            <h1 style={{
-              fontSize: '3rem',
-              color: isDarkMode ? 'var(--dark-text-primary)' : 'var(--light-text-primary)',
-              marginBottom: '1rem',
-              fontWeight: '700',
-              fontFamily: "'Montserrat', 'Inter', 'Segoe UI', sans-serif",
-              letterSpacing: '-0.5px',
-              lineHeight: '1.2'
-            }}>
+          <div className="hero-text">
+            <h1 style={{ color: isDarkMode ? 'var(--dark-text-primary)' : 'var(--light-text-primary)' }}>
               Swaroop Sridhar
             </h1>
-            <h2 style={{
-              fontSize: '1.5rem',
-              color: '#6d1f7e',
-              fontWeight: '600',
-              marginBottom: '1.5rem',
-              fontFamily: "'Montserrat', 'Inter', 'Segoe UI', sans-serif",
-              letterSpacing: '0.5px'
-            }}>
+            <h2>
               Computer Science Student & Developer
             </h2>
-            <p style={{
-              fontSize: '1.1rem',
-              color: isDarkMode ? 'var(--dark-text-primary)' : 'var(--light-text-primary)',
-              marginBottom: '2rem',
-              lineHeight: '1.6'
-            }}>
+            <p style={{ color: isDarkMode ? 'var(--dark-text-primary)' : 'var(--light-text-primary)' }}>
               Aspiring Computer Scientist at RPI with a focus on Machine Learning, Generative AI, and Full Stack Development. Passionate about solving complex problems with elegant solutions.
             </p>
-            <div style={{
-              display: 'flex',
-              gap: '1rem'
-            }}>
+            <div className="hero-buttons">
               <a 
                 href="/#/contact"
-                style={{
-                  backgroundColor: '#6d1f7e',
-                  color: 'white',
-                  borderRadius: '4px',
-                  padding: '0.75rem 1.5rem',
-                  fontSize: '0.95rem',
-                  fontWeight: '500',
-                  border: 'none',
-                  cursor: 'pointer',
-                  textDecoration: 'none',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                  transition: 'all 0.3s ease'
-                }}
+                className="primary-button"
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-3px)';
                   e.currentTarget.style.backgroundColor = '#8f3ba0';
@@ -225,18 +145,8 @@ function Home({ isDarkMode }) {
               </a>
               <a 
                 href="/#/about"
-                style={{
-                  backgroundColor: 'transparent',
-                  color: isDarkMode ? '#f5f6fa' : '#333333',
-                  borderRadius: '4px',
-                  padding: '0.75rem 1.5rem',
-                  fontSize: '0.95rem',
-                  fontWeight: '500',
-                  border: '1px solid #6d1f7e',
-                  cursor: 'pointer',
-                  textDecoration: 'none',
-                  transition: 'all 0.3s ease'
-                }}
+                className="secondary-button"
+                style={{ color: isDarkMode ? '#f5f6fa' : '#333333' }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-3px)';
                   e.currentTarget.style.backgroundColor = '#6d1f7e';
@@ -258,170 +168,74 @@ function Home({ isDarkMode }) {
         <div 
           className="scroll-indicator" 
           style={{
-            position: 'absolute',
-            bottom: '15vh',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            animation: 'bounce 2s infinite',
-            opacity: scrollOpacity,
-            transition: 'opacity 0.2s ease-out'
+            opacity: scrollOpacity
           }}
         >
-          <div style={{
-            width: '30px',
-            height: '50px',
-            border: `2px solid ${isDarkMode ? '#f5f6fa' : '#333333'}`,
-            borderRadius: '15px',
-            position: 'relative'
-          }}>
-            <div style={{
-              width: '4px',
-              height: '8px',
-              backgroundColor: isDarkMode ? '#f5f6fa' : '#333333',
-              borderRadius: '2px',
-              position: 'absolute',
-              left: '50%',
-              top: '8px',
-              transform: 'translateX(-50%)',
-              animation: 'scrollBounce 1.5s infinite'
-            }}/>
+          <div className="scroll-mouse" style={{ border: `2px solid ${isDarkMode ? '#f5f6fa' : '#333333'}` }}>
+            <div className="scroll-wheel" style={{ backgroundColor: isDarkMode ? '#f5f6fa' : '#333333' }}/>
           </div>
         </div>
       </div>
 
       {/* Content Sections */}
-      <div style={{ 
-        position: 'relative',
-        zIndex: 2,
-        padding: '2rem 0 6rem',
-        width: '100%'
-      }}>
+      <div className="content-sections">
         {/* Skills & Tech Stack Section */}
-        <section style={{
-          maxWidth: '1200px',
-          margin: '0 auto 6rem',
-          padding: '0 2rem',
-        }}>
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            textAlign: 'center',
-            marginBottom: '3rem'
-          }}>
-            <h2 style={{
-              fontSize: '2.5rem',
-              color: '#6d1f7e',
-              marginBottom: '1.5rem',
-              fontFamily: "'Montserrat', 'Inter', 'Segoe UI', sans-serif",
-              fontWeight: '700'
-            }}>
-              Skills & Technologies
-            </h2>
-            <div style={{
-              width: '60px',
-              height: '4px',
-              backgroundColor: '#6d1f7e',
-              marginBottom: '2rem',
-              borderRadius: '2px'
-            }}></div>
-            <p style={{
-              fontSize: '1.1rem',
-              lineHeight: '1.8',
-              maxWidth: '700px',
-              color: isDarkMode ? '#f5f6fa' : '#333333',
-              marginBottom: '2rem'
-            }}>
+        <section className="skills-section">
+          <div className="section-header">
+            <h2>Skills & Technologies</h2>
+            <div className="section-divider"></div>
+            <p style={{ color: isDarkMode ? '#f5f6fa' : '#333333' }}>
               Here are some of the skills I've acquired on my journey!
             </p>
           </div>
 
           {/* Expertise Areas */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
-            gap: '2rem',
-            marginBottom: '4rem'
-          }}>
+          <div className="skills-grid">
             {skills.map((skill) => (
               <div 
                 key={skill.id}
+                className="skill-card"
                 style={{
                   backgroundColor: isDarkMode ? 'rgba(15, 15, 15, 0.6)' : 'rgba(255, 255, 255, 0.6)',
-                  backdropFilter: 'blur(16px)',
-                  WebkitBackdropFilter: 'blur(16px)',
-                  padding: '2rem',
-                  borderRadius: '12px',
                   boxShadow: isDarkMode ? '0 8px 32px rgba(0, 0, 0, 0.2)' : '0 8px 32px rgba(0, 0, 0, 0.05)',
-                  border: isDarkMode ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(0, 0, 0, 0.05)',
-                  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                  cursor: 'pointer',
-                  height: '100%'
+                  border: isDarkMode ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(0, 0, 0, 0.05)'
                 }}
                 onMouseEnter={(e) => {
-                  setActiveSkill(skill.id);
                   e.currentTarget.style.transform = 'translateY(-8px)';
                   e.currentTarget.style.boxShadow = isDarkMode 
                     ? '0 16px 48px rgba(0, 0, 0, 0.3)' 
                     : '0 16px 48px rgba(0, 0, 0, 0.1)';
                 }}
                 onMouseLeave={(e) => {
-                  setActiveSkill(null);
                   e.currentTarget.style.transform = 'translateY(0)';
                   e.currentTarget.style.boxShadow = isDarkMode 
                     ? '0 8px 32px rgba(0, 0, 0, 0.2)' 
                     : '0 8px 32px rgba(0, 0, 0, 0.05)';
                 }}
               >
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  marginBottom: '1.5rem',
-                  color: '#6d1f7e'
-                }}>
+                <div className="skill-icon">
                   {skill.icon}
                 </div>
-                <h3 style={{
-                  fontSize: '1.25rem',
-                  color: isDarkMode ? '#f5f6fa' : '#333333',
-                  marginBottom: '1rem',
-                  fontWeight: '600'
-                }}>
+                <h3 style={{ color: isDarkMode ? '#f5f6fa' : '#333333' }}>
                   {skill.title}
                 </h3>
-                <p style={{
-                  fontSize: '0.95rem',
-                  color: isDarkMode ? 'var(--dark-text-secondary)' : 'var(--light-text-secondary)',
-                  marginBottom: '1.5rem',
-                  lineHeight: '1.6'
-                }}>
+                <p style={{ color: isDarkMode ? 'var(--dark-text-secondary)' : 'var(--light-text-secondary)' }}>
                   {skill.description}
                 </p>
-                <div style={{
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  gap: '0.5rem',
-                  marginTop: 'auto'
-                }}>
+                <div className="tech-tags">
                   {skill.technologies.map((tech, index) => (
-                    <span key={index} style={{
-                      display: 'inline-block',
-                      backgroundColor: isDarkMode ? 'rgba(109, 31, 126, 0.1)' : 'rgba(109, 31, 126, 0.1)',
-                      color: '#6d1f7e',
-                      padding: '0.25rem 0.75rem',
-                      fontSize: '0.8rem',
-                      borderRadius: '50px',
-                      border: '1px solid #6d1f7e',
-                      transition: 'all 0.2s ease'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor = '#6d1f7e';
-                      e.currentTarget.style.color = 'white';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = isDarkMode ? 'rgba(109, 31, 126, 0.1)' : 'rgba(109, 31, 126, 0.1)';
-                      e.currentTarget.style.color = '#6d1f7e';
-                    }}>
+                    <span 
+                      key={index} 
+                      className="tech-tag"
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.backgroundColor = '#6d1f7e';
+                        e.currentTarget.style.color = 'white';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.backgroundColor = isDarkMode ? 'rgba(109, 31, 126, 0.1)' : 'rgba(109, 31, 126, 0.1)';
+                        e.currentTarget.style.color = '#6d1f7e';
+                      }}
+                    >
                       {tech}
                     </span>
                   ))}
@@ -431,31 +245,17 @@ function Home({ isDarkMode }) {
           </div>
 
           {/* Tech Proficiency */}
-          <div style={{
-            backgroundColor: isDarkMode ? 'rgba(15, 15, 15, 0.6)' : 'rgba(255, 255, 255, 0.6)',
-            backdropFilter: 'blur(16px)',
-            WebkitBackdropFilter: 'blur(16px)',
-            padding: '2rem',
-            borderRadius: '12px',
-            boxShadow: isDarkMode ? '0 8px 32px rgba(0, 0, 0, 0.2)' : '0 8px 32px rgba(0, 0, 0, 0.05)',
-            border: isDarkMode ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(0, 0, 0, 0.05)',
-          }}>
-            <h3 style={{
-              fontSize: '1.5rem',
-              color: '#6d1f7e',
-              marginBottom: '2rem',
-              fontWeight: '600',
-              textAlign: 'center'
-            }}>
-              Technology Proficiency
-            </h3>
+          <div 
+            className="tech-proficiency"
+            style={{
+              backgroundColor: isDarkMode ? 'rgba(15, 15, 15, 0.6)' : 'rgba(255, 255, 255, 0.6)',
+              boxShadow: isDarkMode ? '0 8px 32px rgba(0, 0, 0, 0.2)' : '0 8px 32px rgba(0, 0, 0, 0.05)',
+              border: isDarkMode ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(0, 0, 0, 0.05)'
+            }}
+          >
+            <h3>Technology Proficiency</h3>
             
-            <div style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              justifyContent: 'center',
-              gap: '1.5rem'
-            }}>
+            <div className="proficiency-grid">
               {[
                 { name: 'Python', level: 95 },
                 { name: 'Java', level: 90 },
@@ -470,44 +270,20 @@ function Home({ isDarkMode }) {
                 { name: 'Git/GitHub', level: 90 },
                 { name: 'Algorithms', level: 85 }
               ].map((tech, index) => (
-                <div key={index} style={{
-                  width: '180px'
-                }}>
-                  <div style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    marginBottom: '0.5rem'
-                  }}>
-                    <span style={{
-                      fontSize: '0.9rem',
-                      fontWeight: '500',
-                      color: isDarkMode ? '#f5f6fa' : '#333333'
-                    }}>
+                <div key={index} className="proficiency-item">
+                  <div className="proficiency-header">
+                    <span style={{ color: isDarkMode ? '#f5f6fa' : '#333333' }}>
                       {tech.name}
                     </span>
-                    <span style={{
-                      fontSize: '0.85rem',
-                      color: '#6d1f7e',
-                      fontWeight: '600'
-                    }}>
+                    <span className="proficiency-percentage">
                       {tech.level}%
                     </span>
                   </div>
-                  <div style={{
-                    width: '100%',
-                    height: '8px',
-                    backgroundColor: isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)',
-                    borderRadius: '4px',
-                    overflow: 'hidden'
-                  }}>
-                    <div style={{
-                      width: `${tech.level}%`,
-                      height: '100%',
-                      backgroundColor: '#6d1f7e',
-                      borderRadius: '4px',
-                      transition: 'width 1.5s ease-in-out'
-                    }}></div>
+                  <div className="proficiency-bar">
+                    <div 
+                      className="proficiency-fill"
+                      style={{ width: `${tech.level}%` }}
+                    ></div>
                   </div>
                 </div>
               ))}
@@ -516,55 +292,21 @@ function Home({ isDarkMode }) {
         </section>
 
         {/* Featured Projects Section */}
-        <section style={{
-          maxWidth: '1200px',
-          margin: '0 auto 6rem',
-          padding: '0 2rem',
-        }}>
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            textAlign: 'center',
-            marginBottom: '3rem'
-          }}>
-            <h2 style={{
-              fontSize: '2.5rem',
-              color: '#6d1f7e',
-              marginBottom: '1.5rem',
-              fontFamily: "'Montserrat', 'Inter', 'Segoe UI', sans-serif",
-              fontWeight: '700'
-            }}>
-              Featured Projects
-            </h2>
-            <div style={{
-              width: '60px',
-              height: '4px',
-              backgroundColor: '#6d1f7e',
-              marginBottom: '2rem',
-              borderRadius: '2px'
-            }}></div>
+        <section className="projects-section">
+          <div className="section-header">
+            <h2>Featured Projects</h2>
+            <div className="section-divider"></div>
           </div>
 
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(500px, 1fr))',
-            gap: '2rem',
-            marginBottom: '2rem'
-          }}>
+          <div className="projects-grid">
             {featuredProjects.map((project, index) => (
               <div 
                 key={index}
+                className="project-card"
                 style={{
                   backgroundColor: isDarkMode ? 'rgba(15, 15, 15, 0.6)' : 'rgba(255, 255, 255, 0.6)',
-                  backdropFilter: 'blur(16px)',
-                  WebkitBackdropFilter: 'blur(16px)',
-                  borderRadius: '12px',
-                  overflow: 'hidden',
                   boxShadow: isDarkMode ? '0 8px 32px rgba(0, 0, 0, 0.2)' : '0 8px 32px rgba(0, 0, 0, 0.05)',
-                  border: isDarkMode ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(0, 0, 0, 0.05)',
-                  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                  cursor: 'pointer'
+                  border: isDarkMode ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(0, 0, 0, 0.05)'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-8px)';
@@ -579,20 +321,10 @@ function Home({ isDarkMode }) {
                     : '0 8px 32px rgba(0, 0, 0, 0.05)';
                 }}
               >
-                <div style={{
-                  width: '100%',
-                  height: '250px',
-                  overflow: 'hidden'
-                }}>
+                <div className="project-image">
                   <img 
                     src={project.image} 
                     alt={project.title}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      transition: 'transform 0.5s ease'
-                    }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.transform = 'scale(1.05)';
                     }}
@@ -601,40 +333,23 @@ function Home({ isDarkMode }) {
                     }}
                   />
                 </div>
-                <div style={{
-                  padding: '1.5rem'
-                }}>
-                  <h3 style={{
-                    fontSize: '1.25rem',
-                    color: isDarkMode ? '#f5f6fa' : '#333333',
-                    marginBottom: '0.75rem',
-                    fontWeight: '600'
-                  }}>
+                <div className="project-content">
+                  <h3 style={{ color: isDarkMode ? '#f5f6fa' : '#333333' }}>
                     {project.title}
                   </h3>
-                  <p style={{
-                    fontSize: '0.95rem',
-                    color: isDarkMode ? '#cbd5e1' : '#667085',
-                    marginBottom: '1.5rem',
-                    lineHeight: '1.6'
-                  }}>
+                  <p style={{ color: isDarkMode ? '#cbd5e1' : '#667085' }}>
                     {project.description}
                   </p>
-                  <div style={{
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    gap: '0.5rem'
-                  }}>
+                  <div className="project-tags">
                     {project.tags.map((tag, tagIndex) => (
-                      <span key={tagIndex} style={{
-                        display: 'inline-block',
-                        backgroundColor: isDarkMode ? 'rgba(109, 31, 126, 0.1)' : 'rgba(109, 31, 126, 0.1)',
-                        color: '#6d1f7e',
-                        padding: '0.25rem 0.75rem',
-                        fontSize: '0.75rem',
-                        borderRadius: '50px',
-                        border: '1px solid #6d1f7e'
-                      }}>
+                      <span 
+                        key={tagIndex} 
+                        className="project-tag"
+                        style={{
+                          backgroundColor: isDarkMode ? 'rgba(109, 31, 126, 0.1)' : 'rgba(109, 31, 126, 0.1)',
+                          color: '#6d1f7e'
+                        }}
+                      >
                         {tag}
                       </span>
                     ))}
@@ -644,28 +359,10 @@ function Home({ isDarkMode }) {
             ))}
           </div>
           
-          <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            marginTop: '2rem'
-          }}>
+          <div className="more-info-button">
             <a 
               href="/#/about"
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                backgroundColor: 'transparent',
-                border: '1px solid #6d1f7e',
-                color: '#6d1f7e',
-                borderRadius: '4px',
-                padding: '0.75rem 1.5rem',
-                fontSize: '0.9rem',
-                fontWeight: '500',
-                cursor: 'pointer',
-                textDecoration: 'none',
-                transition: 'all 0.3s ease'
-              }}
+              className="learn-more-button"
               onMouseEnter={(e) => {
                 e.currentTarget.style.backgroundColor = '#6d1f7e';
                 e.currentTarget.style.color = 'white';
@@ -683,32 +380,6 @@ function Home({ isDarkMode }) {
           </div>
         </section>
       </div>
-      
-      {/* Add animations for the scroll indicator */}
-      <style>
-        {`
-          @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-              transform: translateX(-50%) translateY(0);
-            }
-            40% {
-              transform: translateX(-50%) translateY(-10px);
-            }
-            60% {
-              transform: translateX(-50%) translateY(-5px);
-            }
-          }
-          
-          @keyframes scrollBounce {
-            0%, 20%, 100% {
-              transform: translateX(-50%) translateY(0);
-            }
-            50% {
-              transform: translateX(-50%) translateY(10px);
-            }
-          }
-        `}
-      </style>
     </div>
   );
 }

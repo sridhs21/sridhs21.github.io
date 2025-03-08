@@ -1,19 +1,19 @@
 //App.js
 import React, { useState, useEffect } from 'react';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
-import Navbar from './Navbar';
+import Navbar from './navbar/navbar';
 import Home from './home/home';
 import Portfolio from './portfolio/portfolio';
 import Repos from './repos/repos';
 import About from './about/about';
 import Contact from './contact/contact';
-import LoadingScreen from './LoadingScreen';
+import LoadingScreen from './loading_screen/loading_screen';
 import './App.css';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
     const savedDarkMode = localStorage.getItem('darkMode');
-    return savedDarkMode ? JSON.parse(savedDarkMode) : true; // Default to dark mode
+    return savedDarkMode ? JSON.parse(savedDarkMode) : true; 
   });
 
   const [isLoading, setIsLoading] = useState(true);

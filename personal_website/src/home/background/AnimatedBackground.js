@@ -1,4 +1,5 @@
 // AnimatedBackground.js
+//original test file for home page
 import React from 'react';
 
 const AnimatedBackground = () => {

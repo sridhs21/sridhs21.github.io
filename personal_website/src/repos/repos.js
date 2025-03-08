@@ -1,6 +1,7 @@
 //repos.js
 import React, { useState, useEffect } from 'react';
 import { Github, Star, GitFork, FileCode, ExternalLink } from 'lucide-react';
+import './repos.css';
 
 function Repos({ isDarkMode }) {
   const [repos, setRepos] = useState([]);
@@ -44,253 +45,99 @@ function Repos({ isDarkMode }) {
     return colors[language] || '#6d1f7e';
   };
 
-  // Animation for cards appearing on load
   const getAnimationDelay = (index) => `${index * 0.1}s`;
+  const themeClass = isDarkMode ? 'dark-mode' : 'light-mode';
 
   return (
-    <div style={{
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      backgroundColor: isDarkMode ? '#0f0f0f' : '#ffffff',
-      transition: 'background-color 0.3s ease',
-      overflowY: 'auto',
-      marginTop: '64px'
-    }}>
-      <div style={{
-        maxWidth: '1200px',
-        margin: '0 auto',
-        padding: '2rem',
-        minHeight: '100%'
-      }}>
-        <h1 style={{
-          fontSize: '2rem',
-          fontWeight: '600',
-          marginBottom: '2rem',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '0.5rem',
-          color: isDarkMode ? '#ffffff' : '#6d1f7e',
-          animation: 'slideInDown 0.5s ease-out'
-        }}>
+    <div className={`repos-container ${themeClass}`}>
+      <div className="repos-content">
+        <h1 className={`repos-header ${themeClass}`}>
           <Github size={28} className="animate-bounce" />
           GitHub Repositories
         </h1>
 
         {loading ? (
-          <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            padding: '4rem'
-          }}>
+          <div className="loading-container">
             <div className="spinner" />
           </div>
         ) : error ? (
-          <div style={{
-            color: '#ef4444',
-            padding: '1rem',
-            textAlign: 'center',
-            animation: 'fadeIn 0.5s ease-out'
-          }}>
+          <div className="error-message">
             {error}
           </div>
         ) : (
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-            gap: '1.5rem'
-          }}>
-            <style>
-              {`
-                @keyframes slideInDown {
-                  from {
-                    transform: translateY(-20px);
-                    opacity: 0;
-                  }
-                  to {
-                    transform: translateY(0);
-                    opacity: 1;
-                  }
-                }
-                @keyframes fadeIn {
-                  from { opacity: 0; }
-                  to { opacity: 1; }
-                }
-                @keyframes scaleIn {
-                  from {
-                    transform: scale(0.95);
-                    opacity: 0;
-                  }
-                  to {
-                    transform: scale(1);
-                    opacity: 1;
-                  }
-                }
-                @keyframes pulse {
-                  0% { transform: scale(1); }
-                  50% { transform: scale(1.05); }
-                  100% { transform: scale(1); }
-                }
-                .language-dot {
-                  transition: transform 0.3s ease;
-                }
-                .language-dot:hover {
-                  transform: scale(1.5);
-                }
-              `}
-            </style>
+          <div className="repos-grid">
             {repos.map((repo, index) => (
               <a
                 key={repo.id}
                 href={repo.html_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{
-                  textDecoration: 'none',
-                  color: 'inherit',
-                  animation: 'scaleIn 0.5s ease-out forwards',
-                  animationDelay: getAnimationDelay(index),
-                  opacity: 0
-                }}
+                className="repo-link"
+                style={{ animationDelay: getAnimationDelay(index) }}
                 onMouseEnter={() => setHoveredRepo(repo.id)}
                 onMouseLeave={() => setHoveredRepo(null)}
               >
-                <div style={{
-                  background: isDarkMode ? 'rgba(15, 15, 15, 0.5)' : 'rgba(255, 255, 255, 0.9)',
-                  backdropFilter: 'blur(12px)',
-                  WebkitBackdropFilter: 'blur(12px)',
-                  borderRadius: '12px',
-                  padding: '1.5rem',
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  boxShadow: isDarkMode 
-                    ? '0 4px 6px rgba(0, 0, 0, 0.2)' 
-                    : '0 4px 6px rgba(0, 0, 0, 0.05)',
-                  border: isDarkMode 
-                    ? '1px solid rgba(255, 255, 255, 0.1)' 
-                    : '1px solid rgba(0, 0, 0, 0.05)',
-                }}>
-                  <div style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'flex-start',
-                    marginBottom: '1rem'
-                  }}>
-                    <div style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.5rem'
-                    }}>
+                <div className={`repo-card ${themeClass}`}>
+                  <div className="repo-header">
+                    <div className="repo-name-container">
                       <FileCode 
                         size={20} 
+                        className="repo-icon"
                         style={{ 
-                          color: '#6d1f7e',
-                          transform: hoveredRepo === repo.id ? 'rotate(360deg)' : 'rotate(0)',
-                          transition: 'transform 0.5s ease'
+                          transform: hoveredRepo === repo.id ? 'rotate(360deg)' : 'rotate(0)'
                         }} 
                       />
-                      <h3 style={{
-                        fontSize: '1.1rem',
-                        fontWeight: '600',
-                        color: isDarkMode ? 'var(--dark-text-primary)' : 'var(--light-text-primary)',
-                        margin: 0,
-                        transition: 'color 0.3s ease'
-                      }}>
+                      <h3 className={`repo-name ${themeClass}`}>
                         {repo.name}
                       </h3>
                     </div>
                     <ExternalLink 
                       size={16} 
+                      className="external-icon"
                       style={{ 
-                        color: '#6d1f7e',
-                        transform: hoveredRepo === repo.id ? 'translateX(3px)' : 'translateX(0)',
-                        transition: 'transform 0.3s ease'
+                        transform: hoveredRepo === repo.id ? 'translateX(3px)' : 'translateX(0)'
                       }} 
                     />
                   </div>
 
                   {repo.description && (
-                    <p style={{
-                      fontSize: '0.95rem',
-                      color: isDarkMode ? 'var(--dark-text-secondary)' : 'var(--light-text-secondary)',
-                      marginBottom: '1rem',
-                      flex: 1,
-                      transition: 'color 0.3s ease'
-                    }}>                    
+                    <p className={`repo-description ${themeClass}`}>
                       {repo.description}
                     </p>
                   )}
 
-                  <div style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    marginTop: 'auto'
-                  }}>
+                  <div className="repo-footer">
                     {repo.language && (
-                      <div style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '0.5rem'
-                      }}>
+                      <div className="repo-language">
                         <span 
                           className="language-dot"
                           style={{
-                            width: '12px',
-                            height: '12px',
-                            borderRadius: '50%',
                             backgroundColor: getLanguageColor(repo.language)
                           }}
                         />
-                        <span style={{
-                          fontSize: '0.9rem',
-                          color: isDarkMode ? 'var(--dark-text-secondary)' : 'var(--light-text-secondary)'
-                        }}>
+                        <span className={`language-name ${themeClass}`}>
                           {repo.language}
                         </span>
                       </div>
                     )}
 
-                    <div style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '1rem'
-                    }}>
-                      <div style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '0.25rem',
-                        fontSize: '0.9rem',
-                        color: isDarkMode ? '#cbd5e1' : '#a0aec0'
-                      }}>
+                    <div className="repo-stats">
+                      <div className={`stat-item ${themeClass}`}>
                         <Star 
                           size={16} 
+                          className="stat-icon"
                           style={{
-                            transition: 'transform 0.3s ease',
-                            transform: hoveredRepo === repo.id ? 'scale(1.2)' : 'scale(1)',
-                            color: '#6d1f7e'
+                            transform: hoveredRepo === repo.id ? 'scale(1.2)' : 'scale(1)'
                           }}
                         />
                         {repo.stargazers_count}
                       </div>
-                      <div style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '0.25rem',
-                        fontSize: '0.9rem',
-                        color: isDarkMode ? '#cbd5e1' : '#a0aec0'
-                      }}>
+                      <div className={`stat-item ${themeClass}`}>
                         <GitFork 
                           size={16}
+                          className="stat-icon"
                           style={{
-                            transition: 'transform 0.3s ease',
-                            transform: hoveredRepo === repo.id ? 'scale(1.2)' : 'scale(1)',
-                            color: '#6d1f7e'
+                            transform: hoveredRepo === repo.id ? 'scale(1.2)' : 'scale(1)'
                           }}
                         />
                         {repo.forks_count}
