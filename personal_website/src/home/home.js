@@ -291,22 +291,56 @@ function Home({ isDarkMode }) {
           </div>
         </section>
 
-        {/* Featured Projects Section */}
-        <section className="projects-section">
-          <div className="section-header">
-            <h2>Featured Projects</h2>
-            <div className="section-divider"></div>
+        {/* Featured Projects Section - Updated to match exact format from paste.txt */}
+        <section style={{
+          maxWidth: '1200px',
+          margin: '0 auto 6rem',
+          padding: '0 2rem',
+        }}>
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            textAlign: 'center',
+            marginBottom: '3rem'
+          }}>
+            <h2 style={{
+              fontSize: '2.5rem',
+              color: '#6d1f7e',
+              marginBottom: '1.5rem',
+              fontFamily: "'Montserrat', 'Inter', 'Segoe UI', sans-serif",
+              fontWeight: '700'
+            }}>
+              Featured Projects
+            </h2>
+            <div style={{
+              width: '60px',
+              height: '4px',
+              backgroundColor: '#6d1f7e',
+              marginBottom: '2rem',
+              borderRadius: '2px'
+            }}></div>
           </div>
 
-          <div className="projects-grid">
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(500px, 1fr))',
+            gap: '2rem',
+            marginBottom: '2rem'
+          }}>
             {featuredProjects.map((project, index) => (
               <div 
                 key={index}
-                className="project-card"
                 style={{
                   backgroundColor: isDarkMode ? 'rgba(15, 15, 15, 0.6)' : 'rgba(255, 255, 255, 0.6)',
+                  backdropFilter: 'blur(16px)',
+                  WebkitBackdropFilter: 'blur(16px)',
+                  borderRadius: '12px',
+                  overflow: 'hidden',
                   boxShadow: isDarkMode ? '0 8px 32px rgba(0, 0, 0, 0.2)' : '0 8px 32px rgba(0, 0, 0, 0.05)',
-                  border: isDarkMode ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(0, 0, 0, 0.05)'
+                  border: isDarkMode ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(0, 0, 0, 0.05)',
+                  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                  cursor: 'pointer'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-8px)';
@@ -321,10 +355,20 @@ function Home({ isDarkMode }) {
                     : '0 8px 32px rgba(0, 0, 0, 0.05)';
                 }}
               >
-                <div className="project-image">
+                <div style={{
+                  width: '100%',
+                  height: '250px',
+                  overflow: 'hidden'
+                }}>
                   <img 
                     src={project.image} 
                     alt={project.title}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      transition: 'transform 0.5s ease'
+                    }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.transform = 'scale(1.05)';
                     }}
@@ -333,23 +377,40 @@ function Home({ isDarkMode }) {
                     }}
                   />
                 </div>
-                <div className="project-content">
-                  <h3 style={{ color: isDarkMode ? '#f5f6fa' : '#333333' }}>
+                <div style={{
+                  padding: '1.5rem'
+                }}>
+                  <h3 style={{
+                    fontSize: '1.25rem',
+                    color: isDarkMode ? '#f5f6fa' : '#333333',
+                    marginBottom: '0.75rem',
+                    fontWeight: '600'
+                  }}>
                     {project.title}
                   </h3>
-                  <p style={{ color: isDarkMode ? '#cbd5e1' : '#667085' }}>
+                  <p style={{
+                    fontSize: '0.95rem',
+                    color: isDarkMode ? '#cbd5e1' : '#667085',
+                    marginBottom: '1.5rem',
+                    lineHeight: '1.6'
+                  }}>
                     {project.description}
                   </p>
-                  <div className="project-tags">
+                  <div style={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    gap: '0.5rem'
+                  }}>
                     {project.tags.map((tag, tagIndex) => (
-                      <span 
-                        key={tagIndex} 
-                        className="project-tag"
-                        style={{
-                          backgroundColor: isDarkMode ? 'rgba(109, 31, 126, 0.1)' : 'rgba(109, 31, 126, 0.1)',
-                          color: '#6d1f7e'
-                        }}
-                      >
+                      <span key={tagIndex} style={{
+                        display: 'inline-block',
+                        backgroundColor: isDarkMode ? 'rgba(109, 31, 126, 0.1)' : 'rgba(109, 31, 126, 0.1)',
+                        color: '#6d1f7e',
+                        padding: '0.25rem 0.75rem',
+                        fontSize: '0.75rem',
+                        borderRadius: '50px',
+                        border: '1px solid #6d1f7e'
+                      }}>
                         {tag}
                       </span>
                     ))}
@@ -359,10 +420,28 @@ function Home({ isDarkMode }) {
             ))}
           </div>
           
-          <div className="more-info-button">
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            marginTop: '2rem'
+          }}>
             <a 
               href="/#/about"
-              className="learn-more-button"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                backgroundColor: 'transparent',
+                border: '1px solid #6d1f7e',
+                color: '#6d1f7e',
+                borderRadius: '4px',
+                padding: '0.75rem 1.5rem',
+                fontSize: '0.9rem',
+                fontWeight: '500',
+                cursor: 'pointer',
+                textDecoration: 'none',
+                transition: 'all 0.3s ease'
+              }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.backgroundColor = '#6d1f7e';
                 e.currentTarget.style.color = 'white';
