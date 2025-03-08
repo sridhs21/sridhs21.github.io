@@ -46,7 +46,7 @@ function About({ isDarkMode }) {
               <h2 className={`bio-heading ${themeClass}`}>My Journey</h2>
               
               <p className={`bio-paragraph ${themeClass}`}>
-                Hey there! I'm Swaroop Sridhar, a tech enthusiast and budding Computer Scientist who gets genuinely excited about Machine Learning, Generative AI, and making sense of data! When I'm not coding, you can find me enjoying various outdoor activities and spending time with friends. I'm currently pursuing my Bachelor's at RPI in Computer Science and ITWS, where I've found my passion in Machine Learning and can't wait to see where it takes me!
+                Hey there! I'm Swaroop Sridhar, a tech enthusiast and budding Computer Scientist who gets genuinely excited about Machine Learning, Generative AI, and making sense of data! When I'm not coding, you can find me enjoying various outdoor activities and spending time with friends or with my dog. I'm currently pursuing my Bachelor's at RPI in Computer Science and ITWS, where I've found my passion in Machine Learning and can't wait to see where it takes me!
               </p>
               
               <p className={`bio-paragraph ${themeClass}`}>
