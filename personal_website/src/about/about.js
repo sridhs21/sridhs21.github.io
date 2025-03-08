@@ -112,7 +112,7 @@ function About({ isDarkMode }) {
                 lineHeight: '1.8',
                 color: isDarkMode ? 'var(--dark-text-secondary)' : 'var(--light-text-secondary)',
               }}>
-                I'm Swaroop Sridhar, an aspiring Computer Scientist with a strong interest in Machine Learning, Generative AI, and Data Science. Currently pursuing my Bachelor of Science in Computer Science and Information Technology and Web Science at Rensselaer Polytechnic Institute with a concentration in Machine Learning.
+                Hey there! I'm Swaroop Sridhar, a tech enthusiast and budding Computer Scientist who gets genuinely excited about Machine Learning, Generative AI, and making sense of data! When I'm not coding, you can find me enjoying various outdoor activities and spending time with friends. I'm currently pursuing my Bachelor's at RPI in Computer Science and ITWS, where I've found my passion in Machine Learning and can't wait to see where it takes me!
               </p>
               
               <p style={{
@@ -121,7 +121,7 @@ function About({ isDarkMode }) {
                 lineHeight: '1.8',
                 color: isDarkMode ? 'var(--dark-text-secondary)' : 'var(--light-text-secondary)',
               }}>
-                I'm passionate about applying my knowledge of Neural Network training, Object-Oriented Programming, Cloud Computing, Web Development, and Robotics in real-world settings. My academic journey has equipped me with strong foundational knowledge in algorithms, data structures, and software engineering principles.
+                My friends tell me I light up when talking about Neural Networks or solving tricky programming challenges! Beyond my technical interests, I've got a creative side too - whether I'm designing intuitive user interfaces, visualizing complex data in compelling ways, or bringing artistic elements into my projects. I find that this blend of logical and creative thinking helps me approach problems from multiple angles. My journey through college has been a mix of late-night coding sessions, unforgettable hackathons, and gradually building a toolkit of algorithms, data structures, and software engineering practices.
               </p>
               
               <p style={{
@@ -130,7 +130,7 @@ function About({ isDarkMode }) {
                 lineHeight: '1.8',
                 color: isDarkMode ? 'var(--dark-text-secondary)' : 'var(--light-text-secondary)',
               }}>
-                I've gained hands-on experience through various projects, including developing full-stack web applications, creating AI models for drug discovery, and implementing complex algorithms for data analysis. I'm excited to continue growing my skills and contributing to innovative solutions in the tech industry.
+                I've had a blast working on projects that actually make a difference—from building web apps, to designing AI models that could have real-world impact, or to tackling algorithm puzzles that challenge my thinking! Looking forward, I'm thrilled to build on what I've learned and dive into the evolving tech landscape. Whether it's pushing the boundaries of responsible AI, developing sustainable tech solutions, or creating more accessible digital tools, I see endless possibilities. I'm pumped about making tech that actually helps people and can't wait to team up on cool projects that'll change how we use digital stuff every day!
               </p>
               
               <div style={{
