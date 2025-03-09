@@ -81,11 +81,11 @@ function Home({ isDarkMode }) {
     {
       category: "Languages",
       skills: [
-        { name: "Python", level: "Intermediate" },
-        { name: "JavaScript", level: "Intermediate" },
-        { name: "Java", level: "Intermediate" },
         { name: "C/C++", level: "Advanced" },
-        { name: "HTML/CSS", level: "Advanced" }
+        { name: "HTML/CSS", level: "Advanced" },
+        { name: "Python", level: "Intermediate" },
+        { name: "Java", level: "Intermediate" },
+        { name: "JavaScript", level: "Intermediate" }
       ]
     },
     {
@@ -102,20 +102,20 @@ function Home({ isDarkMode }) {
       category: "Web Development",
       skills: [
         { name: "React.js", level: "Intermediate" },
-        { name: "Flask", level: "Beginner" },
         { name: "REST APIs", level: "Intermediate" },
         { name: "Full-Stack Dev", level: "Intermediate" },
-        { name: "Responsive Design", level: "Intermediate" }
+        { name: "Responsive Design", level: "Intermediate" },
+        { name: "Flask", level: "Beginner" }
       ]
     },
     {
       category: "Tools & Technologies",
       skills: [
         { name: "Git/GitHub", level: "Intermediate" },
+        { name: "Version Control", level: "Intermediate" },
         { name: "Microsoft Azure", level: "Basic" },
         { name: "SQL", level: "Basic" },
-        { name: "Agile/Scrum", level: "Basic" },
-        { name: "Version Control", level: "Intermediate" }
+        { name: "Agile/Scrum", level: "Basic" }
       ]
     }
   ];  
