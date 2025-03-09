@@ -77,6 +77,49 @@ function Home({ isDarkMode }) {
     }
   ];
 
+  const coreSkills = [
+    {
+      category: "Languages",
+      skills: [
+        { name: "Python", level: "Intermediate" },
+        { name: "JavaScript", level: "Intermediate" },
+        { name: "Java", level: "Intermediate" },
+        { name: "C/C++", level: "Advanced" },
+        { name: "HTML/CSS", level: "Advanced" }
+      ]
+    },
+    {
+      category: "Machine Learning & AI",
+      skills: [
+        { name: "PyTorch", level: "Basic" },
+        { name: "Scikit-learn", level: "Basic" },
+        { name: "Data Analysis", level: "Basic" },
+        { name: "CatBoost/XGBoost", level: "Basic" },
+        { name: "Pandas/NumPy", level: "Basic" }
+      ]
+    },
+    {
+      category: "Web Development",
+      skills: [
+        { name: "React.js", level: "Intermediate" },
+        { name: "Flask", level: "Beginner" },
+        { name: "REST APIs", level: "Intermediate" },
+        { name: "Full-Stack Dev", level: "Intermediate" },
+        { name: "Responsive Design", level: "Intermediate" }
+      ]
+    },
+    {
+      category: "Tools & Technologies",
+      skills: [
+        { name: "Git/GitHub", level: "Intermediate" },
+        { name: "Microsoft Azure", level: "Basic" },
+        { name: "SQL", level: "Basic" },
+        { name: "Agile/Scrum", level: "Basic" },
+        { name: "Version Control", level: "Intermediate" }
+      ]
+    }
+  ];  
+
   const featuredProjects = [
     {
       title: "RPI Campus Availability Application",
@@ -307,60 +350,54 @@ function Home({ isDarkMode }) {
             ))}
           </div>
 
-          {/* Tech Proficiency */}
-          <div 
-            className="tech-proficiency"
-            style={{
-              backgroundColor: isDarkMode ? 'rgba(15, 15, 15, 0.6)' : 'rgba(255, 255, 255, 0.6)',
-              boxShadow: isDarkMode ? '0 8px 32px rgba(0, 0, 0, 0.2)' : '0 8px 32px rgba(0, 0, 0, 0.05)',
-              border: isDarkMode ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(0, 0, 0, 0.05)'
-            }}
-          >
-            <h3>Technology Proficiency</h3>
-            
-            <div className="proficiency-grid" style={{
-              display: isMobile ? 'grid' : 'flex',
-              gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'auto',
-              gap: isMobile ? '1rem' : '1.5rem',
+          <div className="tech-proficiency-header">
+            <h3 style={{ 
+              color: isDarkMode ? '#f5f6fa' : '#333333',
+              fontSize: isMobile ? '1.5rem' : '1.75rem',
+              textAlign: 'center',
+              marginBottom: '2rem',
+              fontWeight: '600'
             }}>
-              {[
-                { name: 'Python', level: 95 },
-                { name: 'Java', level: 90 },
-                { name: 'JavaScript', level: 85 },
-                { name: 'C/C++', level: 85 },
-                { name: 'HTML/CSS', level: 90 },
-                { name: 'Machine Learning', level: 85 },
-                { name: 'React', level: 80 },
-                { name: 'Flask', level: 85 },
-                { name: 'Data Analysis', level: 82 },
-                { name: 'REST APIs', level: 88 },
-                { name: 'Git/GitHub', level: 90 },
-                { name: 'Algorithms', level: 85 }
-              ].map((tech, index) => (
-                <div key={index} className="proficiency-item" style={{
-                  width: isMobile ? '100%' : '180px',
-                }}>
-                  <div className="proficiency-header">
-                    <span style={{ color: isDarkMode ? '#f5f6fa' : '#333333' }}>
-                      {tech.name}
-                    </span>
-                    <span className="proficiency-percentage">
-                      {tech.level}%
-                    </span>
-                  </div>
-                  <div className="proficiency-bar">
+              Technology Proficiency
+            </h3>
+          </div>
+
+          {/* Simple Skills Categories */}
+          <div className="simple-skills-container">
+            {coreSkills.map((skillGroup, idx) => (
+              <div 
+                key={idx}
+                className="simple-skill-card"
+                style={{
+                  backgroundColor: isDarkMode ? 'rgba(15, 15, 15, 0.6)' : 'rgba(255, 255, 255, 0.6)',
+                  boxShadow: isDarkMode ? '0 8px 32px rgba(0, 0, 0, 0.2)' : '0 8px 32px rgba(0, 0, 0, 0.05)',
+                  border: isDarkMode ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(0, 0, 0, 0.05)'
+                }}
+              >
+                <h3 className="simple-skill-title" style={{ color: isDarkMode ? '#f5f6fa' : '#333333' }}>
+                  {skillGroup.category}
+                </h3>
+                <div className="simple-skills-list">
+                  {skillGroup.skills.map((skill, skillIdx) => (
                     <div 
-                      className="proficiency-fill"
-                      style={{ width: `${tech.level}%` }}
-                    ></div>
-                  </div>
+                      key={skillIdx} 
+                      className={`simple-skill-tag ${skill.level.toLowerCase()}`}
+                      style={{
+                        backgroundColor: isDarkMode ? 'rgba(109, 31, 126, 0.1)' : 'rgba(109, 31, 126, 0.1)',
+                        color: '#6d1f7e'
+                      }}
+                    >
+                      <span className="skill-name">{skill.name}</span>
+                      <span className="skill-level">{skill.level}</span>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </section>
 
-        {/* Featured Projects Section - Made responsive */}
+        {/* Featured Projects Section*/}
         <section style={{
           maxWidth: '1200px',
           margin: '0 auto 6rem',
