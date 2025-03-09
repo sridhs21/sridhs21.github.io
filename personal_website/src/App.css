@@ -1,21 +1,21 @@
-/* App.css */
+/* App css */
 :root {
   --highlight-purple: #6d1f7e;
   --highlight-purple-light: #8f3ba0;
   --highlight-purple-hover: #9f4bb0;
-  --highlight-purple-dark: #551762; /* Darker version for text in light mode */
+  --highlight-purple-dark: #551762; 
   
-  /* Dark theme colors */
+  
   --dark-bg: #0f0f0f;
   --dark-bg-secondary: #1a1a1a;
   --dark-text-primary: #f5f6fa;
   --dark-text-secondary: #cbd5e1;
   
-  /* Light theme colors */
+  
   --light-bg: #ffffff;
   --light-bg-secondary: #f7f7f7;
-  --light-text-primary: #222222; /* Darker than before for better contrast */
-  --light-text-secondary: #551762; /* Using dark purple instead of gray */
+  --light-text-primary: #222222; 
+  --light-text-secondary: #551762; 
   
   --transition-speed: 0.2s;
 }
@@ -55,7 +55,6 @@ body.dark-mode {
   z-index: 1;
 }
 
-/* Profile Image and Container Styles */
 .profile-container {
   position: relative;
   width: 250px;
@@ -83,7 +82,7 @@ body.dark-mode {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 30%;  /* Adjust this value to control image positioning */
+  object-position: center 30%;  
   display: block;
   transition: all 0.3s ease;
 }
@@ -100,7 +99,6 @@ body.dark-mode {
   z-index: 1;
 }
 
-/* Orbiting dots animation */
 .orbit {
   position: absolute;
   top: 50%;
@@ -135,7 +133,6 @@ body.dark-mode {
   box-shadow: 0 0 10px rgba(109, 31, 126, 0.5);
 }
 
-/* Animations */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
@@ -175,7 +172,6 @@ body.dark-mode {
   }
 }
 
-/* Interactive Elements */
 .button {
   padding: 10px 20px;
   border: none;
@@ -220,7 +216,6 @@ body.dark-mode {
   color: var(--highlight-purple-light);
 }
 
-/* Form Elements */
 .input {
   padding: 8px 16px;
   border: 1px solid #333;
@@ -236,7 +231,6 @@ body.dark-mode {
   box-shadow: 0 0 0 2px rgba(109, 31, 126, 0.1);
 }
 
-/* Card Elements */
 .card {
   padding: 20px;
   border-radius: 8px;
@@ -251,7 +245,6 @@ body.dark-mode {
   border-color: var(--highlight-purple);
 }
 
-/* Dark Mode Styles */
 .dark-mode .nav-link {
   color: var(--dark-text);
 }
@@ -273,7 +266,6 @@ body.dark-mode {
   border-color: #333;
 }
 
-/* Theme Toggle Button */
 .theme-toggle {
   background: none;
   border: none;
@@ -290,7 +282,6 @@ body.dark-mode {
   transform: translateY(-2px);
 }
 
-/* Mobile Responsive Styles */
 @media (max-width: 768px) {
   .main-content {
     padding: 70px 15px 15px;
@@ -321,7 +312,6 @@ body.dark-mode {
   }
 }
 
-/* Home Container Styles */
 .home-container {
   min-height: 100vh;
   overflow-x: hidden;
@@ -340,7 +330,6 @@ body.dark-mode {
   will-change: transform;
 }
 
-/* Page Transitions */
 .page-container {
   padding: 20px;
   border-radius: 8px;
@@ -369,7 +358,6 @@ body.dark-mode {
   animation: fadeIn 0.4s ease-out;
 }
 
-/* Additional Animations */
 @keyframes scaleIn {
   from {
     transform: scale(0.95);
@@ -381,7 +369,6 @@ body.dark-mode {
   }
 }
 
-/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -399,25 +386,21 @@ body.dark-mode {
   background: rgba(109, 31, 126, 0.5);
 }
 
-/* Focus Styles */
 :focus {
   outline: 2px solid var(--highlight-purple);
   outline-offset: 2px;
 }
 
-/* Selection Styles */
 ::selection {
   background-color: rgba(109, 31, 126, 0.2);
   color: inherit;
 }
 
-/* Optional: Add a loading skeleton animation */
 @keyframes pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: .5; }
 }
 
-/* Add to your App.css */
 .spinner {
   width: 40px;
   height: 40px;
@@ -613,13 +596,68 @@ body {
 }
 
 @media (max-width: 768px) {
+  .desktop-nav {
+    display: none !important;
+  }
+  
+  .mobile-menu-button {
+    display: flex !important;
+  }
+  
   .nav-link {
     display: block !important;
     padding: 1rem 0 !important;
   }
-  
+}
+
+@media (min-width: 769px) {
+  .mobile-menu {
+    display: none !important;
+  }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .desktop-nav {
+    display: none !important;
+  }
   
   .mobile-menu-button {
-    display: block !important;
+    display: flex !important;
+  }
+  
+  .mobile-menu {
+    max-height: 80vh !important;
+    overflow-y: auto !important;
+  }
+}
+
+nav .mobile-menu-button {
+  display: none; 
+}
+
+nav .theme-toggle {
+  z-index: 10; 
+}
+
+.mobile-menu {
+  z-index: 999;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.mobile-menu a {
+  padding: 1rem 1.5rem !important;
+  border-bottom: 1px solid rgba(109, 31, 126, 0.1);
+  font-size: 1rem !important;
+}
+
+nav > div {
+  width: 100%;
+  max-width: 1200px;
+}
+
+@media (max-width: 768px) {
+  nav > div {
+    padding: 0 1rem !important;
+    justify-content: space-between !important;
   }
 }
