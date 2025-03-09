@@ -1,6 +1,5 @@
-//App.js
 import React, { useState, useEffect } from 'react';
-import { HashRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import Navbar from './navbar/navbar';
 import Home from './home/home';
 import Portfolio from './portfolio/portfolio';
@@ -9,6 +8,17 @@ import About from './about/about';
 import Contact from './contact/contact';
 import LoadingScreen from './loading_screen/loading_screen';
 import './App.css';
+
+// ScrollToTop component that will reset scroll position on route change
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  
+  return null;
+}
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -62,6 +72,8 @@ function App() {
             backgroundColor: isDarkMode ? '#0f0f0f' : '#ffffff'
           }}
         >
+          {/* Add ScrollToTop component inside Router */}
+          <ScrollToTop />
           <Navbar isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
           <main className="main-content">
             <Routes>
