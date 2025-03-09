@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Sun, Moon, Menu, X } from 'lucide-react';
+import './navbar.css';
 
 const Navbar = ({ isDarkMode, toggleTheme }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,52 +23,10 @@ const Navbar = ({ isDarkMode, toggleTheme }) => {
   }, []);
 
   return (
-    <nav style={{
-      backgroundColor: isDarkMode ? 'rgba(15, 15, 15, 0.9)' : 'rgba(255, 255, 255, 0.9)',
-      borderBottom: `1px solid ${isDarkMode ? '#333' : '#e5e5e5'}`,
-      position: 'fixed',
-      width: '100%',
-      top: 0,
-      left: 0,
-      zIndex: 1000,
-      backdropFilter: 'blur(8px)',
-      WebkitBackdropFilter: 'blur(8px)',
-      boxShadow: isDarkMode ? '0 2px 4px rgba(0,0,0,0.2)' : '0 2px 4px rgba(0,0,0,0.1)',
-      transition: 'all 0.3s ease',
-      height: isScrolled ? '56px' : '64px',
-    }}>
-      <div style={{
-        maxWidth: '1200px',
-        margin: '0 auto',
-        padding: '0 20px',
-        height: '100%',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-      }}>
-        {/* Logo/Brand */}
-        <div 
-          style={{
-            fontSize: '1.25rem',
-            fontWeight: '600',
-            color: '#6d1f7e',
-            cursor: 'pointer'
-          }}
-          onClick={() => handleNavigation('/')}
-        >
-          SS
-        </div>
-
-        {/* Desktop Navigation Items */}
-        <div className="desktop-nav" style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '32px',
-          position: 'absolute',
-          left: '50%',
-          transform: 'translateX(-50%)'
-        }}>
+    <nav className={`navbar ${isDarkMode ? 'dark' : 'light'} ${isScrolled ? 'scrolled' : ''}`}>
+      <div className="navbar-container">
+        {/* Desktop Navigation Items - Now centered in navbar */}
+        <div className="desktop-nav">
           {[
             { label: 'Home', path: '/' },
             { label: 'Portfolio', path: '/portfolio' },
@@ -78,14 +37,7 @@ const Navbar = ({ isDarkMode, toggleTheme }) => {
             <Link
               key={item.label}
               to={item.path}
-              className="nav-link"
-              style={{
-                fontSize: '14px',
-                padding: '8px 0',
-                color: isDarkMode ? 'var(--dark-text-primary)' : 'var(--light-text-primary)',
-                transition: 'all 0.2s ease',
-                textDecoration: 'none'
-              }}
+              className={`nav-link ${isDarkMode ? 'dark' : 'light'}`}
               onClick={() => handleNavigation(item.path)}
             >
               {item.label}
@@ -94,25 +46,12 @@ const Navbar = ({ isDarkMode, toggleTheme }) => {
         </div>
 
         {/* Right side controls */}
-        <div style={{ 
-          display: 'flex', 
-          alignItems: 'center',
-          gap: '8px'
-        }}>
+        <div className="navbar-controls">
           {/* Theme toggle */}
           <button
             onClick={toggleTheme}
-            className="theme-toggle"
+            className={`theme-toggle ${isDarkMode ? 'dark' : 'light'}`}
             aria-label="Toggle dark mode"
-            style={{
-              color: isDarkMode ? '#f5f6fa' : '#333333',
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              padding: '8px'
-            }}
           >
             {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
           </button>
@@ -122,13 +61,6 @@ const Navbar = ({ isDarkMode, toggleTheme }) => {
             onClick={() => setIsOpen(!isOpen)}
             className="mobile-menu-button"
             aria-label={isOpen ? "Close menu" : "Open menu"}
-            style={{
-              padding: '8px',
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              display: 'none' 
-            }}
           >
             {isOpen ? 
               <X size={24} color={isDarkMode ? '#f5f6fa' : '#333333'} /> : 
@@ -139,21 +71,9 @@ const Navbar = ({ isDarkMode, toggleTheme }) => {
 
         {/* Mobile Menu */}
         <div
-          className="mobile-menu"
+          className={`mobile-menu ${isDarkMode ? 'dark' : 'light'} ${isOpen ? 'open' : ''}`}
           style={{
-            position: 'fixed',
-            top: isScrolled ? '56px' : '64px',
-            left: 0,
-            right: 0,
-            background: isDarkMode ? 'rgba(15, 15, 15, 0.95)' : 'rgba(255, 255, 255, 0.95)',
-            backdropFilter: 'blur(8px)',
-            WebkitBackdropFilter: 'blur(8px)',
-            boxShadow: isDarkMode ? '0 2px 4px rgba(0,0,0,0.2)' : '0 2px 4px rgba(0,0,0,0.1)',
-            maxHeight: isOpen ? '500px' : '0',
-            opacity: isOpen ? 1 : 0,
-            overflow: 'hidden',
-            transition: 'max-height 0.3s ease, opacity 0.3s ease',
-            zIndex: 999
+            top: isScrolled ? '56px' : '64px'
           }}
         >
           {[
@@ -166,14 +86,7 @@ const Navbar = ({ isDarkMode, toggleTheme }) => {
             <Link
               key={item.label}
               to={item.path}
-              style={{
-                padding: '1rem 1.5rem',
-                fontSize: '1rem',
-                color: isDarkMode ? '#f5f6fa' : '#333333',
-                textDecoration: 'none',
-                borderBottom: `1px solid ${isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)'}`,
-                display: 'block'
-              }}
+              className={`mobile-nav-link ${isDarkMode ? 'dark' : 'light'}`}
               onClick={() => handleNavigation(item.path)}
             >
               {item.label}
