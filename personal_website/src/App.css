@@ -664,17 +664,36 @@ nav > div {
 
 @media (max-height: 500px) and (orientation: landscape) {
   .hero-section {
-    padding-top: 70px !important; 
-    min-height: 100vh !important;
+    padding-top: 100px !important; 
+    min-height: 120vh !important; 
+    margin-bottom: 60px !important; 
   }
   
   .profile-container {
-    transform: scale(0.6) !important; 
-    margin-top: 1rem !important;
+    transform: scale(0.5) !important; 
+    margin-top: 2rem !important; 
   }
   
   .hero-content {
     gap: 0 !important; 
+    padding-top: 40px !important; 
+  }
+  
+  
+  .skills-section {
+    margin-top: 140px !important; 
+    padding-top: 40px !important;
+    clear: both !important; 
+  }
+  
+  
+  .scroll-indicator {
+    display: none !important; 
+  }
+  
+  
+  .hero-buttons {
+    margin-bottom: 30px !important;
   }
 }
 
@@ -685,11 +704,35 @@ nav > div {
     justify-content: center !important;
     align-items: center !important;
     text-align: center !important;
+    width: 100% !important; 
   }
   
   
-  a[href="/#/about"].secondary-button {
-    justify-content: center !important;
-    text-align: center !important;
+  .hero-buttons {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  
+  
+  .content-sections {
+    margin-top: 40px !important; 
+  }
+}
+
+.skills-section {
+  position: relative !important; 
+  z-index: 3 !important; 
+}
+
+@media (max-height: 400px) {
+  .hero-section {
+    padding-top: 120px !important;
+    min-height: 140vh !important;
+  }
+  
+  .skills-section {
+    margin-top: 180px !important;
   }
 }
