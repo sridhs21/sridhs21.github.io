@@ -43,6 +43,16 @@ const Navbar = ({ isDarkMode, toggleTheme }) => {
               {item.label}
             </Link>
           ))}
+          
+          {/* Resume link */}
+          <a 
+            className={`nav-link ${isDarkMode ? 'dark' : 'light'}`}
+            href="/files/Swaroop_Sridhar_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Resume
+          </a>
         </div>
 
         {/* Right side controls */}
@@ -92,6 +102,17 @@ const Navbar = ({ isDarkMode, toggleTheme }) => {
               {item.label}
             </Link>
           ))}
+          
+          {/* Resume link in mobile menu */}
+          <a
+            className={`mobile-nav-link ${isDarkMode ? 'dark' : 'light'}`}
+            href="/files/Swaroop_Sridhar_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setIsOpen(false)}
+          >
+            Resume
+          </a>
         </div>
       </div>
     </nav>

@@ -383,12 +383,38 @@ function Home({ isDarkMode }) {
                       key={skillIdx} 
                       className={`simple-skill-tag ${skill.level.toLowerCase()}`}
                       style={{
-                        backgroundColor: isDarkMode ? 'rgba(109, 31, 126, 0.1)' : 'rgba(109, 31, 126, 0.1)',
-                        color: '#6d1f7e'
+
+                        backgroundColor: isDarkMode 
+                          ? 'rgba(109, 31, 126, 0.3)' 
+                          : 'rgba(109, 31, 126, 0.15)',
+
+                        color: isDarkMode ? '#f0d8f5' : '#551762',
+
+                        border: isDarkMode 
+                          ? '1px solid rgba(240, 216, 245, 0.5)' 
+                          : '1px solid #6d1f7e'
                       }}
                     >
-                      <span className="skill-name">{skill.name}</span>
-                      <span className="skill-level">{skill.level}</span>
+                      <span className="skill-name" style={{
+
+                        fontWeight: '600',
+                        fontSize: '0.95rem'
+                      }}>
+                        {skill.name}
+                      </span>
+                      <span className="skill-level" style={{
+
+                        backgroundColor: isDarkMode 
+                          ? 'rgba(109, 31, 126, 0.5)' 
+                          : 'rgba(109, 31, 126, 0.25)',
+                        color: isDarkMode ? '#ffffff' : '#551762',
+                        fontWeight: '600',
+                        padding: '0.25rem 0.6rem',
+                        borderRadius: '20px',
+                        fontSize: '0.75rem'
+                      }}>
+                        {skill.level}
+                      </span>
                     </div>
                   ))}
                 </div>

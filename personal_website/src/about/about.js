@@ -1,6 +1,5 @@
-//about.js
 import React from 'react';
-import { BookOpen, Download } from 'lucide-react';
+import { BookOpen } from 'lucide-react';
 import './about.css';
 
 function About({ isDarkMode }) {
@@ -78,17 +77,6 @@ function About({ isDarkMode }) {
                   </h3>
                   <p className={`stat-sublabel ${themeClass}`}>Expected</p>
                 </div>
-              </div>
-              
-              <div>
-                <a 
-                  href="/files/Swaroop_Sridhar_Resume.pdf" 
-                  download="Swaroop_Sridhar_Resume.pdf"
-                  className="resume-button"
-                >
-                  <Download size={20} />
-                  Download Resume
-                </a>
               </div>
             </div>
           </div>

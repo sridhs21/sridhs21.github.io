@@ -1,3 +1,4 @@
+/* Navbar css */
 .navbar {
     position: fixed;
     width: 100%;
@@ -89,7 +90,7 @@
     background: none;
     border: none;
     cursor: pointer;
-    display: none; 
+    display: none;
   }
   
   .mobile-menu {
@@ -149,7 +150,7 @@
     }
     
     .navbar-container {
-      justify-content: flex-end; 
+      justify-content: flex-end;
     }
   }
   
