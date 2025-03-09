@@ -16,8 +16,8 @@ function Portfolio({ isDarkMode }) {
       image: "/images/parking_application.png",
       technologies: ["Python", "Flask", "JavaScript", "Leaflet.js", "TensorFlow"],
       category: "web",
-      githubLink: "https://github.com/sridhs21/rpi-campus-availability",
-      demoLink: "https://campus-availability.demo.com",
+      githubLink: "https://github.com/sridhs21/parkingavailabilityapp",
+      demoLink: "",
       featured: true
     },
     {
@@ -28,7 +28,7 @@ function Portfolio({ isDarkMode }) {
       image: "/images/drug_discovery.jpg",
       technologies: ["Python", "PyTorch", "Scikit-learn", "Pandas", "RDKit", "Molecular Visualization"],
       category: "machine-learning",
-      githubLink: "https://github.com/sridhs21/ai-drug-discovery",
+      githubLink: "https://github.com/sridhs21/TDC-Machine-Learning-Tasks",
       demoLink: "",
       featured: true
     },
@@ -40,7 +40,7 @@ function Portfolio({ isDarkMode }) {
       image: "/images/adt_graph.jpg",
       technologies: ["Java", "JavaFX", "Data Structures", "Algorithms", "Graph Theory"],
       category: "algorithm",
-      githubLink: "https://github.com/sridhs21/graph-algorithms",
+      githubLink: "",
       demoLink: "",
       featured: false
     },
