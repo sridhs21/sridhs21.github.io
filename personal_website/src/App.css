@@ -661,3 +661,35 @@ nav > div {
     justify-content: space-between !important;
   }
 }
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero-section {
+    padding-top: 70px !important; 
+    min-height: 100vh !important;
+  }
+  
+  .profile-container {
+    transform: scale(0.6) !important; 
+    margin-top: 1rem !important;
+  }
+  
+  .hero-content {
+    gap: 0 !important; 
+  }
+}
+
+@media (max-width: 768px) {
+  .primary-button,
+  .secondary-button {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  
+  
+  a[href="/#/about"].secondary-button {
+    justify-content: center !important;
+    text-align: center !important;
+  }
+}
