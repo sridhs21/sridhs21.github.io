@@ -11,6 +11,14 @@ function About({ isDarkMode }) {
       school: 'Rensselaer Polytechnic Institute – School of Science',
       location: 'Troy, NY',
       description: 'Relevant Courses: Data Structures, Introduction to Algorithms, Operating Systems, Principles of Software, Machine Learning and Optimization, AI For Science'
+    }, 
+    {
+      year: '2013 - 2022',
+      degree: '',
+      concentration: '',
+      school: 'Academy for Science and Design',
+      location: 'Troy, NY',
+      description: 'Relevant Courses: Advanced Computer Science (Java/C++)'
     }
   ];
 
