@@ -1,55 +1,60 @@
-import React, { useState, useRef } from 'react';
-import { Mail, Phone, Linkedin, Github, Send, MapPin } from 'lucide-react';
-import emailjs from '@emailjs/browser';
-import './contact.css';
+import React, { useState, useRef } from "react";
+import { Mail, Phone, Linkedin, Github, Send, MapPin } from "lucide-react";
+import emailjs from "@emailjs/browser";
+import "./contact.css";
 
 function Contact({ isDarkMode }) {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState({ success: false, message: '' });
+  const [submitStatus, setSubmitStatus] = useState({
+    success: false,
+    message: "",
+  });
   const formRef = useRef();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prevData => ({
+    setFormData((prevData) => ({
       ...prevData,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitStatus({ success: false, message: '' });
+    setSubmitStatus({ success: false, message: "" });
 
-    const serviceId = 'service_xl68yuu';
-    const templateId = 'template_doyovp1';
-    const publicKey = 'iw2dcI-RAAi9DNiD6';
+    const serviceId = "service_xl68yuu";
+    const templateId = "template_doyovp1";
+    const publicKey = "iw2dcI-RAAi9DNiD6";
 
-    emailjs.sendForm(serviceId, templateId, formRef.current, publicKey)
+    emailjs
+      .sendForm(serviceId, templateId, formRef.current, publicKey)
       .then((result) => {
-        console.log('Email sent successfully:', result.text);
+        console.log("Email sent successfully:", result.text);
         setSubmitStatus({
           success: true,
-          message: "Thank you for your message! I'll get back to you soon."
+          message: "Thank you for your message! I'll get back to you soon.",
         });
         setFormData({
-          name: '',
-          email: '',
-          subject: '',
-          message: ''
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
         });
       })
       .catch((error) => {
-        console.error('Email sending failed:', error.text);
+        console.error("Email sending failed:", error.text);
         setSubmitStatus({
           success: false,
-          message: "Sorry, there was a problem sending your message. Please try again later."
+          message:
+            "Sorry, there was a problem sending your message. Please try again later.",
         });
       })
       .finally(() => {
@@ -57,7 +62,7 @@ function Contact({ isDarkMode }) {
       });
   };
 
-  const themeClass = isDarkMode ? 'dark-mode' : 'light-mode';
+  const themeClass = isDarkMode ? "dark-mode" : "light-mode";
 
   return (
     <div className={`contact-container ${themeClass}`}>
@@ -79,12 +84,10 @@ function Contact({ isDarkMode }) {
               <div className="contact-item">
                 <div className="contact-item-header">
                   <Mail size={20} color="#6d1f7e" />
-                  <h3 className={`contact-item-title ${themeClass}`}>
-                    Email
-                  </h3>
+                  <h3 className={`contact-item-title ${themeClass}`}>Email</h3>
                 </div>
-                <a 
-                  href="mailto:swaroop.sridhar21@gmail.com" 
+                <a
+                  href="mailto:swaroop.sridhar21@gmail.com"
                   className={`contact-link ${themeClass}`}
                 >
                   swaroop.sridhar21@gmail.com
@@ -94,12 +97,10 @@ function Contact({ isDarkMode }) {
               <div className="contact-item">
                 <div className="contact-item-header">
                   <Phone size={20} color="#6d1f7e" />
-                  <h3 className={`contact-item-title ${themeClass}`}>
-                    Phone
-                  </h3>
+                  <h3 className={`contact-item-title ${themeClass}`}>Phone</h3>
                 </div>
-                <a 
-                  href="tel:+17815357045" 
+                <a
+                  href="tel:+17815357045"
                   className={`contact-link ${themeClass}`}
                 >
                   +1 (781) 535-7045
@@ -123,18 +124,18 @@ function Contact({ isDarkMode }) {
                   Social Media
                 </h3>
                 <div className="social-links">
-                  <a 
-                    href="https://linkedin.com/in/swaroop-sridhar" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href="https://linkedin.com/in/swaroop-sridhar"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={`social-link ${themeClass}`}
                   >
                     <Linkedin size={20} />
                   </a>
-                  <a 
-                    href="https://github.com/sridhs21" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href="https://github.com/sridhs21"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={`social-link ${themeClass}`}
                   >
                     <Github size={20} />
@@ -150,10 +151,20 @@ function Contact({ isDarkMode }) {
               Send Me a Message
             </h2>
 
-            <form ref={formRef} onSubmit={handleSubmit} className={`contact-form ${themeClass}`}>
+            <form
+              ref={formRef}
+              onSubmit={handleSubmit}
+              className={`contact-form ${themeClass}`}
+            >
               {/* Form Status Message */}
               {submitStatus.message && (
-                <div className={`form-status ${submitStatus.success ? 'form-status-success' : 'form-status-error'}`}>
+                <div
+                  className={`form-status ${
+                    submitStatus.success
+                      ? "form-status-success"
+                      : "form-status-error"
+                  }`}
+                >
                   {submitStatus.message}
                 </div>
               )}
@@ -163,11 +174,11 @@ function Contact({ isDarkMode }) {
                   <label htmlFor="name" className={`form-label ${themeClass}`}>
                     Your Name
                   </label>
-                  <input 
-                    type="text" 
-                    id="name" 
-                    name="name" 
-                    required 
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
                     value={formData.name}
                     onChange={handleChange}
                     className={`form-control ${themeClass}`}
@@ -177,10 +188,10 @@ function Contact({ isDarkMode }) {
                   <label htmlFor="email" className={`form-label ${themeClass}`}>
                     Your Email
                   </label>
-                  <input 
-                    type="email" 
-                    id="email" 
-                    name="email" 
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
                     required
                     value={formData.email}
                     onChange={handleChange}
@@ -189,14 +200,14 @@ function Contact({ isDarkMode }) {
                 </div>
               </div>
 
-              <div className="form-group" style={{ marginBottom: '1.5rem' }}>
+              <div className="form-group" style={{ marginBottom: "1.5rem" }}>
                 <label htmlFor="subject" className={`form-label ${themeClass}`}>
                   Subject
                 </label>
-                <input 
-                  type="text" 
-                  id="subject" 
-                  name="subject" 
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
                   required
                   value={formData.subject}
                   onChange={handleChange}
@@ -204,14 +215,14 @@ function Contact({ isDarkMode }) {
                 />
               </div>
 
-              <div className="form-group" style={{ marginBottom: '2rem' }}>
+              <div className="form-group" style={{ marginBottom: "2rem" }}>
                 <label htmlFor="message" className={`form-label ${themeClass}`}>
                   Message
                 </label>
-                <textarea 
-                  id="message" 
-                  name="message" 
-                  rows="6" 
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="6"
                   required
                   value={formData.message}
                   onChange={handleChange}
@@ -219,7 +230,7 @@ function Contact({ isDarkMode }) {
                 ></textarea>
               </div>
 
-              <button 
+              <button
                 type="submit"
                 disabled={isSubmitting}
                 className="submit-button"

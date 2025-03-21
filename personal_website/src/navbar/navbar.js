@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { Sun, Moon, Menu, X } from 'lucide-react';
-import './navbar.css';
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { Sun, Moon, Menu, X } from "lucide-react";
+import "./navbar.css";
 
 const Navbar = ({ isDarkMode, toggleTheme }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,35 +18,39 @@ const Navbar = ({ isDarkMode, toggleTheme }) => {
       setIsScrolled(window.scrollY > 10);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <nav className={`navbar ${isDarkMode ? 'dark' : 'light'} ${isScrolled ? 'scrolled' : ''}`}>
+    <nav
+      className={`navbar ${isDarkMode ? "dark" : "light"} ${
+        isScrolled ? "scrolled" : ""
+      }`}
+    >
       <div className="navbar-container">
         {/* Desktop Navigation Items - Now centered in navbar */}
         <div className="desktop-nav">
           {[
-            { label: 'Home', path: '/' },
-            { label: 'Portfolio', path: '/portfolio' },
-            { label: 'Repos', path: '/repos' },
-            { label: 'About', path: '/about' },
-            { label: 'Contact', path: '/contact' }
+            { label: "Home", path: "/" },
+            { label: "Portfolio", path: "/portfolio" },
+            { label: "Repos", path: "/repos" },
+            { label: "About", path: "/about" },
+            { label: "Contact", path: "/contact" },
           ].map((item) => (
             <Link
               key={item.label}
               to={item.path}
-              className={`nav-link ${isDarkMode ? 'dark' : 'light'}`}
+              className={`nav-link ${isDarkMode ? "dark" : "light"}`}
               onClick={() => handleNavigation(item.path)}
             >
               {item.label}
             </Link>
           ))}
-          
+
           {/* Resume link */}
-          <a 
-            className={`nav-link ${isDarkMode ? 'dark' : 'light'}`}
+          <a
+            className={`nav-link ${isDarkMode ? "dark" : "light"}`}
             href="/files/Swaroop_Sridhar_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
@@ -60,7 +64,7 @@ const Navbar = ({ isDarkMode, toggleTheme }) => {
           {/* Theme toggle */}
           <button
             onClick={toggleTheme}
-            className={`theme-toggle ${isDarkMode ? 'dark' : 'light'}`}
+            className={`theme-toggle ${isDarkMode ? "dark" : "light"}`}
             aria-label="Toggle dark mode"
           >
             {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
@@ -72,40 +76,43 @@ const Navbar = ({ isDarkMode, toggleTheme }) => {
             className="mobile-menu-button"
             aria-label={isOpen ? "Close menu" : "Open menu"}
           >
-            {isOpen ? 
-              <X size={24} color={isDarkMode ? '#f5f6fa' : '#333333'} /> : 
-              <Menu size={24} color={isDarkMode ? '#f5f6fa' : '#333333'} />
-            }
+            {isOpen ? (
+              <X size={24} color={isDarkMode ? "#f5f6fa" : "#333333"} />
+            ) : (
+              <Menu size={24} color={isDarkMode ? "#f5f6fa" : "#333333"} />
+            )}
           </button>
         </div>
 
         {/* Mobile Menu */}
         <div
-          className={`mobile-menu ${isDarkMode ? 'dark' : 'light'} ${isOpen ? 'open' : ''}`}
+          className={`mobile-menu ${isDarkMode ? "dark" : "light"} ${
+            isOpen ? "open" : ""
+          }`}
           style={{
-            top: isScrolled ? '56px' : '64px'
+            top: isScrolled ? "56px" : "64px",
           }}
         >
           {[
-            { label: 'Home', path: '/' },
-            { label: 'Portfolio', path: '/portfolio' },
-            { label: 'Repos', path: '/repos' },
-            { label: 'About', path: '/about' },
-            { label: 'Contact', path: '/contact' }
+            { label: "Home", path: "/" },
+            { label: "Portfolio", path: "/portfolio" },
+            { label: "Repos", path: "/repos" },
+            { label: "About", path: "/about" },
+            { label: "Contact", path: "/contact" },
           ].map((item) => (
             <Link
               key={item.label}
               to={item.path}
-              className={`mobile-nav-link ${isDarkMode ? 'dark' : 'light'}`}
+              className={`mobile-nav-link ${isDarkMode ? "dark" : "light"}`}
               onClick={() => handleNavigation(item.path)}
             >
               {item.label}
             </Link>
           ))}
-          
+
           {/* Resume link in mobile menu */}
           <a
-            className={`mobile-nav-link ${isDarkMode ? 'dark' : 'light'}`}
+            className={`mobile-nav-link ${isDarkMode ? "dark" : "light"}`}
             href="/files/Swaroop_Sridhar_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"

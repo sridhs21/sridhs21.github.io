@@ -1,9 +1,9 @@
-import React from 'react';
-import './loading_screen.css';
+import React from "react";
+import "./loading_screen.css";
 
 const LoadingScreen = ({ isDarkMode, isLoading }) => {
-  const themeClass = isDarkMode ? 'dark-mode' : 'light-mode';
-  const visibilityClass = isLoading ? 'visible' : 'hidden';
+  const themeClass = isDarkMode ? "dark-mode" : "light-mode";
+  const visibilityClass = isLoading ? "visible" : "hidden";
 
   return (
     <div className={`loading-screen ${themeClass} ${visibilityClass}`}>
