@@ -70,7 +70,7 @@ function Portfolio({ isDarkMode }) {
       categories: ["web"],
       githubLink: "https://github.com/sridhs21/parkingavailabilityapp",
       demoLink: "",
-      featured: true,
+      featured: false,
     },
     {
       id: 4,
