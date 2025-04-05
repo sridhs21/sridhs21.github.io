@@ -188,31 +188,33 @@ function Home({ isDarkMode }) {
 
   const featuredProjects = [
     {
-      title: "RPI Campus Availability Application",
+      title: "FytóSpot",
       description:
-        "A full-stack web application utilizing REST API architecture to track and predict real-time parking availability across campus using Python Flask backend and JavaScript frontend. Created a predictive algorithm incorporating multiple factors (time, weather, events, seasonality) to estimate parking occupancy.",
-      image: "/images/parking_application.png",
+        "A computer vision-based plant identification and tracking system using multiple detection methods and machine learning for species classification.",
+      image: "/images/fytospot.jpg",
+      tags: [
+        "Python",
+        "OpenCV",
+        "PyTorch",
+        "Flask",
+        "CustomTkinter",
+        "NumPy",
+        "Machine Learning"
+      ],
+    },
+    {
+      title: "PetCare Vet Finder",
+      description:
+        "A veterinary search platform that helps pet owners find the perfect veterinarian based on location, pet type, and specialized care requirements.",
+      image: "/images/PCVF.png",
       tags: [
         "Python",
         "Flask",
         "JavaScript",
-        "Leaflet.js",
-        "Google Maps API",
-        "REST API",
-      ],
-    },
-    {
-      title: "AI-Driven Drug Discovery",
-      description:
-        "Developed AI models to predict drug interactions with proteins and analyze immune system responses by processing complex biological data. Built predictive models to improve gene editing outcomes by analyzing DNA sequences and their modifications. Created comprehensive data visualizations to present scientific findings.",
-      image: "/images/drug_discovery.jpg",
-      tags: [
-        "Python",
-        "Machine Learning",
-        "CatBoost",
-        "Random Forest",
-        "XGBoost",
-        "Data Analysis",
+        "Bootstrap",
+        "NLTK",
+        "pandas",
+        "API Integration",
       ],
     },
   ];

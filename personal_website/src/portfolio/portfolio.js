@@ -10,9 +10,31 @@ function Portfolio({ isDarkMode }) {
   const projects = [
     {
       id: 1,
+      title: "FytóSpot",
+      description:
+        "A computer vision-based plant identification and tracking system using multiple detection methods and machine learning for species classification.",
+      longDescription:
+        "FytóSpot is a plant identification and tracking system that leverages computer vision and machine learning to detect and identify plants from images and video streams. It supports multiple detection methods including color filtering, texture analysis, and contour detection. The system features real-time plant tracking with temporal filtering and detailed species identification using a ResNet-based neural network model. With both web and desktop interfaces, FytóSpot provides a user experience with visualization tools and confidence metrics for plant identification.",
+      image: "/images/fytospot.jpg",
+      technologies: [
+        "Python",
+        "OpenCV",
+        "PyTorch",
+        "Flask",
+        "CustomTkinter",
+        "NumPy",
+        "Machine Learning"
+      ],
+      categories: ["computer-vision", "machine-learning"],
+      githubLink: "https://github.com/sridhs21/fytospot",
+      demoLink: "https://fytospot.onrender.com",
+      featured: true,
+    },
+    {
+      id: 2,
       title: "PetCare Vet Finder",
       description:
-        "A comprehensive veterinary search platform that helps pet owners find the perfect veterinarian based on location, pet type, and specialized care requirements.",
+        "A veterinary search platform that helps pet owners find the perfect veterinarian based on location, pet type, and specialized care requirements.",
       longDescription:
         "PetCare Vet Finder is a web application designed to connect pet owners with veterinarians that match their specific needs. The platform aggregates data from multiple sources to provide detailed information about veterinary clinics, including services offered, ratings, reviews, and specialties. Users can filter results by pet type (dogs, cats, birds, exotic pets), distance, price range, and specialty services. The application features an interface with interactive filtering and detailed clinic profiles including recommendation reasons tailored to each search.",
       image: "/images/PCVF.png",
@@ -25,13 +47,13 @@ function Portfolio({ isDarkMode }) {
         "pandas",
         "API Integration",
       ],
-      category: "web",
+      categories: ["web"],
       githubLink: "https://github.com/sridhs21/PCVF",
       demoLink: "https://petcare-vet-finder.onrender.com",
       featured: true,
     },
     {
-      id: 2,
+      id: 3,
       title: "RPI Campus Availability App",
       description:
         "Real-time tracking and prediction of parking availability across campus using IoT sensors and machine learning algorithms.",
@@ -45,13 +67,13 @@ function Portfolio({ isDarkMode }) {
         "Leaflet.js",
         "TensorFlow",
       ],
-      category: "web",
+      categories: ["web"],
       githubLink: "https://github.com/sridhs21/parkingavailabilityapp",
       demoLink: "",
       featured: true,
     },
     {
-      id: 3,
+      id: 4,
       title: "AI-Driven Drug Discovery",
       description:
         "Machine learning models to predict drug interactions with proteins and analyze molecular interactions for pharmaceutical research.",
@@ -66,13 +88,13 @@ function Portfolio({ isDarkMode }) {
         "RDKit",
         "Molecular Visualization",
       ],
-      category: "machine-learning",
+      categories: ["machine-learning"],
       githubLink: "https://github.com/sridhs21/TDC-Machine-Learning-Tasks",
       demoLink: "",
       featured: false,
     },
     {
-      id: 4,
+      id: 5,
       title: "ADT Graph Algorithms Library",
       description:
         "Implementation of inheritance hierarchy with optimized shortest path algorithms for large data sets and complex network analysis.",
@@ -86,13 +108,13 @@ function Portfolio({ isDarkMode }) {
         "Algorithms",
         "Graph Theory",
       ],
-      category: "algorithm",
+      categories: ["algorithm"],
       githubLink: "",
       demoLink: "",
       featured: false,
     },
     {
-      id: 5,
+      id: 6,
       title: "Personal Portfolio Website",
       description:
         "Responsive personal website built with React to showcase projects and skills with dark/light mode support.",
@@ -100,7 +122,7 @@ function Portfolio({ isDarkMode }) {
         "A modern, responsive personal portfolio website built with React. Features include dark and light mode, smooth animations, and a clean interface to showcase projects and skills. The site is built with a focus on performance and accessibility.",
       image: "/images/personal_website.png",
       technologies: ["React", "JavaScript", "CSS", "HTML", "Responsive Design"],
-      category: "web",
+      categories: ["web"],
       githubLink: "https://github.com/sridhs21/portfolio",
       demoLink: "https://sridhs21.github.io",
       featured: false,
@@ -108,7 +130,7 @@ function Portfolio({ isDarkMode }) {
   ];
 
   const filteredProjects = projects.filter((project) => {
-    const matchesCategory = filter === "all" || project.category === filter;
+    const matchesCategory = filter === "all" || project.categories.includes(filter);
     const matchesSearch =
       project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -130,6 +152,8 @@ function Portfolio({ isDarkMode }) {
 
   const getCategoryLabel = (category) => {
     switch (category) {
+      case "computer-vision":
+        return "Computer Vision";
       case "web":
         return "Web Development";
       case "machine-learning":
@@ -159,7 +183,7 @@ function Portfolio({ isDarkMode }) {
         <div className="filters-container">
           {/* Category Filters */}
           <div className="category-filters">
-            {["all", "web", "machine-learning", "algorithm"].map((category) => (
+            {["all", "web", "machine-learning", "algorithm", "computer-vision"].map((category) => (
               <button
                 key={category}
                 onClick={() => setFilter(category)}
@@ -225,11 +249,13 @@ function Portfolio({ isDarkMode }) {
                     {project.description}
                   </p>
 
-                  {/* Category Tag */}
+                  {/* Category Tags */}
                   <div className="category-tag-container">
-                    <span className="category-tag">
-                      {getCategoryLabel(project.category)}
-                    </span>
+                    {project.categories.map((category, index) => (
+                      <span key={index} className="category-tag">
+                        {getCategoryLabel(category)}
+                      </span>
+                    ))}
                   </div>
 
                   {/* Technologies */}
@@ -294,9 +320,11 @@ function Portfolio({ isDarkMode }) {
               </h2>
 
               <div className="modal-tags">
-                <span className="category-tag">
-                  {getCategoryLabel(modalProject.category)}
-                </span>
+                {modalProject.categories.map((category, index) => (
+                  <span key={index} className="category-tag">
+                    {getCategoryLabel(category)}
+                  </span>
+                ))}
                 {modalProject.featured && (
                   <span className="featured-badge">Featured</span>
                 )}
