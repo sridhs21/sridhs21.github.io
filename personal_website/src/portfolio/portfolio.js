@@ -74,6 +74,26 @@ function Portfolio({ isDarkMode }) {
     },
     {
       id: 4,
+      title: "Modelex",
+      description:
+        "Code formatting extension for VS Code that beautifies and standardizes code across multiple programming languages.",
+      longDescription:
+        "This VS Code extension helps developers maintain clean, consistent code by formatting files according to language-specific best practices. It supports JavaScript, TypeScript, Python, Java, C/C++, HTML, CSS, and JSON, applying indentation, spacing, and comment formatting. The extension preserves logical code structure while removing excessive whitespace and standardizing syntax patterns which improves readability.",
+      image: "/images/modelex.png",
+      technologies: [
+        "JavaScript", 
+        "VS Code API", 
+        "Node.js", 
+        "Regular Expressions", 
+        "Language Parsing"
+      ],
+      categories: ["developer-tools"],
+      githubLink: "https://github.com/username/code-beautifier",
+      demoLink: "",
+      featured: false
+    },
+    {
+      id: 5,
       title: "AI-Driven Drug Discovery",
       description:
         "Machine learning models to predict drug interactions with proteins and analyze molecular interactions for pharmaceutical research.",
@@ -94,7 +114,7 @@ function Portfolio({ isDarkMode }) {
       featured: false,
     },
     {
-      id: 5,
+      id: 6,
       title: "ADT Graph Algorithms Library",
       description:
         "Implementation of inheritance hierarchy with optimized shortest path algorithms for large data sets and complex network analysis.",
@@ -114,7 +134,7 @@ function Portfolio({ isDarkMode }) {
       featured: false,
     },
     {
-      id: 6,
+      id: 7,
       title: "Personal Portfolio Website",
       description:
         "Responsive personal website built with React to showcase projects and skills with dark/light mode support.",
@@ -152,6 +172,8 @@ function Portfolio({ isDarkMode }) {
 
   const getCategoryLabel = (category) => {
     switch (category) {
+      case "developer-tools":
+        return "Developer Tools";
       case "computer-vision":
         return "Computer Vision";
       case "web":
@@ -183,7 +205,7 @@ function Portfolio({ isDarkMode }) {
         <div className="filters-container">
           {/* Category Filters */}
           <div className="category-filters">
-            {["all", "web", "machine-learning", "algorithm", "computer-vision"].map((category) => (
+            {["all", "web", "machine-learning", "algorithm", "computer-vision", "developer-tools"].map((category) => (
               <button
                 key={category}
                 onClick={() => setFilter(category)}
