@@ -65,7 +65,7 @@
 
 .hero-text h2 {
   font-size: 1.5rem;
-  color: #6d1f7e;
+  color: #00b4d8;
   font-weight: 600;
   margin-bottom: 1.5rem;
   font-family: 'Montserrat', 'Inter', 'Segoe UI', sans-serif;
@@ -84,7 +84,7 @@
 }
 
 .primary-button {
-  background-color: #6d1f7e;
+  background-color: #00b4d8;
   color: white;
   border-radius: 4px;
   padding: 0.75rem 1.5rem;
@@ -105,7 +105,7 @@
   padding: 0.75rem 1.5rem;
   font-size: 0.95rem;
   font-weight: 500;
-  border: 1px solid #6d1f7e;
+  border: 1px solid #00b4d8;
   cursor: pointer;
   text-decoration: none;
   transition: all 0.3s ease;
@@ -155,7 +155,7 @@
 
 .section-header h2 {
   font-size: 2.5rem;
-  color: #6d1f7e;
+  color: #00b4d8;
   margin-bottom: 1.5rem;
   font-family: 'Montserrat', 'Inter', 'Segoe UI', sans-serif;
   font-weight: 700;
@@ -164,7 +164,7 @@
 .section-divider {
   width: 60px;
   height: 4px;
-  background-color: #6d1f7e;
+  background-color: #00b4d8;
   margin-bottom: 2rem;
   border-radius: 2px;
 }
@@ -204,7 +204,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 1.5rem;
-  color: #6d1f7e;
+  color: #00b4d8;
 }
 
 .skill-card h3 {
@@ -228,12 +228,12 @@
 
 .tech-tag {
   display: inline-block;
-  background-color: rgba(109, 31, 126, 0.1);
-  color: #6d1f7e;
+  background-color: rgba(0, 180, 216, 0.1);
+  color: #00b4d8;
   padding: 0.25rem 0.75rem;
   font-size: 0.8rem;
   border-radius: 50px;
-  border: 1px solid #6d1f7e;
+  border: 1px solid #00b4d8;
   transition: all 0.2s ease;
 }
 
@@ -261,9 +261,9 @@
   font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 1.2rem;
-  color: #6d1f7e;
+  color: #00b4d8;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid #6d1f7e;
+  border-bottom: 2px solid #00b4d8;
 }
 
 .simple-skills-list {
@@ -297,39 +297,39 @@
 }
 
 .dark-mode .simple-skill-tag {
-  background-color: rgba(109, 31, 126, 0.3);
-  color: #f0d8f5;
-  border: 1px solid rgba(240, 216, 245, 0.5);
+  background-color: rgba(0, 180, 216, 0.3);
+  color: #90e0ef;
+  border: 1px solid rgba(144, 224, 239, 0.5);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .dark-mode .simple-skill-tag .skill-level {
-  background-color: rgba(109, 31, 126, 0.5);
+  background-color: rgba(0, 180, 216, 0.5);
   color: #ffffff;
 }
 
 .light-mode .simple-skill-tag {
-  background-color: rgba(109, 31, 126, 0.15);
-  color: #551762;
-  border: 1px solid #6d1f7e;
+  background-color: rgba(0, 180, 216, 0.15);
+  color: #0096c7;
+  border: 1px solid #00b4d8;
 }
 
 .light-mode .simple-skill-tag .skill-level {
-  background-color: rgba(109, 31, 126, 0.25);
-  color: #551762;
+  background-color: rgba(0, 180, 216, 0.25);
+  color: #0096c7;
 }
 
 .simple-skill-tag.advanced {
-  border-left: 4px solid #6d1f7e;
+  border-left: 4px solid #90e0ef;
 }
 
 .simple-skill-tag.intermediate {
-  border-left: 4px solid #9c4cb5;
+  border-left: 4px solid #00caf2; 
 }
 
 .simple-skill-tag.beginner,
 .simple-skill-tag.basic {
-  border-left: 4px solid #c586e3;
+  border-left: 4px solid #90e0ef;
 }
 
 .simple-skill-tag:hover {
@@ -338,12 +338,12 @@
 }
 
 .dark-mode .simple-skill-tag:hover {
-  background-color: rgba(109, 31, 126, 0.4);
+  background-color: rgba(0, 180, 216, 0.4); 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .light-mode .simple-skill-tag:hover {
-  background-color: rgba(109, 31, 126, 0.2);
+  background-color: rgba(0, 180, 216, 0.2);
 }
 
 .projects-grid {
@@ -402,7 +402,7 @@
   padding: 0.25rem 0.75rem;
   font-size: 0.75rem;
   border-radius: 50px;
-  border: 1px solid #6d1f7e;
+  border: 1px solid #00b4d8;
   transition: all 0.2s ease;
 }
 
@@ -417,8 +417,8 @@
   align-items: center;
   gap: 0.5rem;
   background-color: transparent;
-  border: 1px solid #6d1f7e;
-  color: #6d1f7e;
+  border: 1px solid #00b4d8;
+  color: #00b4d8;
   border-radius: 4px;
   padding: 0.75rem 1.5rem;
   font-size: 0.9rem;
@@ -434,7 +434,7 @@
 }
 
 .tech-proficiency-header h3 {
-  color: #6d1f7e;
+  color: #00b4d8;
   font-size: 1.75rem;
   font-weight: 600;
   margin-bottom: 1rem;

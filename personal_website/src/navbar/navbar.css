@@ -19,7 +19,7 @@
 }
 
 .navbar.light {
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(245, 245, 245, 0.9);
   border-bottom-color: #e5e5e5;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -111,7 +111,7 @@
 }
 
 .mobile-menu.light {
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(245, 245, 245, 0.95);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -131,7 +131,7 @@
 
 .mobile-nav-link.dark {
   color: #f5f6fa;
-  border-bottom-color: rgba(255, 255, 255, 0.05);
+  border-bottom-color: rgba(245, 245, 245, 0.05);
 }
 
 .mobile-nav-link.light {
@@ -155,5 +155,5 @@
 
 .nav-link:hover,
 .mobile-nav-link:hover {
-  color: #6d1f7e;
+  color: #00b4d8;
 }

@@ -42,7 +42,7 @@ function Repos({ isDarkMode }) {
       Ruby: '#701516',
       Go: '#00ADD8',
     };
-    return colors[language] || '#6d1f7e';
+    return colors[language] || '#00b4d8';
   };
 
   const getAnimationDelay = (index) => `${index * 0.1}s`;

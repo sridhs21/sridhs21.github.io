@@ -16,7 +16,7 @@
   }
   
   .light-mode {
-    background-color: #ffffff;
+    background-color: #f5f5f5;
   }
   
   .repos-content {
@@ -37,11 +37,11 @@
   }
   
   .dark-mode .repos-header {
-    color: #ffffff;
+    color: #f5f5f5;
   }
   
   .light-mode .repos-header {
-    color: #6d1f7e;
+    color: #00b4d8;
   }
   
   .loading-container {
@@ -51,7 +51,7 @@
   }
   
   .spinner {
-    border: 3px solid rgba(109, 31, 126, 0.2);
+    border: 3px solid rgba(0, 180, 216, 0.2);
     border-radius: 50%;
     border-top-color: var(--highlight-purple);
     animation: spin 1s ease-in-out infinite;
@@ -95,11 +95,11 @@
   .dark-mode .repo-card {
     background-color: rgba(15, 15, 15, 0.5);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(245, 245, 245, 0.1);
   }
   
   .light-mode .repo-card {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(245, 245, 245, 0.9);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     border: 1px solid rgba(0, 0, 0, 0.05);
   }
@@ -118,7 +118,7 @@
   }
   
   .repo-icon {
-    color: #6d1f7e;
+    color: #00b4d8;
     transition: transform 0.5s ease;
   }
   
@@ -138,7 +138,7 @@
   }
   
   .external-icon {
-    color: #6d1f7e;
+    color: #00b4d8;
     transition: transform 0.3s ease;
   }
   
@@ -224,7 +224,7 @@
   
   .stat-icon {
     transition: transform 0.3s ease;
-    color: #6d1f7e;
+    color: #00b4d8;
   }
   
   .repo-link:hover .stat-icon {

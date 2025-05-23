@@ -232,7 +232,7 @@ function Home({ isDarkMode }) {
         style={{
           backgroundColor: isDarkMode
             ? "rgba(15, 15, 15, 0.85)"
-            : "rgba(255, 255, 255, 0.85)",
+            : "rgba(245, 245, 245, 0.85)",
           opacity: Math.min(1, scrollY / 300),
         }}
       />
@@ -328,11 +328,11 @@ function Home({ isDarkMode }) {
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = "translateY(-3px)";
-                  e.currentTarget.style.backgroundColor = "#8f3ba0";
+                  e.currentTarget.style.backgroundColor = "#00caf2";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.backgroundColor = "#6d1f7e";
+                  e.currentTarget.style.backgroundColor = "#00b4d8";
                 }}
               >
                 Get in Touch
@@ -347,7 +347,7 @@ function Home({ isDarkMode }) {
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = "translateY(-3px)";
-                  e.currentTarget.style.backgroundColor = "#6d1f7e";
+                  e.currentTarget.style.backgroundColor = "#00b4d8";
                   e.currentTarget.style.color = "white";
                 }}
                 onMouseLeave={(e) => {
@@ -425,12 +425,12 @@ function Home({ isDarkMode }) {
                 style={{
                   backgroundColor: isDarkMode
                     ? "rgba(15, 15, 15, 0.6)"
-                    : "rgba(255, 255, 255, 0.6)",
+                    : "rgba(245, 245, 245, 0.6)",
                   boxShadow: isDarkMode
                     ? "0 8px 32px rgba(0, 0, 0, 0.2)"
                     : "0 8px 32px rgba(0, 0, 0, 0.05)",
                   border: isDarkMode
-                    ? "1px solid rgba(255, 255, 255, 0.1)"
+                    ? "1px solid rgba(245, 245, 245, 0.1)"
                     : "1px solid rgba(0, 0, 0, 0.05)",
                 }}
                 onMouseEnter={(e) => {
@@ -477,14 +477,14 @@ function Home({ isDarkMode }) {
                       key={index}
                       className="tech-tag"
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.backgroundColor = "#6d1f7e";
+                        e.currentTarget.style.backgroundColor = "#00b4d8";
                         e.currentTarget.style.color = "white";
                       }}
                       onMouseLeave={(e) => {
                         e.currentTarget.style.backgroundColor = isDarkMode
-                          ? "rgba(109, 31, 126, 0.1)"
-                          : "rgba(109, 31, 126, 0.1)";
-                        e.currentTarget.style.color = "#6d1f7e";
+                          ? "rgba(0, 180, 216, 0.1)"
+                          : "rgba(0, 180, 216, 0.1)";
+                        e.currentTarget.style.color = "#00b4d8";
                       }}
                     >
                       {tech}
@@ -518,12 +518,12 @@ function Home({ isDarkMode }) {
                 style={{
                   backgroundColor: isDarkMode
                     ? "rgba(15, 15, 15, 0.6)"
-                    : "rgba(255, 255, 255, 0.6)",
+                    : "rgba(245, 245, 245, 0.6)",
                   boxShadow: isDarkMode
                     ? "0 8px 32px rgba(0, 0, 0, 0.2)"
                     : "0 8px 32px rgba(0, 0, 0, 0.05)",
                   border: isDarkMode
-                    ? "1px solid rgba(255, 255, 255, 0.1)"
+                    ? "1px solid rgba(245, 245, 245, 0.1)"
                     : "1px solid rgba(0, 0, 0, 0.05)",
                 }}
               >
@@ -540,14 +540,14 @@ function Home({ isDarkMode }) {
                       className={`simple-skill-tag ${skill.level.toLowerCase()}`}
                       style={{
                         backgroundColor: isDarkMode
-                          ? "rgba(109, 31, 126, 0.3)"
-                          : "rgba(109, 31, 126, 0.15)",
+                          ? "rgba(0, 180, 216, 0.1)"
+                          : "rgba(0, 180, 216, 0.15)",
 
-                        color: isDarkMode ? "#f0d8f5" : "#551762",
+                        color: isDarkMode ? "#f0d8f5" : "#0096c7",
 
                         border: isDarkMode
                           ? "1px solid rgba(240, 216, 245, 0.5)"
-                          : "1px solid #6d1f7e",
+                          : "1px solid #00b4d8",
                       }}
                     >
                       <span
@@ -563,9 +563,9 @@ function Home({ isDarkMode }) {
                         className="skill-level"
                         style={{
                           backgroundColor: isDarkMode
-                            ? "rgba(109, 31, 126, 0.5)"
-                            : "rgba(109, 31, 126, 0.25)",
-                          color: isDarkMode ? "#ffffff" : "#551762",
+                            ? "rgba(0, 180, 216, 0.5)"
+                            : "rgba(0, 180, 216, 0.25)",
+                          color: isDarkMode ? "#f5f5f5" : "#0096c7",
                           fontWeight: "600",
                           padding: "0.25rem 0.6rem",
                           borderRadius: "20px",
@@ -602,7 +602,7 @@ function Home({ isDarkMode }) {
             <h2
               style={{
                 fontSize: isMobile ? "2rem" : "2.5rem",
-                color: "#6d1f7e",
+                color: "#00b4d8",
                 marginBottom: "1.5rem",
                 fontFamily: "'Montserrat', 'Inter', 'Segoe UI', sans-serif",
                 fontWeight: "700",
@@ -614,7 +614,7 @@ function Home({ isDarkMode }) {
               style={{
                 width: "60px",
                 height: "4px",
-                backgroundColor: "#6d1f7e",
+                backgroundColor: "#00b4d8",
                 marginBottom: "2rem",
                 borderRadius: "2px",
               }}
@@ -637,7 +637,7 @@ function Home({ isDarkMode }) {
                 style={{
                   backgroundColor: isDarkMode
                     ? "rgba(15, 15, 15, 0.6)"
-                    : "rgba(255, 255, 255, 0.6)",
+                    : "rgba(245, 245, 245, 0.6)",
                   backdropFilter: "blur(16px)",
                   WebkitBackdropFilter: "blur(16px)",
                   borderRadius: "12px",
@@ -646,7 +646,7 @@ function Home({ isDarkMode }) {
                     ? "0 8px 32px rgba(0, 0, 0, 0.2)"
                     : "0 8px 32px rgba(0, 0, 0, 0.05)",
                   border: isDarkMode
-                    ? "1px solid rgba(255, 255, 255, 0.1)"
+                    ? "1px solid rgba(245, 245, 245, 0.1)"
                     : "1px solid rgba(0, 0, 0, 0.05)",
                   transition: "transform 0.3s ease, box-shadow 0.3s ease",
                   cursor: "pointer",
@@ -729,13 +729,13 @@ function Home({ isDarkMode }) {
                         style={{
                           display: "inline-block",
                           backgroundColor: isDarkMode
-                            ? "rgba(109, 31, 126, 0.1)"
-                            : "rgba(109, 31, 126, 0.1)",
-                          color: "#6d1f7e",
+                            ? "rgba(0, 180, 216, 0.1)"
+                            : "rgba(0, 180, 216, 0.1)",
+                          color: "#00b4d8",
                           padding: "0.25rem 0.75rem",
                           fontSize: "0.75rem",
                           borderRadius: "50px",
-                          border: "1px solid #6d1f7e",
+                          border: "1px solid #00b4d8",
                         }}
                       >
                         {tag}
@@ -762,8 +762,8 @@ function Home({ isDarkMode }) {
                 justifyContent: isSmallMobile ? "center" : "flex-start",
                 gap: "0.5rem",
                 backgroundColor: "transparent",
-                border: "1px solid #6d1f7e",
-                color: "#6d1f7e",
+                border: "1px solid #00b4d8",
+                color: "#00b4d8",
                 borderRadius: "4px",
                 padding: "0.75rem 1.5rem",
                 fontSize: "0.9rem",
@@ -774,13 +774,13 @@ function Home({ isDarkMode }) {
                 width: isSmallMobile ? "100%" : "auto",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "#6d1f7e";
+                e.currentTarget.style.backgroundColor = "#00b4d8";
                 e.currentTarget.style.color = "white";
                 e.currentTarget.style.transform = "translateY(-2px)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor = "transparent";
-                e.currentTarget.style.color = "#6d1f7e";
+                e.currentTarget.style.color = "#00b4d8";
                 e.currentTarget.style.transform = "translateY(0)";
               }}
             >

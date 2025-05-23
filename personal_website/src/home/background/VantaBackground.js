@@ -5,11 +5,10 @@ const VantaBackground = ({ isDarkMode }) => {
   const vantaRef = useRef(null);
   const vantaEffect = useRef(null);
   
-  // Main color: purple 0x6d1f7e
-  const mainColor = 0x6d1f7e;
-  // Background colors (using hex for THREE.js)
+  const mainColor = 0x00b4d8;
+
   const darkBgColor = 0x0f0f0f;  // dark background
-  const lightBgColor = 0xffffff; // white background
+  const lightBgColor = 0xf5f5f5; // grey background
 
   // This is the key change - completely destroy and recreate the effect on theme change
   useEffect(() => {
@@ -100,7 +99,7 @@ const VantaBackground = ({ isDarkMode }) => {
         width: '100%',
         height: '100vh',
         zIndex: 0,
-        backgroundColor: isDarkMode ? '#0f0f0f' : '#ffffff',
+        backgroundColor: isDarkMode ? '#0f0f0f' : '#f5f5f5',
         transition: 'background-color 0.3s ease'
       }}
     />

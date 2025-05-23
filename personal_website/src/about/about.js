@@ -123,7 +123,7 @@ function About({ isDarkMode }) {
         {/* Education Section */}
         <section className="education-section animate-fade-in animate-delay-2">
           <div className="section-header-with-icon">
-            <BookOpen size={28} color="#6d1f7e" />
+            <BookOpen size={28} color="#00b4d8" />
             <h2>Education</h2>
           </div>
 

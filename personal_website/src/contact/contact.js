@@ -83,7 +83,7 @@ function Contact({ isDarkMode }) {
             <div className={`contact-info-card ${themeClass}`}>
               <div className="contact-item">
                 <div className="contact-item-header">
-                  <Mail size={20} color="#6d1f7e" />
+                  <Mail size={20} color="#00b4d8" />
                   <h3 className={`contact-item-title ${themeClass}`}>Email</h3>
                 </div>
                 <a
@@ -96,7 +96,7 @@ function Contact({ isDarkMode }) {
 
               <div className="contact-item">
                 <div className="contact-item-header">
-                  <Phone size={20} color="#6d1f7e" />
+                  <Phone size={20} color="#00b4d8" />
                   <h3 className={`contact-item-title ${themeClass}`}>Phone</h3>
                 </div>
                 <a
@@ -109,7 +109,7 @@ function Contact({ isDarkMode }) {
 
               <div className="contact-item">
                 <div className="contact-item-header">
-                  <MapPin size={20} color="#6d1f7e" />
+                  <MapPin size={20} color="#00b4d8" />
                   <h3 className={`contact-item-title ${themeClass}`}>
                     Location
                   </h3>

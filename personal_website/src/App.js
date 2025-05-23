@@ -78,7 +78,7 @@ function App() {
             opacity: isLoading ? 0 : 1,
             transition: "opacity 0.5s ease-out",
             visibility: isLoading ? "hidden" : "visible",
-            backgroundColor: isDarkMode ? "#0f0f0f" : "#ffffff",
+            backgroundColor: isDarkMode ? "#0f0f0f" : "#f5f5f5",
           }}
         >
           {/* Add ScrollToTop component inside Router */}

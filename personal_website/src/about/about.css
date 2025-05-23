@@ -11,7 +11,7 @@
 }
 
 .light-mode {
-  background-color: #ffffff;
+  background-color: #f5f5f5;
   color: #333333;
 }
 
@@ -30,7 +30,7 @@
 .section-title {
   font-size: 3rem;
   margin-bottom: 1rem;
-  color: #6d1f7e;
+  color: #00b4d8;
   font-weight: 700;
   font-family: 'Montserrat', 'Inter', 'Segoe UI', sans-serif;
 }
@@ -38,7 +38,7 @@
 .section-divider {
   width: 60px;
   height: 4px;
-  background-color: #6d1f7e;
+  background-color: #00b4d8;
   margin: 0 auto 2rem;
   border-radius: 2px;
 }
@@ -88,7 +88,7 @@
   left: 0;
   right: 0;
   height: 30%;
-  background: linear-gradient(to top, rgba(109, 31, 126, 0.8), transparent);
+  background: linear-gradient(to top, rgba(0, 180, 216, 0.8), transparent);
 }
 
 
@@ -138,7 +138,7 @@
 .stat-number {
   font-size: 3rem;
   font-weight: 700;
-  color: #6d1f7e;
+  color: #00b4d8;
   margin-bottom: 0.5rem;
   display: flex;
   align-items: center;
@@ -165,7 +165,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  background-color: #6d1f7e;
+  background-color: #00b4d8;
   color: white;
   padding: 0.9rem 1.8rem;
   border-radius: 4px;
@@ -173,14 +173,14 @@
   font-size: 1rem;
   font-weight: 500;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 14px rgba(109, 31, 126, 0.25);
+  box-shadow: 0 4px 14px rgba(0, 180, 216, 0.25);
   margin-top: 2rem;
 }
 
 .resume-button:hover {
-  background-color: #8f3ba0;
+  background-color: #00caf2;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(109, 31, 126, 0.3);
+  box-shadow: 0 6px 20px rgba(0, 180, 216, 0.3);
 }
 
 .education-section {
@@ -196,7 +196,7 @@
 
 .section-header-with-icon h2 {
   font-size: 1.8rem;
-  color: #6d1f7e;
+  color: #00b4d8;
   font-weight: 600;
 }
 
@@ -210,11 +210,11 @@
 .dark-mode .education-card {
   background-color: rgba(15, 15, 15, 0.6);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(245, 245, 245, 0.1);
 }
 
 .light-mode .education-card {
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(245, 245, 245, 0.6);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
@@ -231,7 +231,7 @@
 }
 
 .dark-mode .education-item {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(245, 245, 245, 0.1);
 }
 
 .light-mode .education-item {
@@ -260,9 +260,9 @@
 
 .education-year {
   font-size: 0.9rem;
-  color: #6d1f7e;
+  color: #00b4d8;
   font-weight: 500;
-  background-color: rgba(109, 31, 126, 0.1);
+  background-color: rgba(0, 180, 216, 0.1);
   padding: 0.3rem 0.75rem;
   border-radius: 4px;
 }
@@ -283,7 +283,7 @@
 
 .education-concentration {
   font-size: 1rem;
-  color: #6d1f7e;
+  color: #00b4d8;
   font-weight: 500;
   margin-bottom: 1rem;
 }

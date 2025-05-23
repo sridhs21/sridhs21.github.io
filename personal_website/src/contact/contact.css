@@ -29,7 +29,7 @@
 .section-title {
   font-size: 3rem;
   margin-bottom: 1rem;
-  color: #6d1f7e;
+  color: #00b4d8;
   font-weight: 700;
   font-family: 'Montserrat', 'Inter', 'Segoe UI', sans-serif;
 }
@@ -37,7 +37,7 @@
 .section-divider {
   width: 60px;
   height: 4px;
-  background-color: #6d1f7e;
+  background-color: #00b4d8;
   margin: 0 auto 2rem;
   border-radius: 2px;
 }
@@ -71,11 +71,11 @@
 .dark-mode .contact-info-card {
   background-color: rgba(15, 15, 15, 0.6);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(245, 245, 245, 0.1);
 }
 
 .light-mode .contact-info-card {
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(245, 245, 245, 0.6);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
@@ -111,7 +111,7 @@
 }
 
 .contact-link:hover {
-  color: #6d1f7e;
+  color: #00b4d8;
 }
 
 .contact-text {
@@ -149,17 +149,17 @@
 
 .dark-mode .social-link {
   background-color: rgba(25, 25, 25, 0.6);
-  color: #6d1f7e;
+  color: #00b4d8;
 }
 
 .light-mode .social-link {
   background-color: rgba(240, 240, 240, 0.6);
-  color: #6d1f7e;
+  color: #00b4d8;
 }
 
 .social-link:hover {
   transform: translateY(-5px);
-  background-color: #6d1f7e;
+  background-color: #00b4d8;
   color: white;
 }
 
@@ -184,11 +184,11 @@
 .dark-mode .contact-form {
   background-color: rgba(15, 15, 15, 0.6);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(245, 245, 245, 0.1);
 }
 
 .light-mode .contact-form {
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(245, 245, 245, 0.6);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
@@ -240,20 +240,20 @@
 }
 
 .dark-mode .form-control {
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(245, 245, 245, 0.1);
   background-color: rgba(30, 30, 30, 0.5);
   color: var(--dark-text-primary);
 }
 
 .light-mode .form-control {
   border: 1px solid rgba(0, 0, 0, 0.1);
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(245, 245, 245, 0.7);
   color: var(--light-text-primary);
 }
 
 .form-control:focus {
-  border-color: #6d1f7e !important;
-  box-shadow: 0 0 0 2px rgba(109, 31, 126, 0.1) !important;
+  border-color: #00b4d8 !important;
+  box-shadow: 0 0 0 2px rgba(0, 180, 216, 0.1) !important;
 }
 
 textarea.form-control {
@@ -264,7 +264,7 @@ textarea.form-control {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  background-color: #6d1f7e;
+  background-color: #00b4d8;
   color: white;
   border: none;
   border-radius: 8px;
@@ -273,17 +273,17 @@ textarea.form-control {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 14px rgba(109, 31, 126, 0.25);
+  box-shadow: 0 4px 14px rgba(0, 180, 216, 0.25);
 }
 
 .submit-button:hover {
-  background-color: #8f3ba0;
+  background-color: #00caf2;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(109, 31, 126, 0.3);
+  box-shadow: 0 6px 20px rgba(0, 180, 216, 0.3);
 }
 
 .submit-button:disabled {
-  background-color: #a37caf;
+  background-color: #5dd3e5;
   cursor: not-allowed;
 }
 
@@ -302,7 +302,7 @@ textarea.form-control {
   display: inline-block;
   width: 18px;
   height: 18px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(245, 245, 245, 0.3);
   border-radius: 50%;
   border-top-color: white;
   animation: spin 0.8s linear infinite;
