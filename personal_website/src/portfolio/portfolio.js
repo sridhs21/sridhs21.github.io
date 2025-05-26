@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ExternalLink, Github, Search, X } from "lucide-react";
+import { ExternalLink, Github, Search, X, Calendar, Database, Cpu, BookOpen } from "lucide-react";
 import "./portfolio.css";
 
 function Portfolio({ isDarkMode }) {
@@ -10,6 +10,35 @@ function Portfolio({ isDarkMode }) {
   const projects = [
     {
       id: 1,
+      title: "Magnetic Reconnection Classifier",
+      description: "A machine learning classifier for identifying rare magnetic reconnection events in space weather simulation data using subdomain-focused training and specialized techniques for extreme class imbalance.",
+      longDescription: "This research project develops a convolutional neural network specifically designed to detect rare magnetic reconnection events in 2D simulation data from the Gkyl analysis code. With reconnection events occurring at only 0.003% of grid points, the system employs a novel subdomain-focused training approach to improve signal-to-noise ratio. The classifier incorporates focal loss functions and class-balancing techniques to handle extreme class imbalance, making it suitable for identifying these critical energy-releasing events that drive space weather phenomena affecting Earth's magnetosphere, satellites, and power grids. Designed as an educational tool for the NASA Heliophysics Summer School, this work builds foundational techniques for future extension to 3D domains where no inexpensive numerical methods currently exist.",
+      image: "/images/magnetic-reconnection.jpg",
+      technologies: [
+        "Python",
+        "PyTorch",
+        "NumPy",
+        "SciPy",
+        "scikit-learn",
+        "Convolutional Neural Networks",
+        "Focal Loss",
+        "NVIDIA H100 GPUs"
+      ],
+      categories: ["machine-learning", "rare-event-detection"],
+      githubLink: "https://github.com/SCOREC/reconClassifier",
+      demoLink: null,
+      featured: true,
+      researchDetails: {
+        timeline: "10 weeks (Summer 2025)",
+        dataset: "150 grids (1024² each) with ~5,000 labeled reconnection points",
+        challenge: "Extreme class imbalance (0.003% positive cases)",
+        approach: "Subdomain-focused training with specialized loss functions",
+        applications: ["Space Weather Prediction", "NASA Heliophysics Education", "3D Extension Research"],
+        computeResources: "EmpireAI alpha system with NVIDIA H100 GPUs"
+      }
+    },
+    {
+      id: 2,
       title: "FytóSpot",
       description:
         "A computer vision-based plant identification and tracking system using multiple detection methods and machine learning for species classification.",
@@ -31,7 +60,7 @@ function Portfolio({ isDarkMode }) {
       featured: true,
     },
     {
-      id: 2,
+      id: 3,
       title: "PetCare Vet Finder",
       description:
         "A veterinary search platform that helps pet owners find the perfect veterinarian based on location, pet type, and specialized care requirements.",
@@ -53,7 +82,7 @@ function Portfolio({ isDarkMode }) {
       featured: true,
     },
     {
-      id: 3,
+      id: 4,
       title: "RPI Campus Availability App",
       description:
         "Real-time tracking and prediction of parking availability across campus using IoT sensors and machine learning algorithms.",
@@ -73,7 +102,7 @@ function Portfolio({ isDarkMode }) {
       featured: false,
     },
     {
-      id: 4,
+      id: 5,
       title: "Modelex",
       description:
         "Code formatting extension for VS Code that beautifies and standardizes code across multiple programming languages.",
@@ -93,7 +122,7 @@ function Portfolio({ isDarkMode }) {
       featured: false
     },
     {
-      id: 5,
+      id: 6,
       title: "AI-Driven Drug Discovery",
       description:
         "Machine learning models to predict drug interactions with proteins and analyze molecular interactions for pharmaceutical research.",
@@ -114,7 +143,7 @@ function Portfolio({ isDarkMode }) {
       featured: false,
     },
     {
-      id: 6,
+      id: 7,
       title: "ADT Graph Algorithms Library",
       description:
         "Implementation of inheritance hierarchy with optimized shortest path algorithms for large data sets and complex network analysis.",
@@ -134,7 +163,21 @@ function Portfolio({ isDarkMode }) {
       featured: false,
     },
     {
-      id: 7,
+      id: 8,
+      title: "PartiSim",
+      description:
+        "Interactive 3D application that visualizes the behavior of atoms, including their subatomic particles (protons, neutrons, electrons), quantum orbitals, and the formation of chemical bonds and molecules.",
+      longDescription:
+        "PartiSim is an interactive 3D simulation that provides an immersive exploration of atomic behavior. Users can visualize subatomic particles, observe quantum orbital structures, and witness the formation of chemical bonds in real-time. The application serves as an educational tool for understanding fundamental chemistry and physics concepts through interactive visualization.",
+      image: "/images/partisim.png",
+      technologies: ["Python", "OpenGL", "NumPy", "Physics Simulation", "3D Graphics", "Shader Programming", "Scientific Computing"],
+      categories: ["simulation"],
+      githubLink: "https://github.com/sridhs21/partisim",
+      demoLink: "https://partisim.onrender.com",
+      featured: false,
+    },
+    {
+      id: 9,
       title: "Personal Portfolio Website",
       description:
         "Responsive personal website built with React to showcase projects and skills with dark/light mode support.",
@@ -146,7 +189,7 @@ function Portfolio({ isDarkMode }) {
       githubLink: "https://github.com/sridhs21/portfolio",
       demoLink: "https://sridhs21.github.io",
       featured: false,
-    },
+    }
   ];
 
   const filteredProjects = projects.filter((project) => {
@@ -182,6 +225,10 @@ function Portfolio({ isDarkMode }) {
         return "Machine Learning";
       case "algorithm":
         return "Algorithms & Data Structures";
+      case "rare-event-detection":
+        return "Rare Event Detection";
+      case "simulation":
+        return "Simulation";
       default:
         return category;
     }
@@ -205,7 +252,7 @@ function Portfolio({ isDarkMode }) {
         <div className="filters-container">
           {/* Category Filters */}
           <div className="category-filters">
-            {["all", "web", "machine-learning", "algorithm", "computer-vision", "developer-tools"].map((category) => (
+            {["all", "web", "machine-learning", "algorithm", "computer-vision", "developer-tools", "simulation"].map((category) => (
               <button
                 key={category}
                 onClick={() => setFilter(category)}
@@ -355,6 +402,83 @@ function Portfolio({ isDarkMode }) {
               <p className={`modal-description ${themeClass}`}>
                 {modalProject.longDescription}
               </p>
+
+              {/* Research Details Section */}
+              {modalProject.researchDetails && (
+                <div className="research-details-section">
+                  <h3 className={`research-details-title ${themeClass}`}>
+                    <BookOpen size={20} />
+                    Research Details
+                  </h3>
+                  <div className="research-details-grid">
+                    <div className="research-detail-item">
+                      <Calendar size={16} />
+                      <div>
+                        <strong>Timeline:</strong> {modalProject.researchDetails.timeline}
+                      </div>
+                    </div>
+                    <div className="research-detail-item">
+                      <Database size={16} />
+                      <div>
+                        <strong>Dataset:</strong> {modalProject.researchDetails.dataset}
+                      </div>
+                    </div>
+                    <div className="research-detail-item">
+                      <Cpu size={16} />
+                      <div>
+                        <strong>Compute Resources:</strong> {modalProject.researchDetails.computeResources}
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="research-challenge">
+                    <h4 className={`research-subsection-title ${themeClass}`}>Challenge</h4>
+                    <p className={`research-detail-text ${themeClass}`}>
+                      {modalProject.researchDetails.challenge}
+                    </p>
+                  </div>
+
+                  <div className="research-approach">
+                    <h4 className={`research-subsection-title ${themeClass}`}>Approach</h4>
+                    <p className={`research-detail-text ${themeClass}`}>
+                      {modalProject.researchDetails.approach}
+                    </p>
+                  </div>
+
+                  <div className="research-applications">
+                    <h4 className={`research-subsection-title ${themeClass}`}>Applications</h4>
+                    <div className="application-tags">
+                      {modalProject.researchDetails.applications.map((app, index) => (
+                        <span key={index} className={`application-tag ${themeClass}`}>
+                          {app}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Publications Section */}
+              {modalProject.publications && modalProject.publications.length > 0 && (
+                <div className="publications-section">
+                  <h3 className={`publications-title ${themeClass}`}>
+                    Publications & Presentations
+                  </h3>
+                  {modalProject.publications.map((pub, index) => (
+                    <div key={index} className={`publication-item ${themeClass}`}>
+                      <div className="publication-title">{pub.title}</div>
+                      <div className="publication-details">
+                        <span className={`publication-status ${pub.status.toLowerCase().replace(' ', '-')}`}>
+                          {pub.status}
+                        </span>
+                        <span className={`publication-venue ${themeClass}`}>
+                          {pub.venue}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
 
               <div className="modal-tech-section">
                 <h3 className={`modal-tech-title ${themeClass}`}>
