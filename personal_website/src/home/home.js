@@ -267,7 +267,7 @@ function Home({ isDarkMode }) {
             </div>
             <div className="profile-glow"></div>
             <div className="profile-image-container">
-              <img src="/images/profile.jpg" alt="Profile" />
+              <img src="/images/pfp2.jpg" alt="Profile" />
             </div>
           </div>
 
