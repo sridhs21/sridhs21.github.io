@@ -1,26 +1,29 @@
 import React from "react";
-import { BookOpen } from "lucide-react";
+import { BookOpen, GraduationCap, School } from "lucide-react";
 import "./about.css";
 
 function About({ isDarkMode }) {
   const education = [
     {
+      type: "university",
       year: "2022 - 2026",
-      degree:
-        "Bachelor of Science in Computer Science and Information Technology and Web Science",
+      degree: "Bachelor of Science in Computer Science and Information Technology and Web Science",
       concentration: "Machine Learning",
-      school: "Rensselaer Polytechnic Institute – School of Science",
+      school: "Rensselaer Polytechnic Institute",
+      department: "School of Science",
       location: "Troy, NY",
-      description:
-        "Relevant Courses: Data Structures, Introduction to Algorithms, Operating Systems, Principles of Software, Machine Learning and Optimization, AI For Science",
+      logo: "/images/rpi_logo.png", // You'll need to add this image
+      description: "Relevant Courses: Data Structures, Introduction to Algorithms, Operating Systems, Principles of Software, Machine Learning and Optimization, AI For Science",
+      honors: "Dean's List - Fall 2024"
     },
     {
+      type: "highschool",
       year: "2013 - 2022",
-      degree: "",
-      concentration: "",
+      degree: "High School Diploma",
       school: "Academy for Science and Design",
-      location: "Troy, NY",
-      description: "Relevant Courses: Advanced Computer Science (Java/C++)",
+      location: "Nashua, NH",
+      logo: "/images/asd_logo.png", // You'll need to add this image
+      description: "Relevant Courses: Advanced Computer Science (Java/C++), Advanced Calculus 1/2, Physics 1"
     },
   ];
 
@@ -94,26 +97,23 @@ function About({ isDarkMode }) {
 
               <div className="stats-container">
                 <div className="stat-item">
-                  <h3 className="stat-number">
-                    15+ <span className="stat-label">Languages</span>
-                  </h3>
-                  <p className={`stat-sublabel ${themeClass}`}>
+                  <div className="stat-number">5+</div>
+                  <div className="stat-label">Languages</div>
+                  <div className={`stat-sublabel ${themeClass}`}>
                     Programming & Markup
-                  </p>
+                  </div>
                 </div>
 
                 <div className="stat-item">
-                  <h3 className="stat-number">
-                    3+ <span className="stat-label">Projects</span>
-                  </h3>
-                  <p className={`stat-sublabel ${themeClass}`}>Completed</p>
+                  <div className="stat-number">3+</div>
+                  <div className="stat-label">Projects</div>
+                  <div className={`stat-sublabel ${themeClass}`}>Completed</div>
                 </div>
 
                 <div className="stat-item">
-                  <h3 className="stat-number">
-                    2026 <span className="stat-label">Graduation</span>
-                  </h3>
-                  <p className={`stat-sublabel ${themeClass}`}>Expected</p>
+                  <div className="stat-number">2026</div>
+                  <div className="stat-label">Graduation</div>
+                  <div className={`stat-sublabel ${themeClass}`}>Expected</div>
                 </div>
               </div>
             </div>
@@ -136,23 +136,59 @@ function About({ isDarkMode }) {
                 } ${themeClass}`}
               >
                 <div className="education-header">
-                  <h3 className={`education-degree ${themeClass}`}>
-                    {item.degree}
-                  </h3>
+                  <div className="education-main-info">
+                    <div className="education-logo-container">
+                      <img 
+                        src={item.logo} 
+                        alt={`${item.school} logo`}
+                        className="education-logo"
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                        }}
+                      />
+                      <div className="education-icon-fallback">
+                        {item.type === 'university' ? 
+                          <GraduationCap size={24} color="#00b4d8" /> : 
+                          <School size={24} color="#00b4d8" />
+                        }
+                      </div>
+                    </div>
+                    <div className="education-text-info">
+                      <h3 className={`education-degree ${themeClass}`}>
+                        {item.degree}
+                      </h3>
+                      <h4 className={`education-school ${themeClass}`}>
+                        {item.school}
+                        {item.department && <span className="education-department"> - {item.department}</span>}
+                      </h4>
+                      {item.concentration && (
+                        <h5 className="education-concentration">
+                          Concentration: {item.concentration}
+                        </h5>
+                      )}
+                      <div className="education-location">
+                        📍 {item.location}
+                      </div>
+                    </div>
+                  </div>
                   <span className="education-year">{item.year}</span>
                 </div>
 
-                <h4 className={`education-school ${themeClass}`}>
-                  {item.school}
-                </h4>
-
-                <h5 className="education-concentration">
-                  Concentration: {item.concentration}
-                </h5>
-
-                <p className={`education-description ${themeClass}`}>
-                  {item.description}
-                </p>
+                <div className="education-details">
+                  {item.gpa && (
+                    <div className="education-gpa">
+                      <strong>GPA:</strong> {item.gpa}
+                    </div>
+                  )}
+                  {item.honors && (
+                    <div className="education-honors">
+                      <strong>Honors:</strong> {item.honors}
+                    </div>
+                  )}
+                  <p className={`education-description ${themeClass} ${item.type === 'highschool' ? 'highschool-description' : ''}`}>
+                    {item.description}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
