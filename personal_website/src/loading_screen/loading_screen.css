@@ -1,124 +1,68 @@
-.loading-screen {
+/* ═══════════════════════════════════════════════════════════
+   LOADING SCREEN — Lab design system
+   ═══════════════════════════════════════════════════════════ */
+
+.ls {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background: var(--lab-bg, #060606);
   z-index: 9999;
   transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
 }
 
-.loading-screen.visible {
+.ls--visible {
   opacity: 1;
   visibility: visible;
   pointer-events: all;
 }
 
-.loading-screen.hidden {
+.ls--hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
 }
 
-.dark-mode {
-  background-color: var(--dark-bg);
-  color: var(--dark-text-primary);
+.ls__brand {
+  font-family: var(--lab-mono, 'JetBrains Mono', monospace);
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: var(--lab-heading, #f0f0f0);
+  letter-spacing: -2px;
+  margin-bottom: 1.5rem;
+  animation: lsPulse 2s ease-in-out infinite;
 }
 
-.light-mode {
-  background-color: var(--light-bg);
-  color: var(--light-text-primary);
-}
-
-.logo-container {
-  margin-bottom: 2rem;
-  animation: logoAnimation 0.8s ease-out forwards;
-}
-
-.logo {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background-color: #00b4d8;
+.ls__dots {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: pulse 2s ease-in-out infinite;
+  gap: 6px;
 }
 
-.logo-text {
-  font-size: 2rem;
-  color: white;
-  font-weight: bold;
-}
-
-.loading-dots {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 1rem;
-}
-
-.loading-dot {
-  width: 8px;
-  height: 8px;
-  margin: 0 4px;
+.ls__dots span {
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
-  background-color: #00b4d8;
-  animation: bounce 0.5s ease-in-out infinite;
+  background: var(--lab-muted, #555);
+  animation: lsBounce 0.6s ease-in-out infinite;
 }
 
-.loading-dot:nth-child(1) {
-  animation-delay: 0s;
-}
-
-.loading-dot:nth-child(2) {
+.ls__dots span:nth-child(2) {
   animation-delay: 0.1s;
 }
 
-.loading-dot:nth-child(3) {
+.ls__dots span:nth-child(3) {
   animation-delay: 0.2s;
 }
 
-
-@keyframes logoAnimation {
-  0% {
-     transform: scale(0.8);
-     opacity: 0;
-  }
-
-  100% {
-     transform: scale(1);
-     opacity: 1;
-  }
+@keyframes lsPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
 }
 
-@keyframes bounce {
-
-  0%,
-  100% {
-     transform: translateY(0);
-  }
-
-  50% {
-     transform: translateY(-20px);
-  }
-}
-
-@keyframes pulse {
-  0% {
-     transform: scale(1);
-  }
-
-  50% {
-     transform: scale(1.1);
-  }
-
-  100% {
-     transform: scale(1);
-  }
+@keyframes lsBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }

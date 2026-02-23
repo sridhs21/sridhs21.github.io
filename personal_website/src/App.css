@@ -1,24 +1,35 @@
 :root {
+  /* Lab design system */
+  --lab-bg: #060606;
+  --lab-surface: #0a0a0a;
+  --lab-card: #0d0d0d;
+  --lab-border: rgba(255, 255, 255, 0.06);
+  --lab-accent: #c9a84c;
+  --lab-accent-dim: rgba(201, 168, 76, 0.06);
+  --lab-accent-glow: rgba(201, 168, 76, 0.15);
+  --lab-text: #888888;
+  --lab-heading: #f0f0f0;
+  --lab-muted: #555555;
+  --lab-white: #ffffff;
+  --lab-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
+  --lab-sans: 'Inter', 'Segoe UI', system-ui, sans-serif;
 
-  --highlight-purple: #00b4d8;
-  --highlight-purple-light: #00caf2;
-  --highlight-purple-hover: #00d9ff;
-  --highlight-purple-dark: #0096c7;
-
-  --dark-bg: #0f0f0f;
-  --dark-bg-secondary: #1a1a1a;
-  --dark-text-primary: #f5f6fa;
-  --dark-text-secondary: #cbd5e1;
-
-  --light-bg: #f5f5f5; 
-  --light-bg-secondary: #e8e8e8;
-  --light-text-primary: #222222;
-  --light-text-secondary: #0096c7;
+  /* Legacy compat */
+  --highlight-purple: #888;
+  --highlight-purple-light: #f0f0f0;
+  --dark-bg: #060606;
+  --dark-bg-secondary: #0a0a0a;
+  --dark-text-primary: #f0f0f0;
+  --dark-text-secondary: #888888;
+  --light-bg: #060606;
+  --light-bg-secondary: #0a0a0a;
+  --light-text-primary: #f0f0f0;
+  --light-text-secondary: #888888;
 
   --transition-speed: 0.2s;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500;600;700&display=swap');
 
 * {
   margin: 0;
@@ -27,16 +38,10 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--lab-sans);
   line-height: 1.5;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  background-color: var(--light-bg);
-  color: var(--light-text);
-}
-
-body.dark-mode {
-  background-color: var(--dark-bg);
-  color: var(--dark-text);
+  background-color: var(--lab-bg);
+  color: var(--lab-text);
 }
 
 .app {
@@ -402,7 +407,7 @@ body.dark-mode {
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -410,21 +415,21 @@ body.dark-mode {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 180, 216, 0.3);
-  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 180, 216, 0.5);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 :focus {
-  outline: 2px solid var(--highlight-purple);
+  outline: 2px solid rgba(255, 255, 255, 0.15);
   outline-offset: 2px;
 }
 
 ::selection {
-  background-color: rgba(0, 180, 216, 0.2);
+  background-color: rgba(255, 255, 255, 0.12);
   color: inherit;
 }
 

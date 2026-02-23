@@ -1,500 +1,773 @@
-.about-container {
-  position: relative;
+/* ═══════════════════════════════════════════════════════════
+   ABOUT — Lab design system · framer-motion enhanced
+   ═══════════════════════════════════════════════════════════ */
+
+.ab {
+  margin-top: -80px;
+  margin-bottom: -20px;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  width: 100vw;
   min-height: 100vh;
-  padding-top: 2rem;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  background: var(--lab-bg, #060606);
+  color: var(--lab-text, #888);
+  font-family: var(--lab-sans, "Inter", system-ui, sans-serif);
 }
 
-.dark-mode {
-  background-color: #0f0f0f;
-  color: #f5f6fa;
-}
-
-.light-mode {
-  background-color: #f5f5f5;
-  color: #333333;
-}
-
-.about-content {
+.ab__inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 7rem 2.5rem 4rem;
 }
 
-.section-header {
-  text-align: center;
-  margin-bottom: 4rem;
+/* ── header ──────────────────────────────────────── */
+.ab__header {
+  margin-bottom: 3.5rem;
+  perspective: 600px;
 }
 
-.section-title {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  color: #00b4d8;
+.ab__label {
+  display: block;
+  font-family: var(--lab-mono, "JetBrains Mono", monospace);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--lab-muted, #555);
+  margin-bottom: 0.75rem;
+}
+
+.ab__title {
+  font-family: var(--lab-sans, "Inter", system-ui, sans-serif);
+  font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 700;
-  font-family: 'Montserrat', 'Inter', 'Segoe UI', sans-serif;
-}
-
-.section-divider {
-  width: 60px;
-  height: 4px;
-  background-color: #00b4d8;
-  margin: 0 auto 2rem;
-  border-radius: 2px;
-}
-
-.bio-section {
-  margin-bottom: 5rem;
-}
-
-.bio-container {
+  color: var(--lab-heading, #f0f0f0);
+  letter-spacing: -1.5px;
   display: flex;
-  flex-wrap: wrap;
+  perspective: 600px;
+}
+
+.ab__title-char {
+  display: inline-block;
+  transform-origin: bottom center;
+}
+
+.ab__header-line {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    var(--lab-accent, #c9a84c),
+    transparent 60%
+  );
+  margin-top: 1.25rem;
+  transform-origin: left center;
+}
+
+/* ════════════════════════════════════════════════════
+   BIO SECTION
+   ════════════════════════════════════════════════════ */
+.ab__bio {
+  margin-bottom: 2rem;
+}
+
+.ab__bio-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
   gap: 3rem;
-  align-items: flex-start;
+  align-items: start;
 }
 
-.bio-image-container {
-  flex: 1 1 350px;
+/* ── Magnetic Portrait ── */
+.ab__portrait-wrap {
   position: sticky;
-  top: 7.3rem;
+  top: 5rem;
 }
 
-.bio-image-wrapper {
+.ab__portrait-3d {
   position: relative;
-  border-radius: 16px;
+  perspective: 800px;
+  cursor: default;
+}
+
+.ab__portrait-spotlight {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.ab__portrait {
+  border-radius: 12px;
   overflow: hidden;
+  border: 1px solid var(--lab-border, rgba(255, 255, 255, 0.06));
+  position: relative;
 }
 
-.dark-mode .bio-image-wrapper {
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-}
-
-.light-mode .bio-image-wrapper {
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
-}
-
-.bio-image {
+.ab__portrait img {
   width: 100%;
   height: auto;
   display: block;
+  filter: saturate(0.85);
 }
 
-.bio-image-gradient {
+/* Decorative accent bars */
+.ab__portrait-deco {
   position: absolute;
-  bottom: 0;
-  left: 0;
+  height: 2px;
+  width: 40px;
+  background: var(--lab-accent, #c9a84c);
+  border-radius: 1px;
+}
+
+.ab__portrait-deco--top {
+  top: -8px;
   right: 0;
-  height: 30%;
-  background: linear-gradient(to top, rgba(0, 180, 216, 0.8), transparent);
+  left: auto;
+  transform-origin: right center;
 }
 
-.bio-content {
-  flex: 1 1 500px;
+.ab__portrait-deco--bottom {
+  bottom: -8px;
+  left: 0;
+  transform-origin: left center;
 }
 
-.bio-heading {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  font-weight: 600;
-}
-
-.dark-mode .bio-heading {
-  color: var(--dark-text-primary);
-}
-
-.light-mode .bio-heading {
-  color: var(--light-text-primary);
-}
-
-.bio-paragraph {
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-  line-height: 1.8;
-}
-
-.bio-paragraph:last-of-type {
-  margin-bottom: 2rem;
-}
-
-.dark-mode .bio-paragraph {
-  color: var(--dark-text-secondary);
-}
-
-.light-mode .bio-paragraph {
-  color: var(--light-text-secondary);
-}
-
-/* Updated Stats Section */
-.stats-container {
+/* Quick tags */
+.ab__quick-tags {
   display: flex;
-  gap: 3rem;
-  margin-bottom: 2rem;
   flex-wrap: wrap;
-  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 1rem;
 }
 
-.stat-item {
+.ab__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--lab-mono, "JetBrains Mono", monospace);
+  font-size: 0.68rem;
+  color: var(--lab-muted, #555);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--lab-border, rgba(255, 255, 255, 0.06));
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  transition: border-color 0.25s ease, color 0.25s ease;
+}
+
+.ab__tag:hover {
+  border-color: rgba(201, 168, 76, 0.2);
+  color: var(--lab-text, #888);
+}
+
+.ab__tag svg {
+  opacity: 0.6;
+}
+
+/* ── bio text ── */
+.ab__bio-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.ab__bio-heading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--lab-heading, #f0f0f0);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.5px;
+}
+
+.ab__text-reveal {
+  will-change: transform, opacity, filter;
+}
+
+.ab__bio-text p {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--lab-text, #888);
+  margin-bottom: 1.25rem;
+}
+
+/* ── stats ── */
+.ab__stats {
+  display: flex;
+  gap: 2.5rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--lab-border, rgba(255, 255, 255, 0.06));
+}
+
+.ab__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   flex: 1;
-  min-width: 140px;
+  padding: 1rem 0.5rem;
+  border-radius: 8px;
+  background: transparent;
+  transition: background 0.3s ease;
+  cursor: default;
+}
+
+.ab__stat:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.ab__stat-num {
+  font-family: var(--lab-sans, "Inter", system-ui, sans-serif);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--lab-heading, #f0f0f0);
+  letter-spacing: -1px;
+  line-height: 1;
+  margin-bottom: 0.35rem;
+}
+
+.ab__stat-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--lab-heading, #f0f0f0);
+  margin-bottom: 0.15rem;
+}
+
+.ab__stat-sub {
+  font-size: 0.72rem;
+  color: var(--lab-muted, #555);
+}
+
+/* ── section divider ── */
+.ab__divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--lab-border, rgba(255, 255, 255, 0.06)) 20%,
+    var(--lab-border, rgba(255, 255, 255, 0.06)) 80%,
+    transparent
+  );
+  margin: 3rem 0;
+  transform-origin: center center;
+}
+
+/* ════════════════════════════════════════════════════
+   EDUCATION — Immersive Glass Panels
+   ════════════════════════════════════════════════════ */
+.ab__edu {
+  margin-bottom: 4rem;
+}
+
+.ab__edu-header {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 2rem;
+}
+
+.ab__edu-header svg {
+  color: var(--lab-muted, #555);
+}
+
+.ab__edu-header h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--lab-heading, #f0f0f0);
+  letter-spacing: -0.3px;
+}
+
+/* ── Panel container ── */
+.ab__panels {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.stat-number {
-  font-size: 3rem;
-  font-weight: 700;
-  color: #00b4d8;
-  margin-bottom: 0.5rem;
-  line-height: 1;
-}
-
-.stat-label {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 0.25rem;
-  line-height: 1.2;
-}
-
-.dark-mode .stat-label {
-  color: #f5f6fa;
-}
-
-.light-mode .stat-label {
-  color: #333333;
-}
-
-.stat-sublabel {
-  font-size: 1rem;
-  line-height: 1.2;
-  text-align: center;
-}
-
-.dark-mode .stat-sublabel {
-  color: #cbd5e1;
-}
-
-.light-mode .stat-sublabel {
-  color: #a0aec0;
-}
-
-.resume-button {
-  display: inline-flex;
+/* ── Connector between panels ── */
+.ab__connector {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
-  background-color: #00b4d8;
-  color: white;
-  padding: 0.9rem 1.8rem;
-  border-radius: 4px;
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 14px rgba(0, 180, 216, 0.25);
-  margin-top: 2rem;
+  height: 48px;
+  transform-origin: top center;
 }
 
-.resume-button:hover {
-  background-color: #00caf2;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 180, 216, 0.3);
-}
-
-/* Updated Education Section */
-.education-section {
-  margin-bottom: 5rem;
-}
-
-.section-header-with-icon {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.section-header-with-icon h2 {
-  font-size: 1.8rem;
-  color: #00b4d8;
-  font-weight: 600;
-}
-
-.education-card {
-  border-radius: 16px;
-  padding: 2rem;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-}
-
-.dark-mode .education-card {
-  background-color: rgba(15, 15, 15, 0.6);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(245, 245, 245, 0.1);
-}
-
-.light-mode .education-card {
-  background-color: rgba(245, 245, 245, 0.6);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.education-item {
-  margin-bottom: 2.5rem;
-  padding-bottom: 2.5rem;
-}
-
-.education-item:last-child {
-  margin-bottom: 0;
-  padding-bottom: 0;
-  border-bottom: none;
-}
-
-.dark-mode .education-item {
-  border-bottom: 1px solid rgba(245, 245, 245, 0.1);
-}
-
-.light-mode .education-item {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.education-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 1.5rem;
-}
-
-.education-main-info {
-  display: flex;
-  gap: 1rem;
-  align-items: flex-start;
+.ab__connector-line {
+  width: 1px;
   flex: 1;
+  background: linear-gradient(
+    180deg,
+    var(--lab-accent, #c9a84c) 0%,
+    rgba(201, 168, 76, 0.15) 100%
+  );
 }
 
-.education-logo-container {
-  position: relative;
+.ab__connector-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--lab-accent, #c9a84c);
+  box-shadow: 0 0 8px rgba(201, 168, 76, 0.4);
   flex-shrink: 0;
 }
 
-.education-logo {
-  width: 64px;
-  height: 64px;
-  object-fit: contain;
-  border-radius: 10px;
-  border: 2px solid rgba(0, 180, 216, 0.2);
-  padding: 6px;
+/* ════════════════════════════════════════════════════
+   PANEL CARD — glass surface with 3-D tilt
+   ════════════════════════════════════════════════════ */
+.ab__panel {
+  position: relative;
+  width: 100%;
+  background: var(--lab-card, #0d0d0d);
+  border: 1px solid var(--lab-border, rgba(255, 255, 255, 0.06));
+  border-radius: 20px;
+  padding: 2.25rem 2.5rem;
+  overflow: hidden;
+  perspective: 800px;
+  cursor: default;
+  transition: border-color 0.4s ease;
 }
 
-.education-icon-fallback {
-  display: none;
+.ab__panel:hover {
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
-.education-logo[style*="display: none"] + .education-icon-fallback {
+/* animated gradient border glow on hover */
+.ab__panel-glow {
+  position: absolute;
+  inset: -1px;
+  border-radius: 20px;
+  background: conic-gradient(
+    from 0deg,
+    rgba(201, 168, 76, 0.2),
+    transparent 25%,
+    transparent 50%,
+    rgba(201, 168, 76, 0.12),
+    transparent 75%,
+    rgba(201, 168, 76, 0.2)
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  z-index: 0;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1px;
+}
+
+.ab__panel:hover .ab__panel-glow {
+  opacity: 1;
+  animation: glowSpin 6s linear infinite;
+}
+
+@keyframes glowSpin {
+  to {
+    filter: hue-rotate(30deg);
+  }
+}
+
+/* cursor spotlight */
+.ab__panel-spot {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── year watermark ── */
+.ab__panel-watermark {
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--lab-sans, "Inter", system-ui, sans-serif);
+  font-size: clamp(4.5rem, 9vw, 8rem);
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.02);
+  letter-spacing: -4px;
+  pointer-events: none;
+  z-index: 0;
+  user-select: none;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* ── panel body ── */
+.ab__panel-body {
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Head row: logo + meta + year badge ── */
+.ab__panel-head {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+/* Logo */
+.ab__panel-logo {
+  width: 58px;
+  height: 58px;
+  flex-shrink: 0;
+  border-radius: 14px;
+  border: 1px solid var(--lab-border, rgba(255, 255, 255, 0.06));
+  background: rgba(255, 255, 255, 0.025);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 64px;
-  height: 64px;
-  border-radius: 10px;
-  border: 2px solid rgba(0, 180, 216, 0.2);
-  background-color: rgba(0, 180, 216, 0.1);
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  transition: border-color 0.3s ease, background 0.3s ease;
 }
 
-.education-text-info {
+.ab__panel-logo:hover {
+  border-color: rgba(201, 168, 76, 0.2);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.ab__panel-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 7px;
+}
+
+.ab__panel-icon-fb {
+  display: none;
+}
+
+.ab__panel-logo img[style*="display: none"] + .ab__panel-icon-fb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: var(--lab-muted, #555);
+}
+
+/* Meta */
+.ab__panel-meta {
   flex: 1;
+  min-width: 0;
 }
 
-.education-degree {
-  font-size: 1.4rem;
+/* Status beacon */
+.ab__panel-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.ab__beacon {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--lab-muted, #555);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.ab__beacon--live {
+  background: #4ade80;
+  box-shadow: 0 0 6px rgba(74, 222, 128, 0.35);
+  animation: beaconPulse 2s ease-in-out infinite;
+}
+
+@keyframes beaconPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 4px rgba(74, 222, 128, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 12px rgba(74, 222, 128, 0.55);
+  }
+}
+
+.ab__beacon-label {
+  font-family: var(--lab-mono, "JetBrains Mono", monospace);
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--lab-muted, #555);
+}
+
+/* Degree / school */
+.ab__panel-degree {
+  font-size: 1.1rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
-  line-height: 1.3;
+  color: var(--lab-heading, #f0f0f0);
+  line-height: 1.35;
+  margin-bottom: 0.35rem;
 }
 
-.dark-mode .education-degree {
-  color: #f5f6fa;
-}
-
-.light-mode .education-degree {
-  color: #333333;
-}
-
-.education-school {
-  font-size: 1.2rem;
+.ab__panel-school {
+  font-size: 0.95rem;
   font-weight: 500;
-  margin-bottom: 0.5rem;
+  color: var(--lab-text, #888);
+  margin-bottom: 0.3rem;
 }
 
-.dark-mode .education-school {
-  color: var(--dark-text-primary);
-}
-
-.light-mode .education-school {
-  color: var(--light-text-primary);
-}
-
-.education-department {
+.ab__panel-dept {
   font-weight: 400;
-  opacity: 0.8;
-}
-
-.education-concentration {
-  font-size: 1rem;
-  color: #00b4d8;
-  font-weight: 500;
-  margin-bottom: 0.5rem;
-}
-
-.education-location {
-  font-size: 0.9rem;
   opacity: 0.7;
-  margin-bottom: 0.5rem;
 }
 
-.education-year {
-  font-size: 0.9rem;
-  color: #00b4d8;
-  font-weight: 500;
-  background-color: rgba(0, 180, 216, 0.1);
-  padding: 0.4rem 0.8rem;
+/* Concentration badge */
+.ab__panel-conc {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--lab-mono, "JetBrains Mono", monospace);
+  font-size: 0.7rem;
+  color: var(--lab-accent, #c9a84c);
+  background: rgba(201, 168, 76, 0.06);
+  border: 1px solid rgba(201, 168, 76, 0.1);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  margin-bottom: 0.65rem;
+  margin-right: 0.75rem;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ab__panel-conc svg {
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+/* Location */
+.ab__panel-loc {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.35rem;
+  font-size: 0.78rem;
+  color: var(--lab-muted, #555);
+}
+
+.ab__panel-loc svg {
+  opacity: 0.6;
+}
+
+/* Year badge */
+.ab__panel-year-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--lab-mono, "JetBrains Mono", monospace);
+  font-size: 0.7rem;
+  color: var(--lab-muted, #555);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--lab-border, rgba(255, 255, 255, 0.06));
+  padding: 0.35rem 0.7rem;
   border-radius: 6px;
   white-space: nowrap;
   height: fit-content;
+  flex-shrink: 0;
+  transition: border-color 0.3s ease;
 }
 
-.education-details {
+.ab__panel:hover .ab__panel-year-badge {
+  border-color: rgba(201, 168, 76, 0.15);
+}
+
+.ab__panel-year-badge svg {
+  opacity: 0.5;
+}
+
+/* ── Actions row (honors + toggle) ── */
+.ab__panel-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+  flex-wrap: wrap;
+}
+
+/* ── Honors badge ── */
+.ab__panel-honors {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.8rem;
+  color: var(--lab-accent, #c9a84c);
+  background: rgba(201, 168, 76, 0.05);
+  border: 1px solid rgba(201, 168, 76, 0.1);
+  padding: 0.35rem 0.8rem;
+  border-radius: 6px;
+}
+
+.ab__panel-honors svg {
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+/* ── Expand toggle ── */
+.ab__panel-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.85rem;
+  font-family: var(--lab-mono, "JetBrains Mono", monospace);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--lab-muted, #555);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--lab-border, rgba(255, 255, 255, 0.06));
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.ab__panel-toggle:hover {
+  border-color: rgba(201, 168, 76, 0.2);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* ── Course pills ── */
+.ab__panel-courses {
+  overflow: hidden;
   margin-top: 1rem;
 }
 
-.education-gpa,
-.education-honors {
-  font-size: 0.95rem;
-  margin-bottom: 0.5rem;
+.ab__panel-courses-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
 
-.dark-mode .education-gpa,
-.dark-mode .education-honors {
-  color: #e2e8f0;
+.ab__pill {
+  display: inline-block;
+  font-family: var(--lab-mono, "JetBrains Mono", monospace);
+  font-size: 0.68rem;
+  color: var(--lab-text, #888);
+  border: 1px solid var(--lab-border, rgba(255, 255, 255, 0.06));
+  background: rgba(255, 255, 255, 0.02);
+  padding: 0.35rem 0.75rem;
+  border-radius: 100px;
+  cursor: default;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+  white-space: nowrap;
 }
 
-.light-mode .education-gpa,
-.light-mode .education-honors {
-  color: #4a5568;
+.ab__pill:hover {
+  background: rgba(255, 255, 255, 0.04);
 }
 
-.education-description {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  margin-top: 0.75rem;
-}
-
-.education-description.highschool-description {
-  margin-bottom: 1.5rem;
-}
-
-.dark-mode .education-description {
-  color: #cbd5e1;
-}
-
-.light-mode .education-description {
-  color: #a0aec0;
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from {
-     opacity: 0;
-     transform: translateY(10px);
-  }
-  to {
-     opacity: 1;
-     transform: translateY(0);
-  }
-}
-
-.animate-fade-in {
-  animation: fadeIn 0.8s ease-out forwards;
-  opacity: 0;
-}
-
-.animate-delay-1 {
-  animation-delay: 0.1s;
-}
-
-.animate-delay-2 {
-  animation-delay: 0.3s;
-}
-
-.animate-delay-3 {
-  animation-delay: 0.5s;
-}
-
-/* Responsive Design */
+/* ════════════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
-  .section-title {
-     font-size: 2.5rem;
+  .ab__inner {
+    padding: 6rem 1.5rem 3rem;
   }
 
-  .bio-container {
-     flex-direction: column;
+  .ab__bio-grid {
+    grid-template-columns: 1fr;
   }
 
-  .bio-image-container {
-     position: relative;
-     top: 0;
-     margin-bottom: 2rem;
+  .ab__portrait-wrap {
+    position: static;
+    max-width: 320px;
   }
 
-  .stats-container {
-     justify-content: space-between;
-     gap: 1.5rem;
+  .ab__stats {
+    gap: 1.5rem;
   }
 
-  .stat-item {
-     min-width: 110px;
+  .ab__stat-num {
+    font-size: 1.8rem;
   }
 
-  .stat-number {
-     font-size: 2.5rem;
+  .ab__quick-tags {
+    justify-content: center;
   }
 
-  .stat-label {
-     font-size: 1.2rem;
+  /* Panel adjustments */
+  .ab__panel {
+    padding: 1.75rem 1.5rem;
+    border-radius: 16px;
   }
 
-  .stat-sublabel {
-     font-size: 0.9rem;
+  .ab__panel-head {
+    flex-wrap: wrap;
+    gap: 1rem;
   }
 
-  .education-header {
-     flex-direction: column;
-     gap: 1rem;
-     align-items: flex-start;
+  .ab__panel-year-badge {
+    order: -1;
+    width: fit-content;
   }
 
-  .education-main-info {
-     width: 100%;
+  .ab__panel-watermark {
+    font-size: 4rem;
+    right: 1rem;
   }
 
-  .education-year {
-     align-self: flex-start;
+  .ab__panel-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
   }
 
-  .education-logo {
-     width: 56px;
-     height: 56px;
+  .ab__panel-degree {
+    font-size: 1rem;
   }
 
-  .education-icon-fallback {
-     width: 56px;
-     height: 56px;
+  .ab__connector {
+    height: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ab__inner {
+    padding: 5.5rem 1rem 2rem;
   }
 
-  .education-degree {
-     font-size: 1.2rem;
+  .ab__title {
+    font-size: 2rem;
   }
 
-  .education-school {
-     font-size: 1.1rem;
+  .ab__stats {
+    flex-direction: column;
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+
+  .ab__stat {
+    flex-direction: row;
+    gap: 0.75rem;
+    text-align: left;
+  }
+
+  .ab__panel {
+    padding: 1.5rem 1.25rem;
+    border-radius: 14px;
+  }
+
+  .ab__panel-watermark {
+    font-size: 3rem;
+    letter-spacing: -2px;
+  }
+
+  .ab__panel-head {
+    flex-direction: column;
+  }
+
+  .ab__panel-logo {
+    width: 44px;
+    height: 44px;
+  }
+
+  .ab__pill {
+    font-size: 0.62rem;
+    padding: 0.3rem 0.6rem;
   }
 }

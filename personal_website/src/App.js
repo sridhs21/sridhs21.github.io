@@ -26,25 +26,10 @@ function ScrollToTop() {
 }
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    const savedDarkMode = localStorage.getItem("darkMode");
-    return savedDarkMode ? JSON.parse(savedDarkMode) : true;
-  });
-
   const [isLoading, setIsLoading] = useState(true);
 
-  const toggleTheme = () => {
-    const newDarkMode = !isDarkMode;
-    setIsDarkMode(newDarkMode);
-    localStorage.setItem("darkMode", JSON.stringify(newDarkMode));
-  };
-
   useEffect(() => {
-    // Apply dark mode immediately to the entire document
-    document.body.style.backgroundColor = isDarkMode
-      ? "var(--dark-bg)"
-      : "var(--light-bg)";
-    document.body.className = isDarkMode ? "dark-mode" : "";
+    document.body.style.backgroundColor = "#060606";
 
     const checkResourcesLoaded = () => {
       if (document.readyState === "complete") {
@@ -60,54 +45,37 @@ function App() {
     return () => {
       window.removeEventListener("load", checkResourcesLoaded);
     };
-  }, [isDarkMode]);
+  }, []);
 
   return (
     <div
       style={{
-        backgroundColor: isDarkMode ? "var(--dark-bg)" : "var(--light-bg)",
+        backgroundColor: "#060606",
         minHeight: "100vh",
-        transition: "background-color 0.3s ease",
       }}
     >
-      <LoadingScreen isDarkMode={isDarkMode} isLoading={isLoading} />
+      <LoadingScreen isLoading={isLoading} />
       <Router>
         <div
-          className={`app ${isDarkMode ? "dark-mode" : ""}`}
+          className="app"
           style={{
             opacity: isLoading ? 0 : 1,
             transition: "opacity 0.5s ease-out",
             visibility: isLoading ? "hidden" : "visible",
-            backgroundColor: isDarkMode ? "#0f0f0f" : "#f5f5f5",
+            backgroundColor: "#060606",
           }}
         >
           {/* Add ScrollToTop component inside Router */}
           <ScrollToTop />
-          <Navbar isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+          <Navbar />
           <main className="main-content">
             <Routes>
-              <Route
-                exact
-                path="/"
-                element={<Home isDarkMode={isDarkMode} />}
-              />
-              <Route path="/home" element={<Home isDarkMode={isDarkMode} />} />
-              <Route
-                path="/portfolio"
-                element={<Portfolio isDarkMode={isDarkMode} />}
-              />
-              <Route
-                path="/repos"
-                element={<Repos isDarkMode={isDarkMode} />}
-              />
-              <Route
-                path="/about"
-                element={<About isDarkMode={isDarkMode} />}
-              />
-              <Route
-                path="/contact"
-                element={<Contact isDarkMode={isDarkMode} />}
-              />
+              <Route exact path="/" element={<Home />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/portfolio" element={<Portfolio />} />
+              <Route path="/repos" element={<Repos />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
             </Routes>
           </main>
         </div>
