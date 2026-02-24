@@ -377,22 +377,28 @@ function Home() {
               
               {/* 4. Streamlined CTAs */}
               <motion.div className="hm__ctas" initial="hidden" animate="show" variants={stagger(0.1, 0.6)}>
-                {[
-                  { href: "/contact", label: "Get in Touch", primary: true },
-                  { href: "/resume", label: "Resume" },
-                ].map(({ href, label, primary }) => (
-                  <motion.a key={label} href={href}
-                    className={`hm__btn ${primary ? "hm__btn--primary hm__btn--lg" : "hm__btn--ghost hm__btn--lg"}`}
-                    variants={fadeUp} whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
-                    {label}{primary && <ArrowUpRight size={14} />}
-                  </motion.a>
-                ))}
+                <motion.a
+                  href="/files/Swaroop_Sridhar_Resume.pdf"
+                  className="hm__btn hm__btn--primary hm__btn--lg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variants={fadeUp} whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
+                  Resume <ArrowUpRight size={14} />
+                </motion.a>
+                <motion.a
+                  href="/files/SwaroopSridhar_CV.pdf"
+                  className="hm__btn hm__btn--ghost hm__btn--lg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variants={fadeUp} whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
+                  Curriculum Vitae
+                </motion.a>
               </motion.div>
             </motion.div>
 
             <motion.div className="hm__hero-right" style={{ y: portraitY, opacity: portraitOp }}>
               <motion.div initial={{ opacity: 0, scale: 0.94 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.75, delay: 0.3, ease }}>
-                <MagneticPortrait src="/images/pfp.jpg" alt="Swaroop Sridhar" />
+                <MagneticPortrait src="/images/pfp2.jpg" alt="Swaroop Sridhar" />
               </motion.div>
               <motion.div className="hm__details" initial="hidden" animate="show" variants={stagger(0.1, 0.62)}>
                 {[

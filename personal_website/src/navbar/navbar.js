@@ -144,6 +144,16 @@ function Navbar(props) {
             },
             "r\u00E9sum\u00E9"
           ),
+          React.createElement(
+            "a",
+            {
+              className: "e-resume",
+              href: "/files/SwaroopSridhar_CV.pdf",
+              target: "_blank",
+              rel: "noopener noreferrer",
+            },
+            "curr\u00EDculum vitae"
+          ),
 
           /* toggle button — circle that becomes ring */
           React.createElement(
@@ -198,15 +208,28 @@ function Navbar(props) {
           React.createElement(
             "a",
             {
-              className: "e-sheet__link",
-              href: "/files/Swaroop_Sridhar_Resume.pdf",
-              target: "_blank",
-              rel: "noopener noreferrer",
-              onClick: function () { setIsOpen(false); },
-              style: { transitionDelay: isOpen ? (NAV_ITEMS.length * 0.04 + 0.2) + "s" : "0s" },
-            },
-            React.createElement("span", { className: "e-sheet__link-text" }, "R\u00E9sum\u00E9"),
-            React.createElement("span", { className: "e-sheet__link-arrow" }, "\u2197")
+                className: "e-sheet__link",
+                href: "/files/Swaroop_Sridhar_Resume.pdf",
+                target: "_blank",
+                rel: "noopener noreferrer",
+                onClick: function () { setIsOpen(false); },
+                style: { transitionDelay: isOpen ? (NAV_ITEMS.length * 0.04 + 0.2) + "s" : "0s" },
+              },
+              React.createElement("span", { className: "e-sheet__link-text" }, "R\u00E9sum\u00E9"),
+              React.createElement("span", { className: "e-sheet__link-arrow" }, "\u2197")
+            ),
+            React.createElement(
+              "a",
+              {
+                className: "e-sheet__link",
+                href: "/files/SwaroopSridhar_CV.pdf",
+                target: "_blank",
+                rel: "noopener noreferrer",
+                onClick: function () { setIsOpen(false); },
+                style: { transitionDelay: isOpen ? (NAV_ITEMS.length * 0.04 + 0.25) + "s" : "0s" },
+              },
+              React.createElement("span", { className: "e-sheet__link-text" }, "curr\u00EDculum vitae"),
+              React.createElement("span", { className: "e-sheet__link-arrow" }, "\u2197")
           )
         ),
 
