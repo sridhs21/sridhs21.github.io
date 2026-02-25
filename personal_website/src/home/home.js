@@ -398,7 +398,7 @@ function Home() {
 
             <motion.div className="hm__hero-right" style={{ y: portraitY, opacity: portraitOp }}>
               <motion.div initial={{ opacity: 0, scale: 0.94 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.75, delay: 0.3, ease }}>
-                <MagneticPortrait src="/images/pfp2.jpg" alt="Swaroop Sridhar" />
+                <MagneticPortrait src="/images/profile4.png" alt="Swaroop Sridhar" />
               </motion.div>
               <motion.div className="hm__details" initial="hidden" animate="show" variants={stagger(0.1, 0.62)}>
                 {[
