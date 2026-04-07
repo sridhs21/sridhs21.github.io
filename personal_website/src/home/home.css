@@ -40,7 +40,7 @@
    SCROLL SPACER — drives cinematic progress
    ───────────────────────────────────────────── */
 .hm__spacer {
-  height: 200vh;
+  height: 300vh;
   position: relative;
 }
 
@@ -203,6 +203,12 @@
   height: auto;
   display: block;
   position: relative;
+}
+
+.hm__photo,
+.hm__outline {
+  -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 95%);
+  mask-image: linear-gradient(to bottom, black 55%, transparent 95%);
 }
 
 .hm__photo {
@@ -502,7 +508,7 @@
   .hm__name { font-size: 2rem; letter-spacing: -1px; }
   .hm__role { font-size: 1.1rem; }
   .hm__center { width: 200px; }
-  .hm__spacer { height: 250vh; }
+  .hm__spacer { height: 350vh; }
   .hm__scroll-hint { display: none; }
   .hm__below { padding: 0.5rem 1rem 2rem; }
 }

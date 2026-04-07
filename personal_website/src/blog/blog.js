@@ -129,25 +129,37 @@ function GTCPost() {
       </div>
 
       <TextReveal delay={0.1}>
-        <h2>Telesurgery</h2>
+        <h2>Surgical Robotics</h2>
       </TextReveal>
 
       <TextReveal delay={0.15}>
         <p>
-          The thing that genuinely stopped me in my tracks was the XRlabs
-          telesurgery demo. They had a setup where a surgeon could operate
-          remotely with haptic feedback and real-time video, and it just worked.
-          Not like a concept video; it was right there running in front of me. I
-          stood at that booth for way longer than I should have, asking questions
-          about latency, about how they handle the feedback loop, about what
-          happens when the connection degrades.
+          The thing that genuinely stopped me in my tracks was the healthcare
+          robotics section. XRlabs had a booth with a remote surgery setup;
+          haptic feedback, live video, the whole loop running right there in
+          front of you. I stood there way longer than I should have asking
+          questions about latency and what happens when the connection degrades.
+        </p>
+      </TextReveal>
+
+      <TextReveal delay={0.15}>
+        <p>
+          But it wasn't just them. CMR Surgical was there showing how they're
+          training the next generation of intelligent systems for their Versius
+          robot, contributing to the Open-H dataset for healthcare robotics.
+          Johnson & Johnson MedTech had their MONARCH platform for urology
+          running on NVIDIA Isaac and IGX Thor. Moon Surgical was demoing their
+          Maestro System, basically a digital surgical assistant powered by
+          Holoscan. And Virtual Incision had their MIRA system, using Isaac for
+          Healthcare to simulate robotic-assisted procedures. It was a lot of
+          surgical robotics in one room.
         </p>
       </TextReveal>
 
       <TextReveal delay={0.15}>
         <p>
           I've spent most of my time building ML models and computer vision
-          pipelines, but seeing that demo made something click. Healthcare is
+          pipelines, but seeing all of that made something click. Healthcare is
           where I want to apply this stuff. Not in a vague "AI for good" way;
           specifically, the intersection of real-time systems, computer vision,
           and surgical robotics. The technical problems are genuinely hard and the
@@ -161,9 +173,9 @@ function GTCPost() {
       <div className="bl__img-row bl__img-row--1">
         <TextReveal delay={0.1}>
           <div className="bl__img-wrap">
-            <img src="/NvidiaGTC/IMG_9648.jpg" alt="XRlabs telesurgery display" />
+            <img src="/NvidiaGTC/IMG_9648.jpg" alt="Surgical robotics demo at GTC" />
           </div>
-          <p className="bl__img-caption">XRlabs surgical robotics demo at GTC</p>
+          <p className="bl__img-caption">Surgical robotics demos at GTC</p>
         </TextReveal>
       </div>
 
