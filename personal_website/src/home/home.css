@@ -59,6 +59,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  will-change: opacity;
 }
 
 .hm__cinematic-inner {
@@ -188,6 +189,7 @@
   z-index: 1;
   transform-origin: center 38%;
   will-change: transform;
+  contain: layout style paint;
 }
 
 .hm__center-layers {
@@ -205,16 +207,12 @@
 
 .hm__photo {
   filter: grayscale(100%) contrast(1.05);
-  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 95%);
-  mask-image: linear-gradient(to bottom, black 60%, transparent 95%);
 }
 
 .hm__outline {
   position: absolute;
   top: 0;
   left: 0;
-  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 95%);
-  mask-image: linear-gradient(to bottom, black 60%, transparent 95%);
 }
 
 /* ─────────────────────────────────────────────
@@ -268,31 +266,12 @@
    CIRCUIT BACKGROUND — behind all code sections
    ───────────────────────────────────────────── */
 .hm__circuit-bg::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  opacity: 0.035;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px),
-    radial-gradient(circle 2px, rgba(255,255,255,0.5) 1px, transparent 1px);
-  background-size:
-    60px 60px,
-    60px 60px,
-    60px 60px;
-  background-position:
-    0 0,
-    0 0,
-    30px 30px;
-  pointer-events: none;
-  z-index: 0;
+  display: none;
 }
 
 
 .hm__code-block {
-  background: rgba(6,6,6,0.8);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: #0a0a0a;
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 10px;
   overflow: hidden;

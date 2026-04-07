@@ -3,7 +3,6 @@ import {
   motion,
   useTransform,
   useScroll,
-  useSpring,
   useMotionValueEvent,
   AnimatePresence,
 } from "framer-motion";
@@ -155,45 +154,41 @@ function Home() {
     offset: ["start start", "end end"],
   });
 
-  const smooth = useSpring(scrollYProgress, {
-    stiffness: 260,
-    damping: 45,
-    restDelta: 0.001,
-  });
+  const sp = scrollYProgress;
 
   /* ── Phase 1: Static hero, then photo → outline ── */
-  const photoOpacity    = useTransform(smooth, [0.06, 0.19], [1, 0]);
-  const outlineOpacity  = useTransform(smooth, [0.08, 0.20], [0, 1]);
+  const photoOpacity    = useTransform(sp, [0.06, 0.22], [1, 0]);
+  const outlineOpacity  = useTransform(sp, [0.06, 0.22], [0, 1]);
 
   /* ── Phase 2: Compile fills silhouette, fades fast ── */
-  const compileOpacity    = useTransform(smooth, [0.16, 0.24, 0.32, 0.38], [0, 1, 1, 0]);
-  const compileIntensity  = useTransform(smooth, [0.24, 0.32], [0, 1]);
+  const compileOpacity    = useTransform(sp, [0.16, 0.24, 0.42, 0.52], [0, 1, 1, 0]);
+  const compileIntensity  = useTransform(sp, [0.24, 0.40], [0, 1]);
 
   /* ── Phase 3: Side text fades, zoom ramps ── */
-  const sideTextOpacity = useTransform(smooth, [0.22, 0.38], [1, 0]);
-  const imageScale      = useTransform(smooth, [0.32, 0.78], [1, 15]);
+  const sideTextOpacity = useTransform(sp, [0.22, 0.38], [1, 0]);
+  const imageScale      = useTransform(sp, [0.32, 0.78], [1, 8]);
 
   /* ── Phase 4: Outline fades ── */
-  const outlineLateOpacity = useTransform(smooth, [0.46, 0.58], [1, 0]);
+  const outlineLateOpacity = useTransform(sp, [0.46, 0.58], [1, 0]);
   const combinedOutlineOpacity = useTransform(
     [outlineOpacity, outlineLateOpacity],
     ([fadeIn, fadeOut]) => fadeIn * fadeOut
   );
 
   /* ── Phase 5: Cinematic curtain fades, scripts revealed ── */
-  const cinematicOpacity = useTransform(smooth, [0.55, 0.72], [1, 0]);
+  const cinematicOpacity = useTransform(sp, [0.55, 0.72], [1, 0]);
   const cinematicPointerEvents = useTransform(cinematicOpacity, (v) => v < 0.05 ? "none" : "auto");
 
   /* Scripts scale in as curtain lifts */
-  const scriptsScale   = useTransform(smooth, [0.50, 0.75], [0.4, 1]);
-  const scriptsOpacity = useTransform(smooth, [0.50, 0.65], [0, 1]);
+  const scriptsScale   = useTransform(sp, [0.50, 0.75], [0.4, 1]);
+  const scriptsOpacity = useTransform(sp, [0.50, 0.65], [0, 1]);
 
   /* scroll hint */
-  const scrollHintOpacity = useTransform(smooth, [0, 0.05], [1, 0]);
+  const scrollHintOpacity = useTransform(sp, [0, 0.05], [1, 0]);
 
   /* global progress bar */
   const globalScroll = useScroll();
-  const progressScaleX = useSpring(globalScroll.scrollYProgress, { stiffness: 60, damping: 30 });
+  const progressScaleX = globalScroll.scrollYProgress;
 
   return (
     <div className="hm">
@@ -301,7 +296,7 @@ function Home() {
               <a href="/files/Swaroop_Sridhar_Resume.pdf" className="hm__btn hm__btn--primary" target="_blank" rel="noopener noreferrer">
                 Resume <ArrowUpRight size={14} />
               </a>
-              <a href="/files/SwaroopSridhar_CV.pdf" className="hm__btn hm__btn--ghost" target="_blank" rel="noopener noreferrer">
+              <a href="/files/Swaroop_Sridhar_CV.pdf" className="hm__btn hm__btn--ghost" target="_blank" rel="noopener noreferrer">
                 CV
               </a>
             </motion.div>
