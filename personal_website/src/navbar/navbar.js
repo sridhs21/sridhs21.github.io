@@ -6,7 +6,7 @@ var NAV_ITEMS = [
   { label: "Home", path: "/" },
   { label: "Portfolio", path: "/portfolio" },
   { label: "Repos", path: "/repos" },
-  { label: "About", path: "/about" },
+  { label: "Blog", path: "/blog" },
   { label: "Contact", path: "/contact" },
 ];
 
@@ -148,7 +148,7 @@ function Navbar(props) {
             "a",
             {
               className: "e-resume",
-              href: "/files/SwaroopSridhar_CV.pdf",
+              href: "/files/Swaroop_Sridhar_CV.pdf",
               target: "_blank",
               rel: "noopener noreferrer",
             },
@@ -222,7 +222,7 @@ function Navbar(props) {
               "a",
               {
                 className: "e-sheet__link",
-                href: "/files/SwaroopSridhar_CV.pdf",
+                href: "/files/Swaroop_Sridhar_CV.pdf",
                 target: "_blank",
                 rel: "noopener noreferrer",
                 onClick: function () { setIsOpen(false); },

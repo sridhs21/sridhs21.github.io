@@ -9,7 +9,7 @@ import Navbar from "./navbar/navbar";
 import Home from "./home/home";
 import Portfolio from "./portfolio/portfolio";
 import Repos from "./repos/repos";
-import About from "./about/about";
+import Blog from "./blog/blog";
 import Contact from "./contact/contact";
 import LoadingScreen from "./loading_screen/loading_screen";
 import "./App.css";
@@ -74,7 +74,7 @@ function App() {
               <Route path="/home" element={<Home />} />
               <Route path="/portfolio" element={<Portfolio />} />
               <Route path="/repos" element={<Repos />} />
-              <Route path="/about" element={<About />} />
+              <Route path="/blog" element={<Blog />} />
               <Route path="/contact" element={<Contact />} />
             </Routes>
           </main>

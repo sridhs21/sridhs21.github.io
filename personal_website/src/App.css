@@ -4,9 +4,11 @@
   --lab-surface: #0a0a0a;
   --lab-card: #0d0d0d;
   --lab-border: rgba(255, 255, 255, 0.06);
-  --lab-accent: #c9a84c;
-  --lab-accent-dim: rgba(201, 168, 76, 0.06);
-  --lab-accent-glow: rgba(201, 168, 76, 0.15);
+  --lab-accent: #e0e0e0;
+  --lab-accent-dim: rgba(255, 255, 255, 0.04);
+  --lab-accent-glow: rgba(255, 255, 255, 0.08);
+  --lab-red: #c03030;
+  --lab-red-dim: rgba(192, 48, 48, 0.08);
   --lab-text: #888888;
   --lab-heading: #f0f0f0;
   --lab-muted: #555555;
@@ -442,6 +444,18 @@ body {
 
   50% {
      opacity: .5;
+  }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
