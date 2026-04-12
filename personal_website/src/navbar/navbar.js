@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import anime from "animejs";
 import "./navbar.css";
 
 var NAV_ITEMS = [
@@ -29,19 +30,104 @@ function Navbar(props) {
   var setDot = _dot[1];
 
   var linksRef = useRef(null);
+  var navRef = useRef(null);
   var navigate = useNavigate();
   var location = useLocation();
+
+  /* ── anime.js: slide bar down + stagger brand/links/actions on mount ── */
+  useEffect(function () {
+    if (!navRef.current) return;
+
+    anime({
+      targets: navRef.current,
+      translateY: [-30, 0],
+      opacity: [0, 1],
+      easing: "easeOutExpo",
+      duration: 900,
+    });
+
+    var brand = navRef.current.querySelector(".e-brand");
+    if (brand) {
+      anime({
+        targets: brand,
+        translateY: [-12, 0],
+        opacity: [0, 1],
+        easing: "easeOutExpo",
+        duration: 700,
+        delay: 150,
+      });
+    }
+
+    var linkEls = navRef.current.querySelectorAll(".e-link, .e-sep");
+    anime({
+      targets: linkEls,
+      translateY: [-10, 0],
+      opacity: [0, 1],
+      easing: "easeOutExpo",
+      duration: 650,
+      delay: anime.stagger(45, { start: 250 }),
+    });
+
+    var actionEls = navRef.current.querySelectorAll(".e-resume, .e-toggle");
+    anime({
+      targets: actionEls,
+      translateY: [-10, 0],
+      opacity: [0, 1],
+      easing: "easeOutExpo",
+      duration: 650,
+      delay: anime.stagger(50, { start: 400 }),
+    });
+  }, []);
+
+  /* ── brand letter jiggle on hover ── */
+  var onBrandEnter = function (e) {
+    anime({
+      targets: e.currentTarget,
+      scale: [1, 1.08, 1],
+      rotate: ["0deg", "-4deg", "0deg"],
+      easing: "easeOutElastic(1, .5)",
+      duration: 700,
+    });
+  };
+
+  /* ── link hover: lift ── */
+  var onLinkEnter = function (e) {
+    anime.remove(e.currentTarget);
+    anime({
+      targets: e.currentTarget,
+      translateY: [0, -2],
+      easing: "easeOutExpo",
+      duration: 250,
+    });
+  };
+  var onLinkLeave = function (e) {
+    anime.remove(e.currentTarget);
+    anime({
+      targets: e.currentTarget,
+      translateY: [-2, 0],
+      easing: "easeOutExpo",
+      duration: 250,
+    });
+  };
 
   var go = function (path) {
     navigate(path);
     setIsOpen(false);
   };
 
-  /* scroll listener */
+  /* scroll listener — rAF-throttled so we don't thrash React on every scroll event */
   useEffect(function () {
-    var tick = function () { setIsScrolled(window.scrollY > 30); };
-    window.addEventListener("scroll", tick, { passive: true });
-    return function () { window.removeEventListener("scroll", tick); };
+    var ticking = false;
+    var onScroll = function () {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(function () {
+        setIsScrolled(window.scrollY > 30);
+        ticking = false;
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return function () { window.removeEventListener("scroll", onScroll); };
   }, []);
 
   /* close on route */
@@ -87,14 +173,19 @@ function Navbar(props) {
 
     /* ═══ NAV BAR ═══ */
     React.createElement(
-      "nav", { className: cls },
+      "nav", { className: cls, ref: navRef, style: { opacity: 0 } },
       React.createElement(
         "div", { className: "e-nav__inner" },
 
         /* brand */
         React.createElement(
           Link,
-          { to: "/", className: "e-brand", onClick: function () { go("/"); } },
+          {
+            to: "/",
+            className: "e-brand",
+            onClick: function () { go("/"); },
+            onMouseEnter: onBrandEnter,
+          },
           "ss"
         ),
 
@@ -120,8 +211,8 @@ function Navbar(props) {
                   to: item.path,
                   className: "e-link" + (isActive ? " e-link--active" : ""),
                   onClick: function () { go(item.path); },
-                  onMouseEnter: function () { setHoveredIdx(i); },
-                  onMouseLeave: function () { setHoveredIdx(null); },
+                  onMouseEnter: function (e) { setHoveredIdx(i); onLinkEnter(e); },
+                  onMouseLeave: function (e) { setHoveredIdx(null); onLinkLeave(e); },
                 },
                 item.label.toLowerCase()
               )

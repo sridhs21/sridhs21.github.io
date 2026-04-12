@@ -111,6 +111,42 @@
 }
 
 .hm__name-first { color: #fff; }
+
+/* Shimmer sweep */
+.hm__shimmer {
+  display: inline-block;
+  position: relative;
+  color: #fff;
+}
+
+.hm__shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    transparent 30%,
+    rgba(255,255,255,0.25) 42%,
+    rgba(255,255,255,0.45) 50%,
+    rgba(255,255,255,0.25) 58%,
+    transparent 70%,
+    transparent 100%
+  );
+  background-size: 250% 100%;
+  background-position: 200% center;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: hm-shimmer 4s ease-in-out 1.5s infinite;
+  pointer-events: none;
+}
+
+@keyframes hm-shimmer {
+  0%   { background-position: 200% center; }
+  40%  { background-position: -50% center; }
+  100% { background-position: -50% center; }
+}
+
 .hm__name-last {
   color: transparent;
   -webkit-text-stroke: 1.5px rgba(255,255,255,0.2);
@@ -124,6 +160,19 @@
   line-height: 1.15;
   letter-spacing: -0.3px;
   margin-bottom: 1.4rem;
+}
+
+.hm__cursor {
+  display: inline-block;
+  font-weight: 300;
+  color: rgba(255,255,255,0.4);
+  margin-left: 2px;
+  animation: hm-blink 1s step-end infinite;
+}
+
+@keyframes hm-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 .hm__tags {
@@ -216,6 +265,19 @@
   filter: grayscale(100%) contrast(1.05);
 }
 
+.hm__photo-color {
+  width: 100%;
+  height: auto;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  filter: contrast(1.05) saturate(1.1);
+  -webkit-mask-image: linear-gradient(to bottom, black 30%, transparent 70%);
+  mask-image: linear-gradient(to bottom, black 30%, transparent 70%);
+  pointer-events: none;
+}
+
 .hm__outline {
   position: absolute;
   top: 0;
@@ -281,7 +343,7 @@
 }
 
 /* ─────────────────────────────────────────────
-   CIRCUIT BACKGROUND — behind all code sections
+   RETRO GRID — disabled
    ───────────────────────────────────────────── */
 .hm__circuit-bg::before {
   display: none;
@@ -446,6 +508,29 @@
 
 .hm__ascii-char {
   transition: opacity 0.15s ease;
+}
+
+/* ── ASCII Loader ── */
+.hm__ascii-loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 0.8rem;
+}
+
+.hm__ascii-spinner {
+  font-size: 1.6rem;
+  color: rgba(255,255,255,0.5);
+  font-family: var(--mono);
+}
+
+.hm__ascii-loader-text {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.5px;
+  color: var(--muted);
 }
 
 /* ─────────────────────────────────────────────

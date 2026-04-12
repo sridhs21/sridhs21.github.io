@@ -1,244 +1,23 @@
-import React, { useState, useRef, useEffect, useCallback } from "react";
-import {
-  motion,
-  useTransform,
-  useScroll,
-  useMotionValueEvent,
-  AnimatePresence,
-} from "framer-motion";
-import { ArrowUpRight, Play } from "lucide-react";
+import React, { useRef, useState } from "react";
+import { motion, useTransform, useScroll } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import AnimatedAscii from "./aboutAscii";
+import CompileCanvas from "./components/CompileCanvas";
+import LeakCanvas from "./components/LeakCanvas";
+import CodeBlock from "./components/CodeBlock";
+import Spotlight from "./components/Spotlight";
+import Lamp from "./components/Lamp";
 import "./home.css";
 
 const ease = [0.22, 1, 0.36, 1];
 
-/* ═══════════════════════════════════════════════════
-   COMPILE EFFECT — canvas binary/hex inside silhouette
-   ═══════════════════════════════════════════════════ */
-const CANVAS_SCALE = 4;
-
-function CompileCanvas({ width, height, intensityValue }) {
-  const canvasRef = useRef(null);
-  const frameRef = useRef(0);
-  const timeoutRef = useRef(null);
-  const intensityRef = useRef(0);
-
-  const rW = width * CANVAS_SCALE;
-  const rH = height * CANVAS_SCALE;
-
-  useMotionValueEvent(intensityValue, "change", (v) => {
-    intensityRef.current = v;
-  });
-
-  const animate = useCallback(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    const intensity = intensityRef.current;
-    const fontSize = 11 * CANVAS_SCALE;
-    const cellW = fontSize;
-    const cellH = Math.round(fontSize * 1.36);
-    const cols = Math.ceil(rW / cellW);
-    const rows = Math.ceil(rH / cellH);
-
-    ctx.clearRect(0, 0, rW, rH);
-    ctx.font = `${fontSize}px 'DM Mono', monospace`;
-    ctx.textBaseline = "top";
-
-    const brightBoost = intensity * 0.4;
-    const redChance = 0.08 + intensity * 0.25;
-
-    for (let r = 0; r < rows; r++) {
-      for (let c = 0; c < cols; c++) {
-        const roll = Math.random();
-        let ch;
-        if (roll < 0.65) {
-          ch = Math.random() > 0.5 ? "1" : "0";
-        } else if (roll < 0.85) {
-          ch = "0123456789abcdef"[Math.floor(Math.random() * 16)];
-        } else {
-          ch = "{}[]();=><+-*/%&|!".charAt(Math.floor(Math.random() * 18));
-        }
-
-        const bright = Math.random() + brightBoost;
-        if (Math.random() < redChance) {
-          ctx.fillStyle = `rgba(192,48,48,${0.5 + intensity * 0.4})`;
-        } else if (bright > 0.85) {
-          ctx.fillStyle = `rgba(255,255,255,${0.75 + intensity * 0.2})`;
-        } else if (bright > 0.5) {
-          ctx.fillStyle = `rgba(255,255,255,${0.35 + intensity * 0.25})`;
-        } else {
-          ctx.fillStyle = `rgba(255,255,255,${0.12 + intensity * 0.15})`;
-        }
-
-        ctx.fillText(ch, c * cellW, r * cellH);
-      }
-    }
-
-    const delay = Math.max(30, 80 - intensity * 50);
-    frameRef.current = requestAnimationFrame(() => {
-      timeoutRef.current = setTimeout(() => {
-        frameRef.current = requestAnimationFrame(animate);
-      }, delay);
-    });
-  }, [rW, rH]);
-
-  useEffect(() => {
-    frameRef.current = requestAnimationFrame(animate);
-    return () => {
-      cancelAnimationFrame(frameRef.current);
-      clearTimeout(timeoutRef.current);
-    };
-  }, [animate]);
-
-  return <canvas ref={canvasRef} width={rW} height={rH} className="hm__compile-canvas" />;
-}
-
-/* ═══════════════════════════════════════════════════
-   LEAK EFFECT — binary drips below silhouette
-   ═══════════════════════════════════════════════════ */
-function LeakCanvas({ width, height }) {
-  const canvasRef = useRef(null);
-  const frameRef = useRef(0);
-  const timeoutRef = useRef(null);
-
-  const rW = width * CANVAS_SCALE;
-  const rH = height * CANVAS_SCALE;
-
-  const animate = useCallback(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    const fontSize = 11 * CANVAS_SCALE;
-    const cellW = fontSize;
-    const cellH = Math.round(fontSize * 1.36);
-    const cols = Math.ceil(rW / cellW);
-    const maxRows = Math.ceil(rH / cellH);
-    /* inset: skip outer 5% of columns on each side */
-    const insetCols = Math.floor(cols * 0.05);
-
-    ctx.clearRect(0, 0, rW, rH);
-    ctx.font = `${fontSize}px 'DM Mono', monospace`;
-    ctx.textBaseline = "top";
-
-    for (let c = insetCols; c < cols - insetCols; c++) {
-      const innerCols = cols - insetCols * 2;
-      const innerC = c - insetCols;
-      const innerCenter = innerCols / 2;
-      const distFromCenter = Math.abs(innerC - innerCenter) / innerCenter;
-      const baseHeight = (1 - distFromCenter) * 0.85 + 0.1;
-      const isEven = c % 2 === 0;
-      const altFactor = isEven ? 1.0 : 0.45;
-      /* edge fade: columns near the inset edges fade out */
-      const edgeFade = Math.min(innerC, innerCols - 1 - innerC) / (innerCols * 0.2);
-      const edgeAlpha = Math.min(1, edgeFade);
-      const colRows = Math.floor(maxRows * baseHeight * altFactor);
-
-      for (let r = 0; r < colRows; r++) {
-        const roll = Math.random();
-        let ch;
-        if (roll < 0.65) {
-          ch = Math.random() > 0.5 ? "1" : "0";
-        } else if (roll < 0.85) {
-          ch = "0123456789abcdef"[Math.floor(Math.random() * 16)];
-        } else {
-          ch = "{}[]();=><+-*/%&|!".charAt(Math.floor(Math.random() * 18));
-        }
-
-        const vertFade = 1 - (r / colRows);
-        const alpha = vertFade * vertFade * vertFade * edgeAlpha * 0.7;
-
-        if (alpha < 0.02) continue;
-
-        const bright = Math.random();
-        if (Math.random() < 0.18) {
-          ctx.fillStyle = `rgba(192,48,48,${alpha * 0.9})`;
-        } else if (bright > 0.85) {
-          ctx.fillStyle = `rgba(255,255,255,${alpha * 0.95})`;
-        } else if (bright > 0.5) {
-          ctx.fillStyle = `rgba(255,255,255,${alpha * 0.6})`;
-        } else {
-          ctx.fillStyle = `rgba(255,255,255,${alpha * 0.3})`;
-        }
-
-        ctx.fillText(ch, c * cellW, r * cellH);
-      }
-    }
-
-    frameRef.current = requestAnimationFrame(() => {
-      timeoutRef.current = setTimeout(() => {
-        frameRef.current = requestAnimationFrame(animate);
-      }, 60);
-    });
-  }, [rW, rH]);
-
-  useEffect(() => {
-    frameRef.current = requestAnimationFrame(animate);
-    return () => {
-      cancelAnimationFrame(frameRef.current);
-      clearTimeout(timeoutRef.current);
-    };
-  }, [animate]);
-
-  return <canvas ref={canvasRef} width={rW} height={rH} className="hm__compile-canvas" />;
-}
-
-/* ═══════════════════════════════════════════════════
-   CODE BLOCK — with optional run output
-   ═══════════════════════════════════════════════════ */
-function CodeBlock({ file, children, output }) {
-  const [ran, setRan] = useState(false);
-
-  return (
-    <div className="hm__code-block">
-      <div className="hm__code-block-header">
-        <span className="hm__code-block-dot" />
-        <span className="hm__code-block-dot" />
-        <span className="hm__code-block-dot" />
-        <span className="hm__code-block-file">{file}</span>
-        {output && (
-          <button
-            className={`hm__run-btn${ran ? " hm__run-btn--ran" : ""}`}
-            onClick={() => setRan(!ran)}
-          >
-            <Play size={10} /> {ran ? "Hide" : "Run"}
-          </button>
-        )}
-      </div>
-      <div className="hm__code-block-body">
-        {children}
-      </div>
-      <AnimatePresence>
-        {ran && output && (
-          <motion.div
-            className="hm__run-output"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div className="hm__run-output-inner">
-              <div className="hm__run-output-bar">
-                <span className="hm__cl--out-val">$ python {file}</span>
-              </div>
-              {output}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-}
 
 /* ═══════════════════════════════════════════════════
    HOME
    ═══════════════════════════════════════════════════ */
 function Home() {
   const spacerRef = useRef(null);
+  const [bioRan, setBioRan] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: spacerRef,
@@ -293,6 +72,7 @@ function Home() {
         className="hm__cinematic"
         style={{ opacity: cinematicOpacity, pointerEvents: cinematicPointerEvents }}
       >
+        <Spotlight />
         <motion.div className="hm__cinematic-inner">
 
           {/* Left: Name + Title */}
@@ -303,7 +83,7 @@ function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, delay: 0.1, ease }}
             >
-              <span className="hm__name-first">Swaroop</span>
+              <span className="hm__name-first"><span className="hm__shimmer">Swaroop</span></span>
               <span className="hm__name-last">Sridhar</span>
             </motion.h1>
 
@@ -340,6 +120,15 @@ function Home() {
                 transition={{ duration: 0.8, delay: 0.15, ease }}
               />
               <motion.img
+                className="hm__photo-color"
+                src="/images/profile4_nobg.png"
+                alt=""
+                style={{ opacity: photoOpacity }}
+                initial={{ opacity: 0, scale: 0.96 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.15, ease }}
+              />
+              <motion.img
                 className="hm__outline"
                 src="/images/profile4_outline.png"
                 alt=""
@@ -359,13 +148,18 @@ function Home() {
                   maskPosition: "top center",
                 }}
               >
-                <CompileCanvas width={500} height={750} intensityValue={compileIntensity} />
+                <CompileCanvas
+                  width={500}
+                  height={750}
+                  intensityValue={compileIntensity}
+                  opacityValue={compileOpacity}
+                />
               </motion.div>
               <motion.div
                 className="hm__code-leak"
                 style={{ opacity: compileOpacity }}
               >
-                <LeakCanvas width={500} height={300} />
+                <LeakCanvas width={500} height={300} opacityValue={compileOpacity} />
               </motion.div>
             </div>
           </motion.div>
@@ -374,14 +168,23 @@ function Home() {
           <motion.div className="hm__side hm__side--right" style={{ opacity: sideTextOpacity }}>
             <motion.p
               className="hm__bio"
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.35, ease }}
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: {},
+                visible: { transition: { staggerChildren: 0.03, delayChildren: 0.4 } },
+              }}
             >
-              I like knowing how things actually work under the hood. Most of what I do
-              is ML and computer vision; training classifiers, building detection
-              pipelines, staring at a loss curve for an hour trying to figure out
-              why it did something weird at epoch 47.
+              {"I like knowing how things actually work under the hood. Most of what I do is ML and computer vision; training classifiers, building detection pipelines, staring at a loss curve for an hour trying to figure out why it did something weird at epoch 47.".split(" ").map((word, i) => (
+                <motion.span
+                  key={i}
+                  style={{ display: "inline-block", marginRight: "0.3em" }}
+                  variants={{
+                    hidden: { opacity: 0, y: 8, filter: "blur(4px)" },
+                    visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] } },
+                  }}
+                >{word}</motion.span>
+              ))}
             </motion.p>
 
             <motion.div
@@ -415,6 +218,7 @@ function Home() {
 
       {/* ══════════ ALL SCRIPTS — normal flow, revealed as curtain fades ══════════ */}
       <div className="hm__below hm__circuit-bg">
+        <Lamp />
         <motion.div
           className="hm__below-grid"
           style={{ scale: scriptsScale, opacity: scriptsOpacity }}
@@ -422,10 +226,10 @@ function Home() {
 
           {/* ── Row 1: ASCII art + bio script (2-col) ── */}
           <div className="hm__about-ascii">
-            <AnimatedAscii />
+            <AnimatedAscii revealed={bioRan} />
           </div>
 
-          <CodeBlock file="bio.py" output={
+          <CodeBlock file="bio.py" externalRan={bioRan} onToggleRun={() => setBioRan(!bioRan)} output={
             <>
               <p>I'm Swaroop. CS and ITWS dual major at RPI, concentrating in machine learning. Got into CS because I wanted to understand how things actually work, stayed because the problems just kept getting harder in a good way.</p>
               <p>Spend most of my time on ML and computer vision. But I also like the full stack side of things; writing Flask APIs, putting together React frontends, getting a database to not fall over. Picked up a lot of it from late night debugging honestly.</p>

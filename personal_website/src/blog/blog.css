@@ -2,6 +2,19 @@
    BLOG — Dark, text-forward, monospace accents
    ═══════════════════════════════════════════════════════════ */
 
+/* ── Tracing Beam ── */
+.tracing-beam__track {
+  position: absolute;
+  top: 0.75rem;
+  left: -5rem;
+}
+
+@media (max-width: 768px) {
+  .tracing-beam__track {
+    display: none;
+  }
+}
+
 .bl {
   margin-top: -80px;
   margin-left: calc(-50vw + 50%);

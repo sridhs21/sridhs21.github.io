@@ -5,6 +5,7 @@ import {
   Routes,
   useLocation,
 } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 import Navbar from "./navbar/navbar";
 import Home from "./home/home";
 import Portfolio from "./portfolio/portfolio";
@@ -12,6 +13,8 @@ import Repos from "./repos/repos";
 import Blog from "./blog/blog";
 import Contact from "./contact/contact";
 import LoadingScreen from "./loading_screen/loading_screen";
+import { PageTransition } from "./anim/anim";
+import "./anim/anim.css";
 import "./App.css";
 
 // ScrollToTop component that will reset scroll position on route change
@@ -23,6 +26,65 @@ function ScrollToTop() {
   }, [pathname]);
 
   return null;
+}
+
+function AnimatedRoutes() {
+  const location = useLocation();
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route
+          exact
+          path="/"
+          element={
+            <PageTransition>
+              <Home />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/home"
+          element={
+            <PageTransition>
+              <Home />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/portfolio"
+          element={
+            <PageTransition transform>
+              <Portfolio />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/repos"
+          element={
+            <PageTransition transform>
+              <Repos />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/blog"
+          element={
+            <PageTransition transform>
+              <Blog />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <PageTransition transform>
+              <Contact />
+            </PageTransition>
+          }
+        />
+      </Routes>
+    </AnimatePresence>
+  );
 }
 
 function App() {
@@ -69,14 +131,7 @@ function App() {
           <ScrollToTop />
           <Navbar />
           <main className="main-content">
-            <Routes>
-              <Route exact path="/" element={<Home />} />
-              <Route path="/home" element={<Home />} />
-              <Route path="/portfolio" element={<Portfolio />} />
-              <Route path="/repos" element={<Repos />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/contact" element={<Contact />} />
-            </Routes>
+            <AnimatedRoutes />
           </main>
         </div>
       </Router>

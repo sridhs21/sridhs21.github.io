@@ -1,8 +1,5 @@
 import React, { useState, useRef } from "react";
-import {
-  motion,
-  AnimatePresence,
-} from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Mail,
   Phone,
@@ -15,40 +12,9 @@ import {
   AlertCircle,
 } from "lucide-react";
 import emailjs from "@emailjs/browser";
+import { LetterTitle, Magnetic } from "../anim/anim";
+import FloatingField from "./components/FloatingField";
 import "./contact.css";
-
-/* ─────────────────────────────────────────────
-   Floating label field
-   ───────────────────────────────────────────── */
-function FloatingField({ label, name, type = "text", value, onChange, required, textarea, rows, fullWidth }) {
-  const [focused, setFocused] = useState(false);
-  const Tag = textarea ? "textarea" : "input";
-
-  return (
-    <div className={`ct__field${fullWidth ? " ct__field--full" : ""}`}>
-      <Tag
-        className="ct__input"
-        name={name}
-        id={name}
-        type={textarea ? undefined : type}
-        value={value}
-        onChange={onChange}
-        required={required}
-        rows={textarea ? rows : undefined}
-        onFocus={() => setFocused(true)}
-        onBlur={() => setFocused(false)}
-        placeholder=" "
-      />
-      <label className="ct__label" htmlFor={name}>{label}</label>
-      <motion.div
-        className="ct__bar"
-        initial={false}
-        animate={{ scaleX: focused ? 1 : 0 }}
-        transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-      />
-    </div>
-  );
-}
 
 /* ═════════════════════════════════════════════
    Contact Page
@@ -96,14 +62,11 @@ function Contact() {
             say hello
           </motion.span>
 
-          <motion.h1
+          <LetterTitle
+            as="h1"
             className="ct__title"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          >
-            get in touch
-          </motion.h1>
+            text="get in touch"
+          />
 
           <motion.p
             className="ct__subtitle"
@@ -189,13 +152,15 @@ function Contact() {
                 )}
               </AnimatePresence>
 
-              <button type="submit" disabled={isSubmitting} className="ct__submit">
-                {isSubmitting ? (
-                  <><span className="ct__spinner" /> Sending…</>
-                ) : (
-                  <><Send size={15} /> Send</>
-                )}
-              </button>
+              <Magnetic strength={0.3}>
+                <button type="submit" disabled={isSubmitting} className="ct__submit">
+                  {isSubmitting ? (
+                    <><span className="ct__spinner" /> Sending…</>
+                  ) : (
+                    <><Send size={15} /> Send</>
+                  )}
+                </button>
+              </Magnetic>
             </div>
           </motion.form>
         </section>

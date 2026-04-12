@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 
 const ABOUT_ASCII = `
 
@@ -61,11 +61,117 @@ const ABOUT_ASCII = `
            ........:::::::::::::::.   ....:::::::::::::::::::::....................
             ......:::::::::::::::.   .....::::::::::::::::::::::...   .............`;
 
-function AnimatedAscii() {
+/* ── Braille spinner frames ── */
+const SPINNER_FRAMES = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"];
+
+const LOADING_LINES = [
+  "Compiling profile...",
+  "Loading pixels...",
+  "Rendering ASCII...",
+  "Fetching dog...",
+  "Allocating memory...",
+  "Parsing features...",
+];
+
+/* ── Idle Loading Animation ── */
+function AsciiLoader() {
+  const [frame, setFrame] = useState(0);
+  const [lineIdx, setLineIdx] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => setFrame((f) => (f + 1) % SPINNER_FRAMES.length), 80);
+    return () => clearInterval(id);
+  }, []);
+
+  useEffect(() => {
+    const id = setInterval(() => setLineIdx((l) => (l + 1) % LOADING_LINES.length), 2000);
+    return () => clearInterval(id);
+  }, []);
+
   return (
-    <pre className="hm__ascii-art" aria-label="ASCII art of Swaroop and his dog">
-      {ABOUT_ASCII}
+    <div className="hm__ascii-loader">
+      <span className="hm__ascii-spinner">{SPINNER_FRAMES[frame]}</span>
+      <span className="hm__ascii-loader-text">{LOADING_LINES[lineIdx]}</span>
+    </div>
+  );
+}
+
+/* ── Scanline Reveal ── */
+function AsciiReveal({ ascii }) {
+  const rows = useRef(ascii.split("\n")).current;
+  const [visibleRows, setVisibleRows] = useState(0);
+  const [scrambleRow, setScrambleRow] = useState(-1);
+  const timeoutRef = useRef(null);
+  const CHARS = ":.-=+*#%@";
+
+  const scrambleText = useCallback(
+    (text) =>
+      text
+        .split("")
+        .map((ch) =>
+          ch === " " ? " " : CHARS[Math.floor(Math.random() * CHARS.length)]
+        )
+        .join(""),
+    []
+  );
+
+  const [scrambled, setScrambled] = useState("");
+
+  useEffect(() => {
+    let row = 0;
+    let cancelled = false;
+
+    const step = () => {
+      if (cancelled || row >= rows.length) {
+        if (!cancelled) setScrambleRow(-1);
+        return;
+      }
+      setVisibleRows(row + 1);
+      setScrambleRow(row);
+
+      const currentRow = row;
+      let ticks = 0;
+      const settle = setInterval(() => {
+        if (cancelled) { clearInterval(settle); return; }
+        ticks++;
+        if (ticks < 3) {
+          setScrambled(scrambleText(rows[currentRow]));
+        } else {
+          clearInterval(settle);
+          if (!cancelled) setScrambleRow(-1);
+        }
+      }, 30);
+
+      row++;
+      timeoutRef.current = setTimeout(step, 18);
+    };
+    timeoutRef.current = setTimeout(step, 200);
+
+    return () => {
+      cancelled = true;
+      clearTimeout(timeoutRef.current);
+    };
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  return (
+    <pre className="hm__ascii-art hm__ascii-art--animated" aria-label="ASCII art of Swaroop and his dog">
+      {rows.slice(0, visibleRows).map((line, i) => (
+        <span key={i} className="hm__ascii-row">
+          {i === scrambleRow ? scrambled : line}
+          {"\n"}
+        </span>
+      ))}
     </pre>
+  );
+}
+
+/* ── Main Component ── */
+function AnimatedAscii({ revealed }) {
+  return (
+    <>
+      {!revealed && <AsciiLoader />}
+      {revealed && <AsciiReveal ascii={ABOUT_ASCII} />}
+    </>
   );
 }
 
